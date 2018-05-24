@@ -1,22 +1,22 @@
 # Site settings
 title: Your Blog
-SEOTitle: 你的博客 | Your Blog
+SEOTitle: 剔谷岛 | OldRice Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
+email: haityang@163.com
 description: ""
 keyword: ""
-url: "http://huangxuan.me"              # your host, for absolute URL
+url: "http://haityang.github.io"              # your host, for absolute URL
 baseurl: "/huxblog-boilerplate"         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
 RSS: false
-weibo_username:     huxpro
-zhihu_username:     huxpro
-github_username:    huxpro
+weibo_username:     花兮酒兮
+zhihu_username:     梅超风
+github_username:    haityang
 #twitter_username:  huxpro
-facebook_username:  huxpro
+facebook_username:  haityang
 
 
 
