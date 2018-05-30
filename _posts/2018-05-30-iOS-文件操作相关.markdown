@@ -1,0 +1,60 @@
+#IOS从URL中获得文件名
+###从路径中获得完整的文件名（带后缀）
+```
+[filePath lastPathComponent];
+```
+
+###获得文件名（不带后缀）
+```
+[exestr stringByDeletingPathExtension];
+```
+
+###获得文件的扩展类型（不带'.'）
+```
+[filePath pathExtension];
+```
+
+###在网络中的数据流中提取链接中的文件名称时，有很多方法
+####方法一：最直接。
+```
+NSString * urlString = @"http://www.baidu.com/img/baidu_logo_fqj_10.gif";
+NSString *fileName = [urlString lastPathComponent];
+NSLog(@"%@",fileName);
+```
+
+####方法二：根据字符或者时字符串分割
+```
+NSString *link = @"http://www.baidu.com/img/baidu_logo_fqj_10.gif”;
+NSString *filename = [[NSString alloc] init];
+NSArray *SeparatedArray = [[NSArray alloc]init];
+SeparatedArray =[link componentsSeparatedByString:@"/"];
+filename = [SeparatedArray lastObject];
+NSLog(@"%@",SeparatedArray);
+NSLog(@"%@",filename);
+[filename release];
+```
+
+####将链接看成路径
+```
+NSString * urlString = @"http://www.baidu.com/img/baidu_logo_fqj_10.gif”;
+NSArray *urlCom = [[NSArray alloc]initWithArray:[url pathComponents]];
+NSLog(@"%@",[urlCom lastObject]);
+[urlCom release];
+```
+
+####方法四：NSRange.它在截取二进制文件的时候十分方便
+```
+NSString * urlString = @"http://www.baidu.com/img/baidu_logo_fqj_10.gif”;
+NSString * fileName;
+NSRange range = [urlString rangeOfString:@"/" options:NSBackwardsSearch];
+    if (range.location != NSNotFound)
+    {
+        fileName = [urlString substringFromIndex:range.location+1];
+        if([[fileName lowercaseString]hasSuffix:@".gif"]){
+            NSLog(@"%@",fileName);
+        }  
+        else{
+            
+        }
+    }
+```

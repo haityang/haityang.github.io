@@ -1,0 +1,10 @@
+###改写git.io
+```
+git clone git@github.com:Huxpro/huxblog-boilerplate.git
+cd huxpro.github.io
+rm -rf .git
+
+git add _posts/2017-08-15-how-to-setup-your-github-io-blog.md
+git commit -m "Add how to setup your github.io blog"
+git push mine master
+```
