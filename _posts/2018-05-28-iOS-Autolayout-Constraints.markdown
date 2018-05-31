@@ -1,9 +1,9 @@
 
 --------------
-#自动约束 
+# 自动约束 
 `button.translatesAutoresizingMaskIntoConstraints = NO;`
 
-##上边距
+## 上边距
 ```
 constraint = [NSLayoutConstraint
               constraintWithItem:button
@@ -16,7 +16,7 @@ constraint = [NSLayoutConstraint
 [self.view addConstraint:constraint];
 ```
 
-##左边距
+## 左边距
 ```
 constraint = [NSLayoutConstraint
               constraintWithItem:button
@@ -29,7 +29,7 @@ constraint = [NSLayoutConstraint
 [self.view addConstraint:constraint];
 ```
 
-##右边距
+## 右边距
 ```
 constraint = [NSLayoutConstraint
               constraintWithItem:button
@@ -42,7 +42,7 @@ constraint = [NSLayoutConstraint
 [self.view addConstraint:constraint];
 ```
 
-##下边距
+## 下边距
 ```
 constraint = [NSLayoutConstraint
               constraintWithItem:button
@@ -55,7 +55,7 @@ constraint = [NSLayoutConstraint
 [self.view addConstraint:constraint];
 ```
 
-##水平居中
+## 水平居中
 ```
 constraint = [NSLayoutConstraint
               constraintWithItem:button
@@ -68,7 +68,7 @@ constraint = [NSLayoutConstraint
 [self.view addConstraint:constraint];
 ```
 
-#垂直居中
+# 垂直居中
 ```
 constraint = [NSLayoutConstraint
               constraintWithItem:button
@@ -81,19 +81,19 @@ constraint = [NSLayoutConstraint
 [self.view addConstraint:constraint];
 ```
 
-##设置宽度
+## 设置宽度
 ```
 constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:130.0f];
 [self.view addConstraint:constraint];
 ```
 
-##设置高度
+## 设置高度
 ```
 constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:70.0f];
 [self.view addConstraint:constraint];
 ```
 
-##水平方向布局(从左向右)
+## 水平方向布局(从左向右)
 ```
 [array addObjectsFromArray:[NSLayoutConstraint
                             constraintsWithVisualFormat:@"|-60-[buttonA(==90)]-30-[buttonB]"
@@ -102,7 +102,7 @@ constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAtt
                             views:NSDictionaryOfVariableBindings(buttonA,buttonB)]];                   
 ```
 
-##垂直方向布局(从上向下)
+## 垂直方向布局(从上向下)
 ```
 [array addObjectsFromArray:[NSLayoutConstraint
                             constraintsWithVisualFormat:@"V:|-100-[buttonB]-50-[buttonA]"
@@ -114,19 +114,19 @@ constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAtt
 ```
 
 ---------
-##VFL
+## VFL
 ```
 NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(buttonA,buttonB);
 @"|-50-[buttonA(80@100)]-[buttonB(90@200)]-50-|" //左右边距都为50，中间有两个按钮，相隔缺省宽度，一个控件宽度为80，约束优先级为100；另一个控件宽度为90，约束优先级为200
 @"V:[buttonA(80)]-20-[buttonB(==buttonA)]" //垂直方向有一个高度为80的buttonA，然后间隔20有一个和buttonA同样高度的buttonB
 ```
 
-###垂直居中
+### 垂直居中
 ```
 [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[prgrssView]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];  
 ```
 
-###Masonary
+### Masonary
 ```
 //.分别设置各个相对边距（superview为view的父类视图，下同）
 make.left.mas_equalTo(superView.mas_left).mas_offset(10);
@@ -222,7 +222,7 @@ make.center.equalTo(button1)
 make.center.equalTo(superview).centerOffset(CGPointMake(-5, 10))
 ```
 
-###你可以在约束链里添加相应的view来增加代码的可读性:
+### 你可以在约束链里添加相应的view来增加代码的可读性:
 ```
 // 除了top，所有的边界与superview对齐
 make.left.right.and.bottom.equalTo(superview);

@@ -1,4 +1,4 @@
-###改写git.io
+### 改写git.io
 ```
 git clone git@github.com:Huxpro/huxblog-boilerplate.git
 cd huxpro.github.io
