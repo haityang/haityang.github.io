@@ -11,3 +11,9 @@ $ sudo npm install http-upload-server -g
 $ http-upload-server ./WebApp
 http://localhost:8989
 ```
+
+```
+$ sudo npm install -g simple-http-upload-server
+$ simple-http-upload-server
+http://127.0.0.1:5000
+```

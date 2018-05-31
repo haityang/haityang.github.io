@@ -120,6 +120,36 @@ NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(buttonA,buttonB);
 @"|-50-[buttonA(80@100)]-[buttonB(90@200)]-50-|" //左右边距都为50，中间有两个按钮，相隔缺省宽度，一个控件宽度为80，约束优先级为100；另一个控件宽度为90，约束优先级为200
 @"V:[buttonA(80)]-20-[buttonB(==buttonA)]" //垂直方向有一个高度为80的buttonA，然后间隔20有一个和buttonA同样高度的buttonB
 ```
+#### apple VFL
+```
+Standard Space
+[button]-[textField]
+
+Width Constraint
+[button(>=50)]
+
+Connection to Superview
+|-50-[purpleBox]-50-|
+
+Vertical Layout
+V:[topField]-10-[bottomField]
+
+Flush Views
+[maroonView][blueView]
+
+Priority
+[button(100@20)]
+
+Equal Widths
+[button1(==button2)]
+
+Multiple Predicates
+[flexibleButton(>=70,<=100)]
+
+A Complete Line of Layout
+|-[find]-[findNext]-[findField(>=20)]-|
+
+```
 
 ### 垂直居中
 ```
