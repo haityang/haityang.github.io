@@ -1,0 +1,101 @@
+Debug:
+
+```
+
+1.ulimit -c        查看内存转储是否有效
+2.ulimit -c unlimited		开启内核转储，当开启内核转储后，如果出现内存错误，则会自动将错误储存到同目录下的文件中。
+3.ulimit -c 14324214		设置内核转储上限
+4.file		文件类型说明
+5.gdb -c corefile ./a   显示可执行文件a的转储文件corefile中的错误信息
+6.On Mac OS X, dump file will be placed in /cores/ as core.PID
+
+7.设置核心转储文件的位置－－－－
+	sudo vim /etc/sysctl.conf
+		kernel.core_pattern = /var/core/%t-%e-%p-%c.core
+		kernel.uses_pid = 0
+	sudo sysctl -p
+	
+8.Debug 命令－－－－－
+gcc -Wall -o2 -g	//加入调试信息
+
+b main		//b 函数名； b 行号； b 文件名：行号；b 文件名：函数名；b +偏移量； b -偏移量; b *地址；
+
+info b	//断点信息
+
+run -a //运行 参数
+
+bt		//显示堆栈： bt N; bt -N; 
+
+p *a   //显示变量： p argv; p argv[0]; p *argv; 
+
+info reg		//显示寄存器的值
+
+p &eax  //在寄存器前添加$，可以显示寄存器的内容
+
+p/x a	//按格式输出。x十六; d十; u无符号十; o八; t二进制; a地址; c字符; f浮点; s字符串; i机器语言;
+
+x/x &pc  //显示内存内容 x/(格式) 地址：(x,d,u,o,t,a,c,f,s,i) 
+
+n		//下一行（next）
+
+c		//继续 (continue)
+
+c 5		//continue 5 times
+
+watch short_output	//监视变量改变,发生变化时暂停  
+awatch short_output	//被访问，改变时暂停
+rwatch short_output	//被访问时暂停
+
+delete  //删除断点
+
+set variable options = 0 //改变变量的值 
+
+generate-core-file	//调试过程中执行转储
+
+attach 17606 //进程id  ，调试一个已经运行的进程
+
+------------
+b 20 if node==0		//设置条件断点
+row==4 && col==1     //在xcode中设置断
+
+condition 断点编号		//删除触发条件
+
+condition 断点编号 条件	//添加触发条件
+
+ignore 断点编号 次数  //忽略指定的次数
+
+--------
+continue 次数
+step 次数
+stepi 次数
+next 次数
+nexti 次数
+
+-----------
+finish		执行完当前函数后暂停
+until
+until 地址
+
+-----------
+clear
+clear  函数名
+clear	行号
+clear	文件名：行号
+clear	文件名：函数名
+delete	断点编号
+
+－－－－－－－－
+格式：
+disable				//禁用全部
+disable 断点编号		//
+disable display	显示编号	//display命令定义的
+disable mem	内存区域	//mem命令定义的
+
+-------------
+enable 
+enable  断点编号
+enable once 断点编号
+enable delete 断点编号
+enable display 显示编号
+enable mem 内存区域
+```

@@ -105,5 +105,33 @@ $ python -m SimpleHTTPServer 8080
 pip install -i http://pypi.douban.com/simple droopy
 
 ```
+-----------------
+文件压缩 
 
+```
+
+ *.Z        compress程序压缩的文件（最早期使用）,压缩后取代源文件；
+ 
+ *.zip      一个夸平台的文件打包程序，适用于Linux、windows和Mac OS系统；
+ 
+ *.bz2      bzip2程序压缩的文件；
+ 
+ *.gz       gzip程序压缩的文件；
+ 
+ *.tar      tar程序打包的文件，并没有压缩；
+ 
+ *.tar.gz   tar程序打包的文件，并经过gzip程序的压缩；
+ 
+ *.tar.bz2  tar程序打包的文件，并经过bzip2程序压缩。
+ 
+1.  tar -cvf   test.tar   test                ### 仅打包，不压缩
+2.	tar -zcvf  test.tar.gz    test        ### 打包后以gzip压缩
+3.	tar -jcvf  test.tar.bz2   test        ### 打包后以bzip2压缩
+
+如何解压缩包：
+1.	tar -xvf   test.tar
+2.	tar -xvf   test.tar.gz
+3.	tar  -jxvf  test.tar.bz2
+4.	tar  -jxvf  test.tar.bz2  -C  /var/tmp/find     解压到其他目录
+```
 

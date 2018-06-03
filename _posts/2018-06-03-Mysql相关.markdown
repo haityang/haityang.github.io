@@ -1,0 +1,438 @@
+MySql database:
+
+```
+
+sudo service mysql stop;
+sudo mysqld_safe --skip-grant-tables&;
+mysql -uroot -p;
+use mysql;
+update user set password=PASSWORD("waiting") user="root";
+flush privileges;
+quit;
+sudo service mysql start;
+mysql -uroot -p;
+```
+
+--------------------------------------------
+需要启动mysql时对用户名有要求：分配目录给wheel组_mysql用户
+
+```
+sudo chown -R  _mysql:wheel  /usr/local/mysql/data
+sudo chown -R yht:staff /usr/local/mysql/data
+```
+
+--------------------------------------------
+DATABASE:
+
+```
+1. mysql -h 192.168.0.1 -u root -p
+2. mysqladmin -u root -p oldpwd -password newpwd
+3. show databases;
+4. use mysql;
+5. show tables;
+6. desc tablename;
+7. create database dbname;
+8. use base_name;
+9. create table table_name(name, string, not null);
+10. drop database base_name;
+11. drop table table_name;
+12. delete from table_name where ..
+
+delete from flight_city where cityName="台中"
+select * from flight_city where cityName="台中"
+
+select cityDataID,cityID,cityName,cityName_Combine,cityNameEn,countryEnum,cityCode,districtID,stationID,stationProperty,airportCode,airportName from city_query_history where business_type=#business_type# order by date desc limit |num|
+
+--------------------------------------------
+
+1.To login (from unix shell) use -h only if needed.
+-#[mysql dir]/bin/mysql -h hostname -u root -p
+
+
+2.Create a database on the sql server.
+mysql> create database [databasename];
+
+3.List all databases on the sql server.
+mysql> show databases;
+
+4.Switch to a database.
+mysql> use [db name];
+
+5.To see all the tables in the db.
+mysql> show tables;
+
+6.To see database's field formats.
+mysql> describe [table name];
+
+7.To delete a db.
+mysql> drop database [database name];
+
+8.To delete a table.
+mysql> drop table [table name];
+
+9.Show all data in a table.
+mysql> SELECT * FROM [table name];
+
+10.Returns the columns and column information pertaining to the designated table.
+mysql> show columns from [table name];
+
+11.Show certain selected rows with the value "whatever".
+mysql> SELECT * FROM [table name] WHERE [field name] = "whatever";
+
+12.Show all records containing the name "Bob" AND the phone number '3444444'.
+mysql> SELECT * FROM [table name] WHERE name = "Bob" AND phone_number = '3444444';
+
+13.Show all records not containing the name "Bob" AND the phone number '3444444' order by the phone_number field.
+mysql> SELECT * FROM [table name] WHERE name != "Bob" AND phone_number = '3444444' order by phone_number;
+
+14.Show all records starting with the letters 'bob' AND the phone number '3444444'.
+mysql> SELECT * FROM [table name] WHERE name like "Bob%" AND phone_number = '3444444';
+
+15.Show all records starting with the letters 'bob' AND the phone number '3444444' limit to records 1 through 5.
+mysql> SELECT * FROM [table name] WHERE name like "Bob%" AND phone_number = '3444444' limit 1,5;
+
+16.Use a regular expression to find records. Use "REGEXP BINARY" to force case-sensitivity. This finds any record beginning with a.
+mysql> SELECT * FROM [table name] WHERE rec RLIKE "^a";
+
+17.Show unique records.
+mysql> SELECT DISTINCT [column name] FROM [table name];
+
+18.Show selected records sorted in an ascending (asc) or descending (desc).
+mysql> SELECT [col1],[col2] FROM [table name] ORDER BY [col2] DESC;
+
+19.Return number of rows.
+mysql> SELECT COUNT(*) FROM [table name];
+
+20.Sum column.
+mysql> SELECT SUM(*) FROM [table name];
+
+21.Join tables on common columns.
+mysql> select lookup.illustrationid, lookup.personid,person.birthday from lookup left join person on lookup.personid=person.personid=statement to join birthday in person table with primary illustration id;
+
+22.Creating a new user. Login as root. Switch to the MySQL db. Make the user. Update privs.
+-# mysql -u root -p mysql> use mysql; 
+mysql> INSERT INTO user (Host,User,Password) VALUES('%','username',PASSWORD('password')); 
+mysql> flush privileges;
+
+23.Change a users password from unix shell.
+-# [mysql dir]/bin/mysqladmin -u username -h hostname.blah.org -p password 'new-password'
+
+24.Change a users password from MySQL prompt. Login as root. Set the password. Update privs.
+-# mysql -u root -p 
+mysql> SET PASSWORD FOR 'user'@'hostname' = PASSWORD('passwordhere'); 
+mysql> flush privileges;
+
+25.Recover a MySQL root password. Stop the MySQL server process. Start again with no grant tables. Login to MySQL as root. Set new password. Exit MySQL and restart MySQL server.
+-# /etc/init.d/mysql stop 
+-# mysqld_safe --skip-grant-tables & 
+-# mysql -u root 
+mysql> use mysql; 
+mysql> update user set password=PASSWORD("newrootpassword") where User='root'; 
+mysql> flush privileges; 
+mysql> quit 
+-# /etc/init.d/mysql stop
+ -# /etc/init.d/mysql start
+
+25.Set a root password if there is on root password.
+-# mysqladmin -u root password newpassword
+
+26.Update a root password.
+
+-# mysqladmin -u root -p oldpassword newpassword
+
+27.Allow the user "bob" to connect to the server from localhost using the password "passwd". Login as root. Switch to the MySQL db. Give privs. Update privs.
+-# mysql -u root -p 
+mysql> use mysql; 
+mysql> grant usage on *.* to bob@localhost identified by 'passwd'; 
+mysql> flush privileges;
+
+28.Give user privilages for a db. Login as root. Switch to the MySQL db. Grant privs. Update privs.
+-# mysql -u root -p 
+mysql> use mysql; 
+mysql> INSERT INTO db (Host,Db,User,Select_priv,Insert_priv,Update_priv,Delete_priv,Create_priv,Drop_priv) VALUES ('%','databasename','username','Y','Y','Y','Y','Y','N'); 
+mysql> flush privileges;   
+or   
+mysql> grant all privileges on databasename.* to username@localhost; 
+mysql> flush privileges;
+
+29.To update info already in a table.
+mysql> UPDATE [table name] SET Select_priv = 'Y',Insert_priv = 'Y',Update_priv = 'Y' where [field name] = 'user';
+
+30.Delete a row(s) from a table.
+mysql> DELETE from [table name] where [field name] = 'whatever';
+
+31.Update database permissions/privilages.
+mysql> flush privileges;
+
+32.Delete a column.
+mysql> alter table [table name] drop column [column name];
+
+33.Add a new column to table.
+mysql> alter table [table name] add column [new column name] varchar (20);
+
+34.Change column name.
+mysql> alter table [table name] change [old column name] [new column name] varchar (50);
+
+35.Make a unique column so you get no dupes.
+mysql> alter table [table name] add unique ([column name]);
+
+36.Make a column bigger.
+mysql> alter table [table name] modify [column name] VARCHAR(3);
+
+37.Delete unique from table.
+mysql> alter table [table name] drop index [colmn name];
+
+38.Load a CSV file into a table.
+mysql> LOAD DATA INFILE '/tmp/filename.csv' replace INTO TABLE [table name] FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (field1,field2,field3);
+
+39.Dump all databases for backup. Backup file is sql commands to recreate all db's.
+-# [mysql dir]/bin/mysqldump -u root -ppassword --opt >/tmp/alldatabases.sql
+
+40.Dump one database for backup.
+-# [mysql dir]/bin/mysqldump -u username -ppassword --databases databasename >/tmp/databasename.sql
+Dump a table from a database.
+# [mysql dir]/bin/mysqldump -c -u username -ppassword databasename tablename > /tmp/databasename.tablename.sql
+
+41.Restore database (or database table) from backup.
+# [mysql dir]/bin/mysql -u username -ppassword databasename < /tmp/databasename.sql
+
+42.Create Table Example 1.
+mysql> CREATE TABLE [table name] (firstname VARCHAR(20), middleinitial VARCHAR(3), lastname VARCHAR(35),suffix VARCHAR(3),officeid VARCHAR(10),userid VARCHAR(15),username VARCHAR(8),email VARCHAR(35),phone VARCHAR(25), groups VARCHAR(15),datestamp DATE,timestamp time,pgpemail VARCHAR(255));
+
+43.Create Table Example 2.
+mysql> create table [table name] (personid int(50) not null auto_increment primary key,firstname varchar(35),middlename varchar(50),lastnamevarchar(50) default 'bato');
+
+-# create table user(name VARCHAR(20), age int, phone VARCHAR(25));
+
+--------------------------------------------
+mysql 终端
+cd /usr/local/mysql/bin/
+./mysqladmin -u root -p password 123             //更改root用户密码
+./mysql -uroot -p                               //root用户登录mysql
+
+--------------------------------------------
+curl localhost
+sudo /Library/StartupItems/MySQLCOM/MySQLCOM start
+sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop
+
+--------------------------------------------
+配置mysql
+1.sudo chmod u-w /etc/bashrc
+2. sudo ln -s /usr/local/mysql/bin/mysql /usr/bin/mysql
+   sudo ln -s /usr/local/mysql/bin/mysqladmin /usr/bin/mysqladmin                                                      
+3.mysqladmin -h localhost -u root password "waiting" //修改密码
+4.mysql -h localhost -u root -p
+
+
+
+
+说明
+--------------------------------------------- 
+sqlite3          *db, 数据库句柄，跟文件句柄FILE很类似
+sqlite3_stmt      *stmt, 这个相当于ODBC的Command对象，用于保存编译好的SQL语句
+sqlite3_open(),   打开数据库，没有数据库时创建。
+sqlite3_exec(),   执行非查询的sql语句
+Sqlite3_step(), 在调用sqlite3_prepare后，使用这个函数在记录集中移动。
+Sqlite3_close(), 关闭数据库文件
+还有一系列的函数，用于从记录集字段中获取数据，如
+sqlite3_column_text(), 取text类型的数据。
+sqlite3_column_blob（），取blob类型的数据
+sqlite3_column_int(), 取int类型的数据
+
+sqlite3_open()        Open the database
+sqlite3_prepare()     Create the SQL statement
+sqlite3_step()        Execute the statement
+sqlite3_column()      Fetch the result
+sqlite3_finalize()    Destroy the statement
+sqlite3_close()       Close the database
+
+
+open db---------------------------------------------
+ 
+   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documents = [paths objectAtIndex:0];
+    NSString *database_path = [documents stringByAppendingPathComponent:DBNAME];
+   
+    if (sqlite3_open([database_path UTF8String], &db) != SQLITE_OK) {
+        sqlite3_close(db);
+        NSLog(@"数据库打开失败")
+    }
+
+
+
+
+Inserting Records--------------------------------------------- 
+
+-(void)InsertRecords:(NSMutableString *) txt :(int) integer :(double) dbl{
+fileMgr = [NSFileManager defaultManager];
+sqlite3_stmt *stmt=nil;
+sqlite3 *cruddb;...
+
+
+//insert
+const char *sql = "INSERT INTO data(coltext, colint, coldouble) VALUES(?,?,?)";
+
+//Open db
+NSString *cruddatabase = [self.GetDocumentDirectory stringByAppendingPathComponent:@"cruddb.sqlite"];
+sqlite3_open([cruddatabase UTF8String], &cruddb);
+sqlite3_prepare_v2(cruddb, sql, 1, &stmt, NULL);
+sqlite3_bind_text(stmt, 1, [txt UTF8String], -1, SQLITE_TRANSIENT);
+sqlite3_bind_int(stmt, 2, integer);
+sqlite3_bind_double(stmt, 3, dbl);
+sqlite3_step(stmt);
+sqlite3_finalize(stmt);
+sqlite3_close(cruddb); 
+}
+
+
+---------------------------------------------
+Updating Recordsconst char *sql = "Update data set coltext=? where coltext=?";
+
+
+//Open db
+NSString *cruddatabase = [self.GetDocumentDirectory stringByAppendingPathComponent:@"cruddb.sqlite"];
+sqlite3_open([cruddatabase UTF8String], &cruddb);
+sqlite3_prepare_v2(cruddb, sql, 1, &stmt, NULL);
+sqlite3_bind_text(stmt, 1, [txt UTF8String], -1, SQLITE_TRANSIENT);
+sqlite3_bind_text(stmt, 2, [utxt UTF8String], -1, SQLITE_TRANSIENT);
+
+
+sqlite3_step(stmt);
+sqlite3_finalize(stmt);
+sqlite3_close(cruddb); 
+}
+
+
+---------------------------------------------
+Deleting Records 
+
+
+-(void)DeleteRecords:(NSString *)txt{
+fileMgr = [NSFileManager defaultManager];
+sqlite3_stmt *stmt=nil;
+sqlite3 *cruddb;
+
+//insert
+const char *sql = "Delete from data where coltext=?";
+
+//Open db
+NSString *cruddatabase = [self.GetDocumentDirectory stringByAppendingPathComponent:@"cruddb.sqlite"];
+sqlite3_open([cruddatabase UTF8String], &cruddb);
+sqlite3_prepare_v2(cruddb, sql, 1, &stmt, NULL);
+sqlite3_bind_text(stmt, 1, [txt UTF8String], -1, SQLITE_TRANSIENT);
+
+sqlite3_step(stmt);
+sqlite3_finalize(stmt);
+sqlite3_close(cruddb); 
+
+}
+
+---------------------------------------------
+select
+
+-(NSArray*)getPersons
+{
+    // Allocate a persons array
+    NSMutableArray *persons = [[NSMutableArray alloc]init];
+
+    // Create the query statement to get all persons
+    NSString *queryStatement = [NSString stringWithFormat:@"SELECT ID, FIRSTNAME, LASTNAME, BIRTHDAY FROM PERSON"];
+
+    // Prepare the query for execution
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(databaseHandle, [queryStatement UTF8String], -1,&statement, NULL) == SQLITE_OK)
+    {
+        // Iterate over all returned rows
+
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            // Get associated address of the current person row
+            int personID = sqlite3_column_int(statement, 0);
+            Address *address = [self getAddressByPersonID:personID];
+
+            // Convert the birthday column to an NSDate
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+            dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss Z";
+            NSString *birthdayAsString = [NSStringstringWithUTF8String:(char*)sqlite3_column_text(statement, 3)];
+
+            NSDate *birthday = [dateFormatter dateFromString: birthdayAsString];
+            [dateFormatter release];
+
+            // Create a new person and add it to the array
+            Person *person = [[Person alloc]initWithFirstName:[NSStringstringWithUTF8String:(char*)sqlite3_column_text(statement, 1)]
+            andLastName:[NSStringstringWithUTF8String:(char*)sqlite3_column_text(statement, 2)]
+
+            andBirthday:birthday
+            andAddress:address];
+            [persons addObject:person];
+
+            // Release the person because the array takes ownership
+            [person release];
+        }
+        sqlite3_finalize(statement);
+    }
+    // Return the persons array an mark for autorelease
+    return [persons autorelease];
+}
+
+
+----------------------------------------------(void)execSql:(NSString *)sql
+{
+    char *err;
+    if (sqlite3_exec(db, [sql UTF8String], NULL, NULL, &err) != SQLITE_OK) {
+        sqlite3_close(db);
+        NSLog(@"数据库操作数据失败!");
+    }
+}
+
+-----create
+NSString *sqlCreateTable = @"CREATE TABLE IF NOT EXISTS PERSONINFO (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER, address TEXT)";
+    [self execSql:sqlCreateTable];
+
+
+------insert
+NSString *sql1 = [NSString stringWithFormat:
+                          @"INSERT INTO '%@' ('%@', '%@', '%@') VALUES ('%@', '%@', '%@')",
+                          TABLENAME, NAME, AGE, ADDRESS, @"张三", @"23", @"西城区"];
+   
+    NSString *sql2 = [NSString stringWithFormat:
+                      @"INSERT INTO '%@' ('%@', '%@', '%@') VALUES ('%@', '%@', '%@')",
+                      TABLENAME, NAME, AGE, ADDRESS, @"老六", @"20", @"东城区"];
+    [self execSql:sql1];
+    [self execSql:sql2];
+
+
+-------query
+ NSString *sqlQuery = @"SELECT * FROM PERSONINFO";
+    sqlite3_stmt * statement;
+   
+    if (sqlite3_prepare_v2(db, [sqlQuery UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            char *name = (char*)sqlite3_column_text(statement, 1);
+            NSString *nsNameStr = [[NSString alloc]initWithUTF8String:name];
+           
+            int age = sqlite3_column_int(statement, 2);
+           
+            char *address = (char*)sqlite3_column_text(statement, 3);
+            NSString *nsAddressStr = [[NSString alloc]initWithUTF8String:address];
+           
+            NSLog(@"name:%@  age:%d  address:%@",nsNameStr,age, nsAddressStr);
+        }
+    }
+    sqlite3_close(db);
+
+--------
+ 登录之后，更改root密码
+
+UPDATE mysql.user SET password=password('whateverpasswordyoulike')
+WHERE user='root' AND host='localhost';
+
+-----------
+```
+
+
+
+
+
+ 
+
+
