@@ -8,3 +8,568 @@ git add _posts/2017-08-15-how-to-setup-your-github-io-blog.md
 git commit -m "Add how to setup your github.io blog"
 git push mine master
 ```
+
+------------------------------------
+
+
+There is no tracking information for the current branch.
+是因为本地分支和远程分支没有建立联系
+```
+git branch -vv
+git branch --set-upstream-to＝origin/rel/7.10
+```
+
+------------------------------------
+
+常用命令：
+
+```
+branch -r						//查看远端分枝
+
+git checkout -b dev origin/master 	//创建本地分枝dev，获取远程分支
+
+git branch Programming				//建立programming分枝
+
+git add devreadme   |  git commit 	//增加文件并提交
+
+git add -n devreadme				//撤消增加的文件
+
+git rm add2.txt						//删除文件
+
+git rm dir -r						//可再入的删除一个目录
+
+git status 							//可以查看哪个文件被修改
+
+git commit -a -m "log message"
+
+git branch 							//查看本地有多少个分枝
+
+git checkout master					//切换到master
+
+git merge --no-ff dev				//合并本地分枝到master, no fast forward
+
+git pull							//拉最新代码
+
+git push origin 					//把合并推到master
+
+git branch -d experiment  			//删掉本地分枝
+
+git checkout -b release/6.3 origin/release/6.3	//检出6.3分枝，并在本地建立release/6.3分枝
+
+git checkout -b dev/flight6.4 origin/dev/flight6.4 //检出6.4开发分枝
+
+git checkout -b fio6.4 origin/dev/flight6.4	//检出6.4分枝，进行fio开发 
+
+git push origin 					//把本地修改推送到远端分枝(本地分枝和远程分枝建立关系后，这条可以直接用,但它可能把本地修改推到所有远端分枝)
+
+git push origin --delete <branchName>	//删除远端分枝
+
+git reset --hard 38679ed709fd0a3767b79b93d0fba5bb8dd235f8 回退到 38679ed709fd0a3767b79b93d0fba5bb8dd235f8 版本
+
+git branch -vv  					//查看本地分枝对应的远程分枝
+
+git reset --hard HEAD 				//丢掉所有本地编辑,回到我最近一次commit
+
+git reset --hard  origin/dev/flight6.4	//丢掉全部本地修改(包括本地commit的修改)，和远端一致
+
+git diff-tree --no-commit-id --name-only -r f38911f	//列出某一次提交的文件
+
+git diff 32f74cd586788caf66ac1ae15281aedfb23d71db c34d6a8216a0aba5194a9b8dd2f41f7ca41499a8 //查看两个版本的不同
+
+git show c14acc13db92506b73cb95e7802caa9fe5f73f99  //显示某一版本的信息
+
+git diff dev/flight def/fio			//diff两个分枝
+
+```
+
+
+----------------------
+
+git cherry-pick 合分枝流程(把7.8.2分枝上的commit合并到7.9)
+
+```
+1.checkout rel/7.9
+2.git cherry-pick 88b925985baa1172332e3f628bee5fc78d47be60
+---发现有冲突
+3.vi CTFlight/CTFlight/View/Common/Business/Delivery/FlightDeliveryMgrInterface.h　解决冲突
+4.git add CTFlight/CTFlight/View/Common/Business/Delivery/FlightDeliveryMgrInterface.h
+5.git status　看看有没有别的冲突文件未解决
+6.git cherry-pick --continue　解决完所有冲突（循环3，4），后调用这个函数合并.
+7.git stash
+8.git pull --rebase
+9.git push origin rel/7.9:refs/for/rel/7.9
+```
+
+----------------------
+
+哪些分枝包含当前commit
+
+```
+git branch --contains f3a765986201dfc4052d19f482602bfe8eb92870
+```
+
+----------------------
+
+```
+git log --pretty=oneline -p -- CTInlandFlightOrderViewController.m //查看文件的修改记录,-p 显示patch信息
+
+git log -p -2 --author=htyang		//显示htyang的最近两次提交的差异日志
+
+git log --stat 						//每次提交的日期和文件列表
+
+git log --until 2015-05-21 --pretty="short" --name-only	//只看某一时间之前的
+
+git rev-list --all | xargs git grep 'flight_int_middle'	//查找关键字对应的commit
+
+git log -Sflight_int_middle --since=2009.1.1 --until=2010.1.1  -- path_containing_change  CTInlandFlightOrderViewController.m	//查找关键字对应的commit,或者-G<regex>
+
+git log dev/6.17_flight_react_native  //只查看某个分枝的log
+
+----------------------
+
+git log --name-only --oneline --author=htyang  //列出历次
+
+----------------------
+git remote show origin 				//显示远端git库地址信息
+git remote -v						//显示clone url
+---------------						//暂存栈是用来暂存本地修改，然后能切换分枝的,是不用调用git commit,因为有些情况不想提交
+更改远端仓库地址
+git remote set-url origin ssh://htyang@wirelesscode.ctripcorp.com:29418/Wireless/IOS_1
+
+-----------------
+
+git branch --contains b64d270		//查看哪个分枝里包含指定的revision
+git branch -r --contains b64d270		//查看哪个分枝里包含指定的revision (列出远端分枝)
+
+-----------------
+
+git log --all -- **CTFlightURLDispatcher.m*  //查看某个被删除文件的所有记录  （不知道路径的情况下）
+git log --all -- <path-to-file>				//知道路径的情况下
+
+-----------------
+git log -- /Users/yht/WS/git/IOS/CTFlight/CTFlight/Common 	//查看某一个目录下的修改日志
+
+---------------
+
+删除本地untracked 文件：
+git clean -f
+git clean -f -d						//remove directories
+git clean -f -X						// just want to remove ignored files
+git clean -f -x						//remove ignored as well as non-ignored files
+
+----------------------
+
+git checkout -- file.m				//撤消file.m的本地修改
+git stash							//把当前修改压入暂存栈
+git stash pop						//弹出最后一次当前暂存栈
+git stash list						//显示暂存栈内容
+git stash apply stash@{0}			//恢得某次暂存栈
+git stash clear						//清除暂存栈内容
+git stash show stash@{0}			//查看stash 内容
+
+----------------		
+//作用和svn up相同，就是log
+上减少分枝数，另外就是每次合并时，拿得是上游分枝里最新的来合并
+
+git merge dev						//合并dev分枝，会产生合并结点
+git rebase dev						//也是合并分枝，但会自动把dev分枝和上游分枝融合，不产生合并结点
+git pull = git fetch; git merge dev //把括上面两步操作，合并所有分枝
+git pull --rebase = git fetch; git rebase dev //会自动融合所有分枝，并总是把分枝合并到上游分枝最后	
+git pull --rebase origin dev/flight6.4:fio6.4	//将flight6.4分枝更新到本地fio6.4分枝
+git pull --rebase origin dev/flight6.4 //只合并远程flight6.4分枝，在本地的fio分枝也是用该命令，(省略本地分枝名，默认本地分枝和远端分枝名称相同)
+git pull --prune  刷新分枝
+
+----------------
+git pull --rebase出现冲突的三种解决方式
+1.git rebase -–continue //解决掉冲突继续，解决掉冲突后要git add 把冲突文件加进去，再调用git rebase -continue
+2.git rebase --skip		//忽略本地修改，采用线上的
+3.git rebase -abort 	//忽略掉本地修改，并revert本地的。
+
+---------------------
+git rebase 解决冲突
+ 做法：
+1.新建一个分支，并且代码和服务器中代码同步
+   git checkout origin/v2.0 -b temp  
+2.为了保证新建的temp分支代码是最新的，可以多执行下面一步
+  git pull
+3.当你新建分支后，系统会自动checkout到temp分支上，此时
+  git checkout  new
+4.合并代码，并整理
+  git rebase  temp  //会将temp分支的代码合并过来，并按照提交的顺序排序
+5.  因为顺序是重新整理的，所以肯定会出现冲突
+6.解决冲突，最后 git add * ，但不许要git commit
+7.解决后，执行 git rebase --continue
+8.重新提交代码： git push for-*
+
+----------------------
+git push origin dev/flight6.4			//往上推分枝dev/flight6.4分枝，要求本地分枝和远端分枝同名
+git push origin fio6.4:dev/flight6.4	//把本地fio6.4分枝推到远端
+git push origin fio6.4:refs/for/dev/flight6.4  //把本地fio6.4分枝推到远端Gerrit
+git push origin HEAD:refs/for/release/6.3	//push走Gerrit
+git push origin fio6.4:refs/for/dev/flight6.4	//git push origin 本地分支名:refs/for/远程分支名
+git push origin dev/flight6.4:refs/for/dev/flight6.4
+
+----------------
+命令行进行cherry-pick
+1.git cherry-pick <commit id>
+git cherry-pick d7f469b02c7e90224fa3107e69ff96cdec16409a			//只合并另一个分枝的特定的commit	
+2.如果成功，则代码commit成功。
+3.如果有冲突，则解决冲突。然后
+git commit -c <commit id> 
+git commit -c d7f469b02c7e90224fa3107e69ff96cdec16409a
+4.最后push 到远端。
+
+----------------
+missing Change-Id in commit message footer
+code review出的问题。在revert代码的时候，它没有自动加入change-id,导致code review不允许提交
+执行：git commit --amend 自动插入一个change-id
+
+-----------------------
+git rebase -i 3082da7abb5b2442aece012df22001c532609c61
+在文件是写入命令： pick b21ddc9 公告，国际填写页调整   
+git commit --amend
+再把change-id写入文件
+
+----------------
+查看某个文件的修改历史
+git log -p -- CTBusiness/CTBusiness/Component/PageInfo/NSDictionaryBuilder/NSDictionary+CTPageInfoExtensions.m
+
+====================================================
+在git中，其commit提供了一个--amend参数，可以修改最后一次提交的信息.但是如果你已经push过了，那么其历史最后一次，永远也不能修改了。 
+ git commit --amend
+然后在出来的编辑界面，直接编辑 注释的信息。。
+
+---------------------------
+    git修改历史提交
+       git使用amend选项提供了最后一次commit的反悔。但是对于历史提交呢，就必须使用rebase了。
+       git rebase -i HEAD~3
+       表示要修改当前版本的倒数第三次状态。
+        这个命令出来之后，会出来三行东东：
+        pick:*******
+        pick:*******
+        pick:*******
+        如果你要修改哪个，就把那行的pick改成edit，然后退出。
+        这时通过git log你可以发现，git的最后一次提交已经变成你选的那个了，这时再使用：
+        git commit --amend
+        来对commit进行修改。
+        修改完了之后，要回来对不对？
+        使用git rebase --continue
+        OK，一切都搞定了。
+        
+=============================================
+CTRIP_WIRELESS/CTRIP_WIRELESS/Resource/Database/ctrip_userinfo.db
+git push orgin dev
+git checkout dev
+git push -u origin dev  		//用本地分枝创建远端分枝
+git checkout master
+git merge dev
+git push origin 
+
+=============================================
+git
+1. git --version
+2. git help log
+5. git init    //为这个目录生成一个基本的git存储框架
+6. git config --global user.name "haityang"				//设置全局用户名
+7. git config --global user.email "haityang@163.com"	//设全局邮箱
+8. git config --global core.editor 'vi'
+9. git config user.name
+	git config user.email
+10. cat ~/.gitconfig
+11. sudo gem install rails
+12. git clone git@source.mappn.com:youdian.git
+13. cd munger
+14. git log
+15. git commit YouDianDemo-iOS -a -m 'You Dian Nan Nv iOS project'//提交到分枝
+16. git pull	//把服务器的更新到本地
+18. git push //把本地的push到服务器
+18. git add YouDianDemo-iOS //将文件加到索引中
+21. git checkout Programming //切换到分枝
+
+--------------------------------
+取消本地编辑
+21. git reset --hard HEAD //回到合并之前的状态
+21. git reset --hard ORIG_HEAD //回到合并之前的状态
+
+--------------------------------
+git rebase后commit丢失, git pull --rebase, git rebase --skip  导致的丢失
+git reflog  
+git checkout -b recovery 5aw24s2 
+ 
+--------------------------------
+git reset --hard 误操作后的恢复：
+git reflog		//找到想恢复的日志
+git reset --hard d7b0203	//恢复到某个revision
+
+--------------------------------
+用fileMerge来合并冲突
+git mergetool -t opendiff
+
+--------------------------------
+配置用DiffMerge工具来解决冲突
+git config --global diff.tool diffmerge
+
+git config --global difftool.diffmerge.cmd 'diffmerge "$LOCAL" "$REMOTE"'
+
+git config --global merge.tool diffmerge
+
+git config --global mergetool.diffmerge.cmd 'diffmerge --merge --result="$MERGED" "$LOCAL" "$(if test -f "$BASE"; then echo "$BASE"; else echo "$LOCAL"; fi)" "$REMOTE"'
+
+git config --global mergetool.diffmerge.trustExitCode true
+
+--------------------------------
+配置好DiffMerge后，可以进行解决冲突
+git mergetool
+
+--------------------------------
+全局的.gitignore
+git config --global core.excludesfile ~/.gitignore_global
+
+--------------------------------
+移动目录：
+mv *.py src
+git add -A
+git status
+git commit -m "haha"
+
+----------------------------------
+
+git push origin develop
+
+－－－－－－－
+或者：
+git mv *.cpp d.h bar/
+git commit -m "haha"
+git push origin develop
+
+----------
+更名：
+git mv Client client
+git commit -m "haha"
+git push origin develop
+
+--------------------------------
+删除目录：
+git rm client/
+rm -rf client
+git commit -m "haha"
+git push origin develop
+
+--------------------------------
+21. git branch -r //查看远程分枝
+22. git push origin Programming //push到远程分枝。
+	git push -u origin my_branch	//把本地分枝push到远程。这样本地分枝和远程分枝关联起来了
+22. git push origin 本地分支名:远程分支名 //本地分支提交到远程分支,如果远程不存在，则创建
+	git push origin xiaolin:develop   //本地分支提交到远程分支
+23. git checkout -b 本地分支名 远程分支名 //获取远程分支
+	git checkout -b temp origin/develop
+24. git push origin :Compile //删除远程分枝
+	git gc --prune=now
+	git remote prune test3
+	git remote prune origin test3 # if thats the the remote source
+	
+--------------------------------
+24.//合并本地分支 test1 test2
+	git branch test1 
+	git merge test2
+22. git checkout master	//切换到主分枝
+23. git push origin experiment //上传分枝
+24. git diff //出现冲突的时候，查看不同
+24. git add file.txt //解决完冲突后，再add下文件。和git commit -a等价
+24. git reset file.txt //git add的逆操作
+24. git commit //提交刚才add的文件。
+25. git branch -d experiment  //删掉本地分枝
+26. git branch -D experiment  //强制删掉本地分枝
+27. git tag //列出git中现有的所有标签
+28. git checkout tag_name //用标签名检出对应版本
+28. git tag -l v1.4.2.*  //列出特定的标签
+29. git tag -a v1.4 -m 'version 1.4' //在git中创建带注释的标签非常简单
+30. git show v1.4		//查看相应标签的版本信息
+31. git tag -s v1.5 -m 'my signed 1.5 tag'		//用GPG私钥设标签
+32. git tag v1.4-lw  //加轻量级标签
+33. git tag -v v1.4.2.1 //用到GPG来验证签名
+34. git log --pretty=oneline //整个提交历史
+35. git push --tags //将tag也提交
+36. git log -p  //显示补丁
+37. git log --stat  //查看统计数字
+38. git log --pretty=raw  //oneline，short，medium，full，fuller，email，ra,每一行表示一次提交
+39. git log --pretty=format:"The author of %h was %an, %ar%nThe title was >>%s<<%n" //自定义格式
+40. git log --pretty=oneline --graph  //分枝拓扑图
+41. git log --before="2 weeks ago" --after="2009-01-26" --pretty=oneline //日期区间
+42. git log --author=haityang --since="14 days ago" --pretty=oneline  //贡献者过滤器
+43. git log --grep='C90' --pretty=oneline //查找提交信息
+44. git log --pretty=oneline -- notes.c //文件历史
+45. git log --pretty=oneline --all -- t/lib-httpd/   //查看't/lib-httpd'目录的提交历史
+46. git log --pretty=oneline -- t/lib-httpd/ notes.c  //查看't/lib-httpd'目录或notes.c文件的提交历史
+47. git log --grep='C90' --pretty=oneline --no-merges //查看未合并的提交历史记录
+48. git log --pretty=oneline --no-merges -5  //查看日志命令最后加上-N来查看满足条件的最近的N条历史记录
+49. git log master..experiment --pretty=oneline  //你目前在'master'分枝上，并且想查看'experiment'分枝上还没有合并的提交记录的话
+50. git log ..experiment --pretty=oneline  
+51. git log master.. --pretty=oneline
+52. git diff
+53. git diff --staged
+54. git diff HEAD
+55. git diff v1.6.0 -- README 
+66. git diff v1.0 v1.1  -- sha1_file.c
+67. git diff master developer  //比较两个分枝的不同
+68. git diff master...dev
+69. git diff ...dev
+70. git diff ...(branch)
+71. git mergetool 图形化工具解决冲突
+    git commit -m "commit all merge"
+    
+=============================================
+git log高亮：
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
+git lg
+
+=============================================
+创建远程分枝
+git checkout -b temp demo2 //先创建本地分枝temp
+git push -u origin temp	//再创建远程分枝temp
+
+=============================================
+将temp分枝合并到demo2上
+git branch
+git checkout demo2
+git merge temp
+git push origin demo2
+
+=============================================
+删除远程分枝
+git push origin :Compile //删除远程分枝
+git branch -d experiment  //删除本地分枝
+
+=============================================
+1. git reset --mixed：此为默认体式格式，不带任何参数的git reset，即时这种体式格式，它回退到某个版本，只保存源码，回退commit和index信息
+
+2. git reset --soft：回退到某个版本，只回退了commit的信息，不会恢复到index file一级。若是还要提交，直接commit即可
+
+3. git reset --hard：彻底回退到某个版本，本地的源码也会变为上一个版本的内容
+4. git reset --hard b13a40faefe2b5a8d6af28ee8ae047d57baa0f91
+
+git reset HEAD filename  从暂存区中移除文件
+git reset --hard HEAD~3  会将最新的3次提交全部重置，就像没有提交过一样。
+
+把某个文件回退到某个版本
+git reset e7197a7b862907974dcf975e75aa682f0e7407a3 /Users/yht/WS/git/IOS/CTFlight/CTFlight/View/Common/Business/PackageSale/CTFlightBundleSaleViewE.xib 
+
+---------------------------------------------
+把某个文件恢复到原来版本
+git checkout v1.2.3 -- filename         # tag v1.2.3
+git checkout stable -- filename         # stable branch
+git checkout origin/master -- filename  # upstream master
+git checkout HEAD -- filename           # the version from the most recent commit
+git checkout HEAD^ -- filename          # the version before the most recent commit
+
+---------------------------------------------
+上周五很多同事反馈git提交代码有问题，建议本地做这样的设置。
+git config --global pack.windowMemory "200m"
+git config --global pack.packSizeLimit "200m"
+git config --global pack.threads "1"
+
+=============================================
+创建git 服务器
+
+---------------------
+创建帐号开启SSH
+1. Create a new user called git
+2. Open ssh server
+3. Create a directory in git’s home directory for storing my repositories
+4. 
+---------------------
+生成公私钥对，以进行无密码登录 public key
+4. ssh-keygen 生成公私钥(ls ~/.ssh/id_rsa.pub)
+5. scp ~/.ssh/id_rsa.pub git@10.10.12.74:
+6. ssh git@10.10.12.74
+7. mkdir -p .ssh (在服务端)
+8. cat id_rsa.pub >> .ssh/authorized_keys (在服务端)
+9. chmod 700 .ssh (在服务端)
+10.chmod 400 .ssh/authorized_keys (在服务端)
+11.ssh git@10.10.12.74  (这样就可以无密码登录了)
+
+---------------------
+windows下git公私钥设置
+
+
+---------------------
+初始化服务端仓库
+12.ssh git@10.10.12.74
+13.mkdir git
+14.mkdir simon/myproject.git
+15.cd simon/myproject.git
+16.git --bare init
+
+---------------------
+在客户端clone 工程，并加入新代码
+17.mkdir myproject
+18.cd myproject
+19.git init
+20.touch readme
+21.git add .
+22.git commit -m "first commit"
+23.git remote add origin git@10.10.12.74:git/MMore.git
+24.git push origin master
+
+---------------------
+从其它目录中客隆出工程来操作
+25.cd ..
+26.mkdir other
+27.cd other
+28.git clone git@10.10.12.74:git/MMore.git
+29.cd MMore
+30.git log
+
+----------------------------------------
+mac下如何创建SSH Keys
+1.ssh-keygen -t rsa -C xxx@ctrip.com  //会在当前用户目录下的.ssh/id_rsa.pub文件里生成公钥
+2.用域账号登陆http://code.ctripcorp.com/，进入用户名/Setting，把.ssh/id_rsa.pub文件里的内容粘贴到下图中得框里，然后点击add，公钥就添加成功了。
+
+---------------------
+1. git config --global user.name "haityang"
+2. git config --global user.email "haityang@163.com"
+3. git config --global core.editor 'vi'
+4. ssh-keygen
+4. mkdir other
+5. cd other
+7. cd MMore
+
+---------------------
+忽略掉第二个分枝,表明这个提交点是个分枝合并点，所以要决定revert掉哪个分枝
+commit bd9d3d1e087f6ae1980d1c485c7d933178e0ed61
+Merge: 7765b84 bfc1796
+Author: leiguo <leiguo@Ctrip.com>
+
+git revert bd9d3d1e087f6ae1980d1c485c7d933178e0ed61 -m 2  //保留第二个分枝,可以是commit-id,
+git revert 6810067	-m 1	//也可以是revision number
+git lg
+git show (revision number)
+
+---------------------
+消除.DS_Store
+git rm .DS_Store
+# remove any existing files from the repo, skipping over ones not in repo
+find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
+# specify a global exclusion list
+git config --global core.excludesfile ~/.gitignore
+# adding .DS_Store to that list
+echo .DS_Store >> ~/.gitignore
+
+---------------------      
+git FAQ
+1. error: The following untracked working tree files would be overwritten by checkout
+git clean -d -fx	//是由于运行的gitpull命令会使一些文件失去git跟踪记录
+
+2.error: Your local changes to the following files would be overwritten by merge:
+git checkout -f
+
+3.fatal: cannot do a partial commit during a merge.
+git commit -i xxx.cpp -m"blabla"
+
+4. demo2
+error: The following untracked working tree files would be overwritten by checkout:
+	.DS_Store
+Please move or remove them before you can switch branches.
+Aborting
+localhost:youdian iSwear$ rm .DS_Store 
+```
