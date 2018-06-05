@@ -1,12 +1,14 @@
 ==========================================
-class-dump 
+
+1. class-dump 
 提取框架中的头文件：class-dump -H -o /Users/iSwear/Desktop/headFold /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/System/Library/PrivateFrameworks/Calendar
 
-otool:查看应用程序是否连接了私有框架
+2. otool:查看应用程序是否连接了私有框架
 查看应用程序连接的共享库：otool -L /Users/iSwear/Library/Developer/Xcode/DerivedData/BigGangGame-ainrwhwzxvzgkkftlisdjcycgpif/Build/Products/Debug-iphoneos/BigGun.app/BigGun
 
-==========================================
-macport 得到原代码
+---------------------------------------
+
+1. macport 得到原代码
 
 sudo port -v extract zlib
 ls $(port dir zlib)
@@ -14,86 +16,98 @@ ls $(port dir zlib)/work
 ls $(port dir zlib)/work/zlib-1.2.3
 cat `port file port_name` //查看用macport 安装到系统上的文件
 
-==========================================
-mac locate
+---------------------------------------
+
+1. mac locate
 sudo /usr/libexec/locate.updatedb
 
-==========================================
-用nslookup程序查询MX记录:
-nslookup
-set type=mx
-163.com
-==========================================
-用dig程序查询MX记录:http://www.isc.org/software/bind
+---------------------------------------
+
+1. 用nslookup程序查询MX记录:  
+$ nslookup  
+> set type=mx
+> 163.com
+
+---------------------------------------
+
+1. 用dig程序查询MX记录:http://www.isc.org/software/bind  
 dig 163.com mx 
 
-==========================================
-用host程序查询MX记录:
+---------------------------------------
+
+1. 用host程序查询MX记录:  
 host -t mx 163.com
 
-==========================================
-命令行发送邮件：
+---------------------------------------
+
+1. 命令行发送邮件：  
 mail -s hi -F haityang@live.cn
 
-==========================================
-//查找
-find / -name httpd.conf
-find /etc -name '*srm*'
-find / -amin -10 #查找在系统中最后10分钟访问的文件
-find / -atime -2 #查找在系统中最后48小时访问的文件
-find / -empty #查找在系统中为空的文件或者文件夹
-find / -group cat #查找在系统中属于groupcat的文件
-find / -mmin -5 #查找在系统中最后5分钟里修改过的文件
-find / -mtime -1 #查找在系统中最后24小时里修改过的文件
-find / -nouser #查找在系统中属于作废用户的文件
-find / -user fred #查找在系统中属于FRED这个用户的文件
+---------------------------------------
 
-==========================================
-mount  //查看当前挂载的文件系统类型
+1. //查找
+find / -name httpd.conf  
+find /etc -name '*srm*'  
+find / -amin -10 #查找在系统中最后10分钟访问的文件  
+find / -atime -2 #查找在系统中最后48小时访问的文件  
+find / -empty #查找在系统中为空的文件或者文件夹  
+find / -group cat #查找在系统中属于groupcat的文件  
+find / -mmin -5 #查找在系统中最后5分钟里修改过的文件  
+find / -mtime -1 #查找在系统中最后24小时里修改过的文件  
+find / -nouser #查找在系统中属于作废用户的文件  
+find / -user fred #查找在系统中属于FRED这个用户的文件  
+
+---------------------------------------
+
+1. mount  //查看当前挂载的文件系统类型  
 df	//查看当前的文件系统情况
-==========================================
-nm：列出目标文件中的符号。
-objdump：显示目标文件中的详细信息。
-readelf：显示关于 ELF 目标文件的信息。
 
-objdump -d a.out
-readelf -all a.out
-readelf --debug-dump a.out | less
+---------------------------------------
 
-==========================================
-挂载afp文件系统
+1. nm：列出目标文件中的符号。
+2. objdump：显示目标文件中的详细信息。
+3. readelf：显示关于 ELF 目标文件的信息。
+
+4. objdump -d a.out
+5. readelf -all a.out
+6. readelf --debug-dump a.out | less
+
+---------------------------------------
+
+1. 挂载afp文件系统  
 sudo mount -t afp afp://user:pass@idisk.mac.com/user /Volumes/idisk
 
-==========================================
-挂载ssh文件系统
-sudo port install sshfs
-sshfs mobile@192.168.1.101: ~/Media
+2. 挂载ssh文件系统  
+sudo port install sshfs  
+sshfs mobile@192.168.1.101: ~/Media  
 fusermount -u ~/Media  //取消挂载
-==========================================
-afpcmd  轻量的afp客户端
-afpcmd
-connect afp://iSwear:waiting@192.168.1.102
-ls
-cd HumanTower
-ls
-get manyaojd.mp3
-disconnect
-quit
-==========================================
 
-//convert wav to caf
+---------------------------------------
+
+1. afpcmd  轻量的afp客户端  
+afpcmd  
+connect afp://iSwear:waiting@192.168.1.102  
+ls  
+cd HumanTower  
+ls  
+get manyaojd.mp3  
+disconnect  
+quit  
+
+---------------------------------------
+
+1. //convert wav to caf
 1. afconvert -f caff -d LEI16@44100 -c 1 in.wav out.caf
-
 2. nc //net cat
 
-==========================================
-3. MacPorts =======//can down unix software automatically
-cd MacPorts-1.9.2
-./configure && make && sudo make install
-sudo port -v selfupdate
-port upgrade outdated
-原本port有个sync的功能,不过这个sync事实上是selfupdate的一部分,所以强烈建议用selfupdate来更新ports索引 
-sudo port selfupdate 
+---------------------------------------
+
+1. MacPorts can down unix software automatically  
+cd MacPorts-1.9.2  
+./configure && make && sudo make install  
+sudo port -v selfupdate  
+port upgrade outdated  
+sudo port selfupdate   
 
 搜索索引中的软件 
 port search app_name 
@@ -110,30 +124,37 @@ port outdated
 升级outdated的软件 
 sudo port upgrade outdated
 
-4. Fink source ====//can down unix software automatically
+---------------------------------------
+
+1. Fink source can down unix software automatically  
 ./bootstrap
 
-5.convert rose.jpg rose.png
+---------------------------------------
 
-============================
-转换mov到gif
+* convert rose.jpg rose.png
+
+---------------------------------------
+* 转换mov到gif  
 ffmpeg -i clip-2010-12-08\ 08\;43\;23.mov -s sqcif -pix_fmt rgb24  yht.gif
 
-============================
+---------------------------------------
 
-6.tcpdump -i eth0 src host 192.168.0.5//在作为网关的主机上，想知道本地网络中IP地址为192.168.0.5的主机现在与外界通信的情况
+* tcpdump -i eth0 src host 192.168.0.5  //在作为网关的主机上，想知道本地网络中IP地址为192.168.0.5的主机现在与外界通信的情况
 
-7.nmap -sP 192.168.0.1//这台主机是否下线了？用Nmap探测试试看
-8.nmap -sP 192.168.0.0/24 //24表明目标是一个网络而非单个主机,知道目的网络究竟有多少主机处于运行状态：
+---------------------------------------
 
-9.nmap 192.168.0.5//想要了解该主机的详细信息，可以执行
-10.nmap -O 192.168.0.5  //强大的Nmap本身就可以依据TCP/IP的指纹特征猜测对方使用的操作系统。我们可以用-O来开启这一选项
+1. nmap -sP 192.168.0.1//这台主机是否下线了？用Nmap探测试试看
+2. nmap -sP 192.168.0.0/24 //24表明目标是一个网络而非单个主机,知道目的网络究竟有多少主机处于运行状态：
+3. nmap 192.168.0.5//想要了解该主机的详细信息，可以执行
+4. nmap -O 192.168.0.5  //强大的Nmap本身就可以依据TCP/IP的指纹特征猜测对方使用的操作系统。我们可以用-O来开启这一选项
 
-11.Netstat主要用于Linux/Unix主机察看自身的网络状况，如开启的端口、在为哪些用户服务以及服务的状态等等
-12.netstat -r    //Netstat还可以方便地代替route命令显示当前核心路由表
-13. netstat -i       //它还可以代替ifconfig显示网络接口状态
-14. telnet 192.168.1.138 8000           //telnet登录到某台主机
-15. sudo tcpdump -v -i en0 -A  port 80  //显示http信息
+---------------------------------------
+
+* Netstat主要用于Linux/Unix主机察看自身的网络状况，如开启的端口、在为哪些用户服务以及服务的状态等等
+1. netstat -r    //Netstat还可以方便地代替route命令显示当前核心路由表
+2. netstat -i       //它还可以代替ifconfig显示网络接口状态
+3. telnet 192.168.1.138 8000           //telnet登录到某台主机
+4. sudo tcpdump -v -i en0 -A  port 80  //显示http信息
 
 =================================
 1. TCPDUMP DOWNLOAD: 
@@ -1696,6 +1717,9 @@ lsof -Pnl +M -i4
 
 -------------------------------
 怎么Debug constrains?
+
+```
+
 2016-01-06 14:54:25.979 CTRIP_WIRELESS[37253:377433] Unable to simultaneously satisfy constraints.
 	Probably at least one of the constraints in the following list is one you don't want. 
 	Try this: 
@@ -1712,6 +1736,12 @@ Will attempt to recover by breaking constraint
 
 Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
 The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.
+
+
+```
+
+
+```
 
 1.加一个符号断点：UIViewAlertForUnsatisfiableConstraints
 2.可以输出constrains看看
@@ -1746,6 +1776,8 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 这样就基本可以定位了。
 源文链接：http://staxmanade.com/2015/06/debugging-ios-autolayout-issues/
       
+```
+
 --------------------------------
 print(u'\u54c8\u54c8')
 --------------------------------
