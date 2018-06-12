@@ -135,3 +135,145 @@ pip install -i http://pypi.douban.com/simple droopy
 4.	tar  -jxvf  test.tar.bz2  -C  /var/tmp/find     解压到其他目录
 ```
 
+#### 1. 从xib中加载cell
+```
+@property (strong, nonatomic) UINib *countryCellNib;
+- (UINib *)countryCellNib
+{
+  if (!_countryCellNib)
+  {
+    _countryCellNib = [UINib nibWithNibName:@"CountryCell" bundle:nil];
+  }
+  return _countryCellNib;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  UITableViewCell *cell = [tableView
+            dequeueReusableCellWithIdentifier:UYLCountryCellIdentifier];
+
+  if (cell == nil)
+  {
+    [self.countryCellNib instantiateWithOwner:self options:nil];
+    cell = self.countryCell;
+    self.countryCell = nil;
+  }
+
+  // Code omitted to configure the cell...
+
+  return cell;
+}
+```
+
+#### 2.只要注册了以后就无需实例化。表视图cell nib的用法
+```
+- (void)viewDidLoad
+{
+  UINib *countryNib = [UINib nibWithNibName:@"CountryCell" bundle:nil];
+  [self.tableView registerNib:countryNib
+                  forCellReuseIdentifier:UYLCountryCellIdentifier];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  UITableViewCell *cell = [tableView
+            dequeueReusableCellWithIdentifier:UYLCountryCellIdentifier];
+  return cell;
+}
+```
+
+#### 3.使用UINib的方式
+```
+NSArray *topLevelObjects = [_bigAppNib instantiateWithOwner:self options:nil];
+bigAppCell = [topLevelObjects objectAtIndex:0];
+
+-----------------
+
+static NSString* kMMBigAppCellID = @"MMAppBigCellIdentifier";
+UINib *bigAppNib = [UINib nibWithNibName:@"MMAppBigCell" bundle:nil];
+[self.collectionView registerNib:bigAppNib forCellWithReuseIdentifier:kMMBigAppCellID];
+    
+MMAppBigCell * cell = [cv dequeueReusableCellWithReuseIdentifier:kMMBigAppCellID forIndexPath:indexPath];
+```
+
+#### 4.不用注册的方式，的cell nib用法
+```
+cell = [tableView dequeueReusableCellWithIdentifier:@"ReminderCell"];
+if (cell == nil) {
+	NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ReminderCell" owner:self options:nil];
+	cell = [topLevelObjects objectAtIndex:0];
+	
+	ReminderCell *reminderCell = (ReminderCell *)cell;
+	reminderCell.rkCellDelegate = self;
+	[reminderCell initUI];
+}
+return cell;
+```
+
+#### 5.UIViewController nib文件用法
+```
+CommonGoodsListController *cvc = nil;
+cvc = [[[GoodsListModel03 alloc] initWithNibName:@"GoodsListModel03" bundle:nil] autorelease];
+```
+
+#### 6.加载 uiview nib的方法
+```
+-(void)awakeFromNib {
+    NSArray *obj = [[NSBundle mainBundle] loadNibNamed:@"MyView" owner:self options:nil];
+    [self addSubview:obj[0]];
+}
+```
+
+#### 7.加载 uiview nib的方法
+```
+JJGWebView *webViewToPush = [[JJGWebView alloc] initWithNibName:@"JJGWebView" bundle:nil];
+```
+
+-------------------------------------
+#### 8.对于原型cell,可以用以下方法(在storyboard中构建了的cell nib，不需要注册，也不需要实例化)
+```
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
+ 
+    Player *player = (self.players)[indexPath.row];
+    cell.textLabel.text = player.name;
+    cell.detailTextLabel.text = player.game;
+ 
+    return cell;
+}
+```
+
+#### 9.对于collection header and footer
+```
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+    }
+ 
+    if (kind == UICollectionElementKindSectionFooter) {
+        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
+    }
+        
+    return reusableview;
+}        
+```
+     
+
+#### 10. 对于没有Segue连接的，（在storyboard中的UIViewController）
+```
+UIViewController *vc = nil;
+vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MMRecommendVC"];
+```
+
+
+#### 11. 对于有Segue连接的push viewcontroller方法
+```
+[self performSegueWithIdentifier:@"MMSearchVCSegue" sender:self];
+```
+

@@ -1,20 +1,22 @@
-==========================================
+
 
 1. class-dump 
-提取框架中的头文件：class-dump -H -o /Users/iSwear/Desktop/headFold /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/System/Library/PrivateFrameworks/Calendar
+提取框架中的头文件：  
+class-dump -H -o /Users/iSwear/Desktop/headFold /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/System/Library/PrivateFrameworks/Calendar
 
 2. otool:查看应用程序是否连接了私有框架
-查看应用程序连接的共享库：otool -L /Users/iSwear/Library/Developer/Xcode/DerivedData/BigGangGame-ainrwhwzxvzgkkftlisdjcycgpif/Build/Products/Debug-iphoneos/BigGun.app/BigGun
+查看应用程序连接的共享库：  
+otool -L /Users/iSwear/Library/Developer/Xcode/DerivedData/BigGangGame-ainrwhwzxvzgkkftlisdjcycgpif/Build/Products/Debug-iphoneos/BigGun.app/BigGun
 
 ---------------------------------------
 
 1. macport 得到原代码
 
-sudo port -v extract zlib
-ls $(port dir zlib)
-ls $(port dir zlib)/work
-ls $(port dir zlib)/work/zlib-1.2.3
-cat `port file port_name` //查看用macport 安装到系统上的文件
+sudo port -v extract zlib  
+ls $(port dir zlib)  
+ls \$(port dir zlib)/work  
+ls \$(port dir zlib)/work/zlib-1.2.3  
+cat \`port file port_name\` //查看用macport 安装到系统上的文件  
 
 ---------------------------------------
 
@@ -1229,136 +1231,10 @@ then again right click on it and ->show in finder, this will show your ipa file.
 
 Using iTunes 11.4 under OS X Mavericks, this solution didn't seem to work for me. What did work was dragging the application file (step #4 from above) onto the Library section of iTunes, located on the top left (where Music, Movies, TV Shows, etc. are listed). From there, it created the .ipa file and, since it was the first app I'd added to iTunes this way, also created an Apps section under my iTunes Library. From there, you can right-click on the app and select Show in Finder to directly navigate to it.
 
-==========================================================================
-1.从xib中加载cell
-@property (strong, nonatomic) UINib *countryCellNib;
-- (UINib *)countryCellNib
-{
-  if (!_countryCellNib)
-  {
-    _countryCellNib = [UINib nibWithNibName:@"CountryCell" bundle:nil];
-  }
-  return _countryCellNib;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  UITableViewCell *cell = [tableView
-            dequeueReusableCellWithIdentifier:UYLCountryCellIdentifier];
-
-  if (cell == nil)
-  {
-    [self.countryCellNib instantiateWithOwner:self options:nil];
-    cell = self.countryCell;
-    self.countryCell = nil;
-  }
-
-  // Code omitted to configure the cell...
-
-  return cell;
-}
------------------------------------
-2.只要注册了以后就无需实例化。表视图cell nib的用法
-- (void)viewDidLoad
-{
-  UINib *countryNib = [UINib nibWithNibName:@"CountryCell" bundle:nil];
-  [self.tableView registerNib:countryNib
-                  forCellReuseIdentifier:UYLCountryCellIdentifier];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  UITableViewCell *cell = [tableView
-            dequeueReusableCellWithIdentifier:UYLCountryCellIdentifier];
-  return cell;
-}
-------------------------------------
-_bigAppNib = [UINib nibWithNibName:@"MMAppBigCell" bundle:nil];
--------
-NSArray *topLevelObjects = [_bigAppNib instantiateWithOwner:self options:nil];
-bigAppCell = [topLevelObjects objectAtIndex:0];
-
-------------------------------------
-static NSString* kMMBigAppCellID = @"MMAppBigCellIdentifier";
-UINib *bigAppNib = [UINib nibWithNibName:@"MMAppBigCell" bundle:nil];
-[self.collectionView registerNib:bigAppNib forCellWithReuseIdentifier:kMMBigAppCellID];
-    
-MMAppBigCell * cell = [cv dequeueReusableCellWithReuseIdentifier:kMMBigAppCellID forIndexPath:indexPath];
 
 
 
-==========================================================================
-不用注册的方式，的cell nib用法
-cell = [tableView dequeueReusableCellWithIdentifier:@"ReminderCell"];
-if (cell == nil) {
-	NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ReminderCell" owner:self options:nil];
-	cell = [topLevelObjects objectAtIndex:0];
-	
-	ReminderCell *reminderCell = (ReminderCell *)cell;
-	reminderCell.rkCellDelegate = self;
-	[reminderCell initUI];
-}
-return cell;
 
-
-
-------------------------------------UIViewController nib文件用法
-CommonGoodsListController *cvc = nil;
-cvc = [[[GoodsListModel03 alloc] initWithNibName:@"GoodsListModel03" bundle:nil] autorelease];
-
-
--------------------------------------
-加载 uiview nib的方法
--(void)awakeFromNib {
-    NSArray *obj = [[NSBundle mainBundle] loadNibNamed:@"MyView" owner:self options:nil];
-    [self addSubview:obj[0]];
-}
-
--------------------------------------
-加载 uiview nib的方法
-JJGWebView *webViewToPush = [[JJGWebView alloc] initWithNibName:@"JJGWebView" bundle:nil];
-
--------------------------------------
-对于原型cell,可以用以下方法(在storyboard中构建了的cell nib，不需要注册，也不需要实例化)
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
- 
-    Player *player = (self.players)[indexPath.row];
-    cell.textLabel.text = player.name;
-    cell.detailTextLabel.text = player.game;
- 
-    return cell;
-}
-
--------------------------------------
-对于collection header and footer
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionReusableView *reusableview = nil;
-    
-    if (kind == UICollectionElementKindSectionHeader) {
-        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-    }
- 
-    if (kind == UICollectionElementKindSectionFooter) {
-        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
-    }
-        
-    return reusableview;
-}        
-
-     
--------------------------------------
-对于没有Segue连接的，（在storyboard中的UIViewController）
-UIViewController *vc = nil;
-vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MMRecommendVC"];
-
--------------------------------------
-对于有Segue连接的push viewcontroller方法
-[self performSegueWithIdentifier:@"MMSearchVCSegue" sender:self];
 
 -------------------------------------
 segue传值
