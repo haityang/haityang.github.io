@@ -17,3 +17,101 @@ $ sudo npm install -g simple-http-upload-server
 $ simple-http-upload-server
 http://127.0.0.1:5000
 ```
+#### node.js 相关知识
+##### 1.安装node.js
+* 下载包 http://nodejs.cn/download/
+* 建立bin的软链接
+* node -v来检查
+
+##### 2. node.js参考文档
+```
+http://nodejs.cn/api/
+```
+
+##### 3.node.js 交互运行环境 REPL
+```
+.break
+.clear
+.exit
+.help
+.save
+.load
+```
+
+##### 4.事件处理机制
+* app.js
+
+```
+var http = require('http');//引用http模块
+var server = http.createServer();//创建http服务器并将该服务器赋值给变量server
+
+//为server服务器在接收到客户端请求时触发的request事件绑定多个事件处理函数
+server.once('request', function(req,res) {
+    if(req.url!=="/favicon.ico")
+        console.log('接收到客户端请求。');
+});
+
+server.on('request', function(req,res) { 
+    if(req.url!=="/favicon.ico"){
+        console.log(req.url);
+    }
+    res.end();
+});
+
+server.once('request', function(req,res) {
+    if(req.url!=="/favicon.ico")
+        console.log('发送响应完毕。');
+});
+
+server.on('customEvent',function(arg1,arg2,arg3){
+    console.log('自定义事件被触发。');
+    console.log(arg1);
+　　console.log(arg2);
+　　console.log(arg3);
+});
+
+server.emit('customEvent','自定义参数1','自定义参数2','自定义参数3');
+
+server.listen(1337, "127.0.0.1");
+
+```
+
+##### 5.Node.js 中使用调试器
+
+```
+node debug app.js //开始调试
+list (0) //list出源代码
+continue  //c 继续执行
+next //n
+step //s
+out  //0
+watch('使用的表达式')
+unwatch('使用的表达式')
+setBreakPoint(filename, line) //sb(filename, line)
+clearBreakPoint(filename, line) //cb(filename, line)
+backtrace //bt
+repl //进入repl环境 
+restart //
+kill //
+run  //
+scripts   //当前正在运行的文件和被加载文件
+version  //
+``` 
+
+##### 9. 安裝MongoDB (Linux)
+
+``` 
+1. https://www.mongodb.com/download-center?jmp=nav#community 下載社區版
+2. sudo mv mongodb-linux-x86_64-ubuntu1604-3.6.5 /usr/local/mongodb 解壓到相应目录
+3. cd /usr/local/mongodb
+4. sudo mkdir -p /data/db
+5. sudo apt install mongodb-server6. sudo mongod //MongoDB starting : pid=24816 port=27017 dbpath=/data/db 64-bit host=ubuntu
+7. mongo
+8. sudo npm install -g mongodb
+
+```
+
+
+
+
+
