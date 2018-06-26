@@ -1,9 +1,4 @@
 
-#### CocoaPods 镜像使用帮助
-```
-source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
-```
-
 #### 访问权限
 ```
 Privacy - Microphone Usage Description //麦克风权限
@@ -275,5 +270,20 @@ vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MMRecommendVC"];
 #### 11. 对于有Segue连接的push viewcontroller方法
 ```
 [self performSegueWithIdentifier:@"MMSearchVCSegue" sender:self];
+```
+
+#### CocoaPods 镜像使用帮助
+新版的 CocoaPods 不允许用pod repo add直接添加master库了，但是依然可以：
+
+```
+$ cd ~/.cocoapods/repos 
+$ pod repo remove master
+$ git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
+```
+
+最后进入自己的工程，在自己工程的podFile第一行加上：
+
+```
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 ```
 
