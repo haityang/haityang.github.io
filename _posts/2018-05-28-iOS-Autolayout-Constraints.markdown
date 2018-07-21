@@ -326,5 +326,78 @@ make.height.lessThanOrEqualTo(self);
         }];
 ```
 
+* Masonry设置长宽比
+
+```
+    [aview makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view);
+        make.right.mas_equalTo(WeSelf.InputYuYinbtn.left);
+        make.height.mas_equalTo(aview.width).multipliedBy(0.6);// 高/宽 == 0.6
+    }];
+```
+
+-------------------------------
+怎么Debug constrains?
+
+```
+
+2016-01-06 14:54:25.979 CTRIP_WIRELESS[37253:377433] Unable to simultaneously satisfy constraints.
+	Probably at least one of the constraints in the following list is one you don't want. 
+	Try this: 
+		(1) look at each constraint and try to figure out which you don't expect; 
+		(2) find the code that added the unwanted constraint or constraints and fix it. 
+(
+    "<NSLayoutConstraint:0x7fe43c8834f0 UILabel:0x7fe43c882600.top == UITableViewCellContentView:0x7fe43c881650.top + 10>",
+    "<NSLayoutConstraint:0x7fe43c883590 UITableViewCellContentView:0x7fe43c881650.bottom == UILabel:0x7fe43c882600.bottom + 10>",
+    "<NSLayoutConstraint:0x7fe43c2d2d00 UITableViewCellContentView:0x7fe43c881650.height == 0>"
+)
+
+Will attempt to recover by breaking constraint 
+<NSLayoutConstraint:0x7fe43c883590 UITableViewCellContentView:0x7fe43c881650.bottom == UILabel:0x7fe43c882600.bottom + 10>
+
+Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
+The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.
 
 
+```
+
+
+```
+
+1.加一个符号断点：UIViewAlertForUnsatisfiableConstraints
+2.可以输出constrains看看
+(lldb) po 0x7fe43c883590
+<NSLayoutConstraint:0x7fe43c883590 UITableViewCellContentView:0x7fe43c881650.bottom == UILabel:0x7fe43c882600.bottom + 10>
+3.也可以输出出问题的视图看看
+(lldb) po 0x7fe43c881650
+<UITableViewCellContentView: 0x7fe43c881650; frame = (0 0; 375 0); opaque = NO; gestureRecognizers = <NSArray: 0x7fe43c884280>; layer = <CALayer: 0x7fe43c8817d0>>
+4.也可以输出出问题的子视图看看
+(lldb) po 0x7fe43c882600
+<UILabel: 0x7fe43c882600; frame = (20 10; 285 24); text = '内容内容内容内容内容内容内容内容内容内容内容内容内...'; opaque = NO; autoresize = RM+BM; userInteractionEnabled = NO; layer = <_UILabelLayer: 0x7fe43c882810>>
+5.也可以输出所有子视图看看：
+(lldb) po [0x7fe43c881650 recursiveDescription]
+<UITableViewCellContentView: 0x7fe43c881650; frame = (0 0; 375 0); opaque = NO; gestureRecognizers = <NSArray: 0x7fe43c884280>; layer = <CALayer: 0x7fe43c8817d0>>
+   | <UIImageView: 0x7fe43c8817f0; frame = (8 -1; 304 45); hidden = YES; autoresize = RM+BM; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c8819a0>>
+   | <UIImageView: 0x7fe43c881d80; frame = (8 -1; 304 43); autoresize = RM+BM; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c881c60>>
+   | <CTDashLineView: 0x7fe43c8822a0; frame = (8 0; 304 1); clipsToBounds = YES; autoresize = RM+BM; layer = <CALayer: 0x7fe43c8821c0>>
+   | <UIButton: 0x7fe43c880a90; frame = (276 0; 44 44); hidden = YES; opaque = NO; autoresize = RM+BM; layer = <CALayer: 0x7fe43c880d30>>
+   |    | <UIImageView: 0x7fe43c2d0be0; frame = (15 15; 14 14); clipsToBounds = YES; opaque = NO; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c2d0900>>
+   | <UILabel: 0x7fe43c882600; frame = (20 10; 285 24); text = '内容内容内容内容内容内容内容内容内容内容内容内容内...'; opaque = NO; autoresize = RM+BM; userInteractionEnabled = NO; layer = <_UILabelLayer: 0x7fe43c882810>>
+6.也可以输出父视图的所有子视图看看：
+(lldb) po [[0x7fe43c881650 superview] recursiveDescription]
+<CTInternationalFlightsStudentsCell: 0x7fe45489a000; baseClass = UITableViewCell; frame = (0 209; 375 0); clipsToBounds = YES; autoresize = W; layer = <CALayer: 0x7fe43c881630>>
+   | <UITableViewCellContentView: 0x7fe43c881650; frame = (0 0; 375 0); opaque = NO; gestureRecognizers = <NSArray: 0x7fe43c884280>; layer = <CALayer: 0x7fe43c8817d0>>
+   |    | <UIImageView: 0x7fe43c8817f0; frame = (8 -1; 304 45); hidden = YES; autoresize = RM+BM; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c8819a0>>
+   |    | <UIImageView: 0x7fe43c881d80; frame = (8 -1; 304 43); autoresize = RM+BM; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c881c60>>
+   |    | <CTDashLineView: 0x7fe43c8822a0; frame = (8 0; 304 1); clipsToBounds = YES; autoresize = RM+BM; layer = <CALayer: 0x7fe43c8821c0>>
+   |    | <UIButton: 0x7fe43c880a90; frame = (276 0; 44 44); hidden = YES; opaque = NO; autoresize = RM+BM; layer = <CALayer: 0x7fe43c880d30>>
+   |    |    | <UIImageView: 0x7fe43c2d0be0; frame = (15 15; 14 14); clipsToBounds = YES; opaque = NO; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c2d0900>>
+   |    | <UILabel: 0x7fe43c882600; frame = (20 10; 285 24); text = '内容内容内容内容内容内容内容内容内容内容内容内容内...'; opaque = NO; autoresize = RM+BM; userInteractionEnabled = NO; layer = <_UILabelLayer: 0x7fe43c882810>>
+   | <_UITableViewCellSeparatorView: 0x7fe43c883980; frame = (15 43; 305 1); layer = <CALayer: 0x7fe43c883810>>
+这样就基本可以定位了。
+源文链接：http://staxmanade.com/2015/06/debugging-ios-autolayout-issues/
+      
+```
+
+--------------------------------

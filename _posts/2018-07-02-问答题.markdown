@@ -1,0 +1,2 @@
+1. enum 建议使用 NS_ENUM 和 NS_OPTIONS 宏来定义枚举类型
+2. copy, assign, weak, strong; nonatomic, atomic, readonly, readwrite, 

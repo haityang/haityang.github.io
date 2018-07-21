@@ -186,8 +186,51 @@ client.on('data',function(data){
 });
 ```
 
+* 创建 UDP 服务器
+
+```
+var dgram = require('dgram');
+var message = new Buffer("你好。");
+var client = dgram.createSocket("udp4");
+client.send(message, 0, message.length, 41234, "localhost",function(err,bytes){
+    if(err) console.log('发送数据失败。');
+    else    console.log("已发送%d字节数据。",bytes);
+});
+client.on("message", function (msg,rinfo) {
+    console.log("已接收服务器端发送的数据：%s",msg);
+    console.log("服务器地址为%s。",rinfo.address);
+    console.log("服务器所用端口为%s。",rinfo.port);
+    //client.close();
+});
+/*client.on("close",function(){
+    console.log("socket端口被关闭。");
+});*/
+```
+
+* 创建 UDP 客户端
+
+```
+var dgram = require("dgram");
+var server = dgram.createSocket("udp4");
+server.on("message", function (msg, rinfo) {
+    console.log('已接收客户端发送的数据：'+msg);
+    console.log("客户端地址信息为%j",rinfo);
+    var buf=new Buffer("确认信息："+msg);
+    server.send(buf,0,buf.length,rinfo.port,rinfo.address);    
+    //setTimeout(function(){server.close();},10000);
+});
+server.on("listening", function () {
+    var address = server.address();
+    console.log("服务器开始监听。地址信息为%j",address);
+});
+server.bind(41234,'localhost');  
+```
+
 
 ##### 10.创建 HTTP 与 HTTPS服务器与客户端
+
+
+
 
 ##### 11.加密与压缩
 

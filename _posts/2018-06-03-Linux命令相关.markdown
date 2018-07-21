@@ -245,7 +245,7 @@ tcpdump: verbose output suppressed, use -v or -vv for full protocol decode liste
 
 
 Capture the traffic of a particular interface:--------------
-tcpdump -i eth0
+#tcpdump -i eth0
 
 
 
@@ -314,6 +314,7 @@ gnuplot   //打开plot
 h          //帮助
 plot sin(x)       //画曲线
 reset              //重置
+
 ==================================================
 unix 数学计算命令
 
@@ -322,13 +323,15 @@ unix 数学计算命令
 事实上，bc是dc的预编译器，它自动激活dc，将语句经预编译后传递给dc，退出bc的命令是quit，bc中的ibase，obase，scale分别表示输入基数，输出基数，小数点右边的位数。
 -c bc 只编译，而不将编译结果送dc，将其送到标准输出上-l 预定义一个数学函数库，
 可在bc中使用以下函数s(x) sinec(x) cosinee(x) exponentiall(x) loga(x) arctangentj(n，x) Bessel
+
 ==================================================
 文件共享服务器:
-sudo python -m SimpleHTTPServer 10000
+#sudo python -m SimpleHTTPServer 10000
 
 ==============================================
 更新路径数据库的
-sudo /usr/libexec/locate.updatedb
+#sudo /usr/libexec/locate.updatedb
+
 =====================================
 在Mac OS X 10.6(Snow Leopard)中设置PATH环境变量
 解决办法:
@@ -337,6 +340,7 @@ sudo /usr/libexec/locate.updatedb
 sudo chmod +x XXX
 而在Ubuntu下，则只需要修改/etc/.profile或者 ~/.profile或~/.bashrc等修改
 参考：Mac OS X Tip: Setting PATH environment variables
+
 ============================
 TranslateIt 词典目录存放处
 ~/Library/Application Support/TranslateIt!
@@ -427,14 +431,19 @@ vc6 配置 OpenGL：
 
 第四步，创建一个最简单的opengl程序
 1、在stdafx.h文件中加入：
+
+```
 #include <windows.h>
 #include <GL/glu.h>
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <GL/glaux.h>   
+```
+
 
 2、在工程主程序中加入：（以我的程序为例，在simpleGL.cpp中）
 
+```
 //Called to draw scene
 void RenderSence(void)
 {
@@ -458,9 +467,11 @@ int main(int argc, char* argv[])
     SetupRC();
     glutMainLoop();
 }
+```
 
 
 制作ipa文件
+
 1: 在桌面上创建文件夹working，打开 working文件夹，并在里面新建文件夹Payload（注意大小写）
 2: 复制刚才创建好的 iTunesArtwork(用一个小的png文件修改而来) 件到working文件夹里，同时复制XXXX.app文件夹到Payload文件夹里
 3: 用xcode打开 XXXX.app目录里的Info.plist文件, 在段的最后加入下面的一行键值对,
@@ -468,13 +479,13 @@ SignerIdentity 					Apple iPhone OS Application Signing
 4: 选择iTunesArtwork文件和Payload文件夹，右击选择 “添加到档案文件”，选择压缩文件格式为 ZIP，重命名文件为XXXX.zip, 按确定开始压缩
 5: 重命名压缩文件为 XXXX.ipa
 6: 双击ipa文件，并导入iTunes
-=====================================
+
 http://dns.v2ex.com
-=====================================
  ~/Library/Preferences/com.apple.Terminal.plist
-=====================================
 banner jacky
+
 ====================================
+
 openssl加解密
 1. 使用aes-128-cbc算法加密文件：
 openssl enc -aes-128-cbc -in install.log -out enc.log
@@ -512,17 +523,19 @@ cat in.log | openssl enc -base64 -d |openssl aes-128-cbc -d
 -rc2 -rc2-40-cbc -rc2-64-cbc
 -rc2-cbc -rc2-cfb -rc2-ecb
 -rc2-ofb -rc4 -rc4-40
+
 =======================================
 Live Bytes
 The Living bytes, or Net bytes is how much memory your application is using at the time you select in the timeline. That will include leaked memory, since leaked memory is never deallocated.
 
 #Living
-#Living is how many allocations of a certain size/object type happened (and are still allocated). This is very useful when looking for leaks. For example, if you repetitively perform an action (like coming in an out of a modal view controller), and you see that #Living of an object grows by the same amount each time, then you're probably leaking those objects. You can then confirm by drilling down and seeing the exact line of code that is allocating the objects, and even see the time index each one was created.
+Living is how many allocations of a certain size/object type happened (and are still allocated). This is very useful when looking for leaks. For example, if you repetitively perform an action (like coming in an out of a modal view controller), and you see that #Living of an object grows by the same amount each time, then you're probably leaking those objects. You can then confirm by drilling down and seeing the exact line of code that is allocating the objects, and even see the time index each one was created.
 
 Overall Bytes
 Overall bytes includes memory that has been released. It's useful to track that number for performance optimization purposes, but not if you're just trying to see your current memory footprint or look for leaks.
 
 #Transitory
+
 ====================================
 svn: Aborting commit: remains in conflict
 svn remove --force filename
@@ -538,6 +551,7 @@ svn copy trunk tags/Portal.2.0 //增加当前主分枝为一个tag版本
 ---------------------------
 Could not add all targets because some targets don't exist
 svn ci ico_flight_choosetra_atob\@3x.png@ -m "值机行程图片"
+
 ---------------------------
     
 svn: Checksum mismatch while updating
@@ -546,29 +560,39 @@ This solution I can across a while ago is to open a command shell in the folder 
 svn update --set-depth empty
 svn update --set-depth infinity
 I cannot remember where I found the solution, I would like to give credit where due but I can't remember, I found this in shell command history.
+
 ====================================
 sudo /Developer/Library/uninstall-devtools –mode=all
+
 ====================================
 svn log -v |grep "低价助手" -C 10    //查看svn log
 svn diff -r r203409:r203410
+
 ====================================
 svn status --show-updates   //显示可满足的更新
 or svn status -u
+
 ====================================
 svn 回滚:
 svn update
 svn merge -r 150:140 .  //当前版本：目标版本
 svn commit -m "Rolled back to r140"
+
 --------------
 svn revert -R . //丢弃掉本地所有的改动
+
 --------------
 svn up . -r 338037 //更新到某个历史版本
+
 --------------
 svn up   //更新到最新版本
+
 --------------
 svn status
 svn revert [-R] a.png
+
 ====================================
+
 安装旧版本的sdk
 For those who wan't to avoid upgrading Xcode, do the following:
 
@@ -580,6 +604,7 @@ Copy Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/ to /D
 Copy Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/ to /Developer/Platforms/iPhoneOS.platform/DeviceSupport (on you local machine)
 Right click Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/, choose "Make Alias", rename the alias to "Latest"
 Start Xcode
+
 ====================================
 4. bzip -d *.bz
 5. bzip -d *.gz
@@ -591,10 +616,6 @@ unzip:
 
 1. tar -cvf *.tar directory/
 2. tar -czvf *.tar.gz direcroty/
-
-================================
-
-  
 
 ================================== 
 vi command: 
@@ -716,6 +737,7 @@ vi command:
 
 61. < 2j        --向左移下面两行 
 62. :set fileformat=unix
+
 =========================================
 config vi     自动完成功能
 1. download omnicppcomplete-0.41.zip: http://www.vim.org/scripts/script.php?script_id=1520
@@ -755,6 +777,7 @@ Bundle 'Valloric/YouCompleteMe'
 而后进行编译安装：
 1cd ~/.vim/bundle/YouCompleteMe
 2./install --clang-completer
+
 =======================================
 
 ubuntu配置：
@@ -794,11 +817,6 @@ sudo apt-get install glade-gnome glade-common glade-doc
 
 1. valgrind --tool=memcheck --leak-check=yes ./example        --detact memory leak
 
-
-2. 
-
-
-
 ===================================================
 
 GTK:
@@ -827,8 +845,6 @@ GTK:
 GDB:
 
 1. bt            --查看堆栈
-
-
 2. debuginfo-install gtk2-engines.i386
 
 =======================================================
@@ -897,7 +913,6 @@ nameserver 202.106.195.68
 
 ----------------
 
-
 =================================================================
 
 1.ldd fx            //查看应用软件依赖库
@@ -914,7 +929,7 @@ nameserver 202.106.195.68
 
 
 ============================================================
-
+```
 
 [fedora]
 
@@ -959,6 +974,7 @@ enabled=0
 gpgcheck=1
 
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora file:///etc/pki/rpm-gpg/RPM-GPG-KEY
+```
 
 =====================================================
 
@@ -994,7 +1010,8 @@ chkconfig --list | grep vmware
 
 ======================================
  afconvert -f caff -d LEI16@44100 -c 1 in.wav out.caf  //convert wav to caf
-======================================
+ 
+
 ========================================
 Man pages for /usr/X11R6/bin/
 
@@ -1017,13 +1034,19 @@ Other:
 
 ==========================================
 fc-list - list available fonts 
+
 =============================================
 Type the following two command to install both ssh client and server:
+``` 
 # sudo apt-get install openssh-server openssh-client
+```
+
 ================================================
 
 1.挂载光盘镜像:
-#mount  -t  iso9660 -o loop  /tmp/cd.iso  /mnt/cdrom;
+```
+#mount  -t  iso9660 -o loop  /tmp/cd.iso  /mnt/cdrom;``
+
 2.挂载光盘:
 
 #mount -t  iso9660  /dev/cdrom   /mnt/cdrom
@@ -1590,71 +1613,6 @@ lsof -Pnl +M -i4
 
 -------------------------------
 打码兔
-
--------------------------------
-怎么Debug constrains?
-
-```
-
-2016-01-06 14:54:25.979 CTRIP_WIRELESS[37253:377433] Unable to simultaneously satisfy constraints.
-	Probably at least one of the constraints in the following list is one you don't want. 
-	Try this: 
-		(1) look at each constraint and try to figure out which you don't expect; 
-		(2) find the code that added the unwanted constraint or constraints and fix it. 
-(
-    "<NSLayoutConstraint:0x7fe43c8834f0 UILabel:0x7fe43c882600.top == UITableViewCellContentView:0x7fe43c881650.top + 10>",
-    "<NSLayoutConstraint:0x7fe43c883590 UITableViewCellContentView:0x7fe43c881650.bottom == UILabel:0x7fe43c882600.bottom + 10>",
-    "<NSLayoutConstraint:0x7fe43c2d2d00 UITableViewCellContentView:0x7fe43c881650.height == 0>"
-)
-
-Will attempt to recover by breaking constraint 
-<NSLayoutConstraint:0x7fe43c883590 UITableViewCellContentView:0x7fe43c881650.bottom == UILabel:0x7fe43c882600.bottom + 10>
-
-Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
-The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.
-
-
-```
-
-
-```
-
-1.加一个符号断点：UIViewAlertForUnsatisfiableConstraints
-2.可以输出constrains看看
-(lldb) po 0x7fe43c883590
-<NSLayoutConstraint:0x7fe43c883590 UITableViewCellContentView:0x7fe43c881650.bottom == UILabel:0x7fe43c882600.bottom + 10>
-3.也可以输出出问题的视图看看
-(lldb) po 0x7fe43c881650
-<UITableViewCellContentView: 0x7fe43c881650; frame = (0 0; 375 0); opaque = NO; gestureRecognizers = <NSArray: 0x7fe43c884280>; layer = <CALayer: 0x7fe43c8817d0>>
-4.也可以输出出问题的子视图看看
-(lldb) po 0x7fe43c882600
-<UILabel: 0x7fe43c882600; frame = (20 10; 285 24); text = '内容内容内容内容内容内容内容内容内容内容内容内容内...'; opaque = NO; autoresize = RM+BM; userInteractionEnabled = NO; layer = <_UILabelLayer: 0x7fe43c882810>>
-5.也可以输出所有子视图看看：
-(lldb) po [0x7fe43c881650 recursiveDescription]
-<UITableViewCellContentView: 0x7fe43c881650; frame = (0 0; 375 0); opaque = NO; gestureRecognizers = <NSArray: 0x7fe43c884280>; layer = <CALayer: 0x7fe43c8817d0>>
-   | <UIImageView: 0x7fe43c8817f0; frame = (8 -1; 304 45); hidden = YES; autoresize = RM+BM; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c8819a0>>
-   | <UIImageView: 0x7fe43c881d80; frame = (8 -1; 304 43); autoresize = RM+BM; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c881c60>>
-   | <CTDashLineView: 0x7fe43c8822a0; frame = (8 0; 304 1); clipsToBounds = YES; autoresize = RM+BM; layer = <CALayer: 0x7fe43c8821c0>>
-   | <UIButton: 0x7fe43c880a90; frame = (276 0; 44 44); hidden = YES; opaque = NO; autoresize = RM+BM; layer = <CALayer: 0x7fe43c880d30>>
-   |    | <UIImageView: 0x7fe43c2d0be0; frame = (15 15; 14 14); clipsToBounds = YES; opaque = NO; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c2d0900>>
-   | <UILabel: 0x7fe43c882600; frame = (20 10; 285 24); text = '内容内容内容内容内容内容内容内容内容内容内容内容内...'; opaque = NO; autoresize = RM+BM; userInteractionEnabled = NO; layer = <_UILabelLayer: 0x7fe43c882810>>
-6.也可以输出父视图的所有子视图看看：
-(lldb) po [[0x7fe43c881650 superview] recursiveDescription]
-<CTInternationalFlightsStudentsCell: 0x7fe45489a000; baseClass = UITableViewCell; frame = (0 209; 375 0); clipsToBounds = YES; autoresize = W; layer = <CALayer: 0x7fe43c881630>>
-   | <UITableViewCellContentView: 0x7fe43c881650; frame = (0 0; 375 0); opaque = NO; gestureRecognizers = <NSArray: 0x7fe43c884280>; layer = <CALayer: 0x7fe43c8817d0>>
-   |    | <UIImageView: 0x7fe43c8817f0; frame = (8 -1; 304 45); hidden = YES; autoresize = RM+BM; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c8819a0>>
-   |    | <UIImageView: 0x7fe43c881d80; frame = (8 -1; 304 43); autoresize = RM+BM; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c881c60>>
-   |    | <CTDashLineView: 0x7fe43c8822a0; frame = (8 0; 304 1); clipsToBounds = YES; autoresize = RM+BM; layer = <CALayer: 0x7fe43c8821c0>>
-   |    | <UIButton: 0x7fe43c880a90; frame = (276 0; 44 44); hidden = YES; opaque = NO; autoresize = RM+BM; layer = <CALayer: 0x7fe43c880d30>>
-   |    |    | <UIImageView: 0x7fe43c2d0be0; frame = (15 15; 14 14); clipsToBounds = YES; opaque = NO; userInteractionEnabled = NO; layer = <CALayer: 0x7fe43c2d0900>>
-   |    | <UILabel: 0x7fe43c882600; frame = (20 10; 285 24); text = '内容内容内容内容内容内容内容内容内容内容内容内容内...'; opaque = NO; autoresize = RM+BM; userInteractionEnabled = NO; layer = <_UILabelLayer: 0x7fe43c882810>>
-   | <_UITableViewCellSeparatorView: 0x7fe43c883980; frame = (15 43; 305 1); layer = <CALayer: 0x7fe43c883810>>
-这样就基本可以定位了。
-源文链接：http://staxmanade.com/2015/06/debugging-ios-autolayout-issues/
-      
-```
-
---------------------------------
 print(u'\u54c8\u54c8')
 --------------------------------
 defaults write com.apple.CrashReporter DialogType none
