@@ -1,0 +1,110 @@
+##### Python
+
+https://www.python.org
+
+https://docs.python.org/3/ 
+
+##### Pip (Pypi仓库)
+```
+sudo apt install python-pip
+```
+
+##### Pip 国内镜像
+
+阿里云 http://mirrors.aliyun.com/pypi/simple/
+
+中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+
+豆瓣(douban) http://pypi.douban.com/simple/
+
+清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
+
+中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+
+
+临时使用： 
+可以在使用pip的时候在后面加上-i参数，指定pip源 
+eg: pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+永久修改： 
+linux: 
+修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
+
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
+##### NumPy
+http://www.numpy.org
+
+https://docs.scipy.org/doc/
+```
+sudo pip install numpy
+```
+
+##### Pandas
+
+http://pandas.pydata.org
+
+http://pandas.pydata.org/pandas-docs/stable/pandas.pdf
+
+```
+sudo pip install pandas
+```
+
+##### Matplotlib
+
+https://matplotlib.org
+
+https://matplotlib.org/api/pyplot_summary.html
+
+```
+sudo pip install matplotlib
+```
+
+
+##### IPython
+
+http://ipython.org
+
+```
+sudo pip install ipython==8888 #现指定一个不存在的版本以查看可用版本，发现5版本中有5.3.0（你的可能不一样）
+sudo pip install ipython==5.7.0
+```
+
+
+##### SciPy
+
+https://docs.scipy.org/doc/scipy/reference/
+
+
+```
+sudo pip install scipy
+```
+
+##### Misc
+
+```
+apt-get install python-tk
+```
+
+##### 验证画图
+
+```
+$ ipython --pylab
+
+import matplotlib.pyplot as plt
+fig = plt.figure()
+ax1 = fig.add_subplot(2, 2, 1)
+
+```
+
+
+##### sklearn
+
+```
+sudo pip install sklearn
+```
+
