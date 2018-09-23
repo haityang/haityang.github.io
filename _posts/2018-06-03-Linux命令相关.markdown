@@ -1990,4 +1990,24 @@ brew install sloccount
 sloccount Deliveryœ
 
 ====================================
+
+禁用启用mac osx 的root保护,command+r 进入UTILITY,打开终端运行。
+
 ```
+csrutil status
+
+csrutil disable
+
+csrutil enable
+
+```
+
+----------------------------
+
+```
+sudo chown -R $(whoami) /usr/local/include /usr/local/lib /usr/local/lib/pkgconfig /usr/local/share/info /usr/local/share/man/man3 /usr/local/share/man/man5 /usr/local/share/man/man7
+
+```
+
+
+

@@ -1,0 +1,82 @@
+1. ubuntu上安装R
+
+```
+apt-get update
+apt-get install r-base
+apt-get install r-base-dev
+```
+
+2.Rstudio的安装
+
+```
+dpkg -i rstudio-1.0.136-amd64.deb
+```
+
+3.在RStudio中安装xlsx
+
+3.1 在terminal中安装java
+
+```
+sudo apt install default-jre
+sudo apt-get install default-jdk
+java --version
+sudo R CMD javareconf
+
+```
+
+3.2 在RStudio中安装xlxs
+
+```
+sudo R
+install.package("rJava")
+install.packages("xlsx")
+any(grepl("xlsx", installed.package()))
+```
+
+4.读xlxs数据：
+
+```
+print(getwd())
+library("xlsx")
+data <- read.xlsx("input.xlsx", sheetIndex = 1)
+print(data)
+
+
+```
+
+
+5.安装mysql
+
+5.1 在ubuntu中安装mysql
+
+```
+sudo apt-get install mysql-server
+sudo apt isntall mysql-client
+sudo apt install libmysqlclient-dev
+sudo netstat -tap | grep mysql
+
+```
+
+5.2 在RStudio中安装mysql
+
+```
+install.packages('RMySQL')
+```
+
+R语言的使用
+-----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

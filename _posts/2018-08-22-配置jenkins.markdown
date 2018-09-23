@@ -37,11 +37,34 @@ any(grepl("xlsx", installed.package()))
 
 ```
 print(getwd())
+library("xlsx")
 data <- read.xlsx("input.xlsx", sheetIndex = 1)
 print(data)
 
 
 ```
+
+
+5.安装mysql
+
+5.1 在ubuntu中安装mysql
+
+```
+sudo apt-get install mysql-server
+sudo apt isntall mysql-client
+sudo apt install libmysqlclient-dev
+sudo netstat -tap | grep mysql
+
+```
+
+5.2 在RStudio中安装mysql
+
+```
+install.packages('RMySQL')
+```
+
+
+
 
 
 
