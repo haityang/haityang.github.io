@@ -1037,15 +1037,18 @@ fc-list - list available fonts
 
 =============================================
 Type the following two command to install both ssh client and server:
+
 ``` 
 # sudo apt-get install openssh-server openssh-client
+
 ```
 
 ================================================
 
 1.挂载光盘镜像:
+
 ```
-#mount  -t  iso9660 -o loop  /tmp/cd.iso  /mnt/cdrom;``
+#mount  -t  iso9660 -o loop  /tmp/cd.iso  /mnt/cdrom;
 
 2.挂载光盘:
 
@@ -1070,6 +1073,10 @@ Type the following two command to install both ssh client and server:
 7. 卸载挂载了的目录
 
 #umount  /mnt/cdrom
+
+
+```
+
 =============================================================================
 Could not open /dev/vmmon: No such file or directory. Please make sure that the kernel module 'vmmon' is loaded:
 please run: /etc/init.d/vmware start
@@ -1989,7 +1996,10 @@ brew install sloccount
 计算行数：
 sloccount Deliveryœ
 
+
+
 ====================================
+
 
 禁用启用mac osx 的root保护,command+r 进入UTILITY,打开终端运行。
 
