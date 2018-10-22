@@ -1,0 +1,30 @@
+1.查看ubuntu版本
+
+```
+uname -a
+```
+
+2.创建hadoop用户
+
+```
+$ sudo useradd -m hadoop -s /bin/bash  #创建hadoop用户，并使用/bin/bash作为shell
+$ sudo passwd hadoop                   #为hadoop用户设置密码，之后需要连续输入两次密码
+$ sudo adduser hadoop sudo             #为hadoop用户增加管理员权限
+$ su - hadoop                          #切换当前用户为用户hadoop
+$ sudo apt-get update  
+
+```
+
+3.安装SSH,设置SSH无密码登陆
+
+```
+$ sudo apt-get install openssh-server   #安装SSH server
+$ ssh localhost                         #登陆SSH，第一次登陆输入yes
+$ exit                                  #退出登录的ssh localhost
+$ cd ~/.ssh/                            #如果没法进入该目录，执行一次ssh localhost
+$ ssh-keygen -t rsa
+
+```
+
+
+

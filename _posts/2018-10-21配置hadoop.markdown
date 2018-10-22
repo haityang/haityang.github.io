@@ -1,0 +1,80 @@
+1.查看ubuntu版本
+
+```
+uname -a
+```
+
+2.创建hadoop用户
+
+```
+$ sudo useradd -m hadoop -s /bin/bash  #创建hadoop用户，并使用/bin/bash作为shell
+$ sudo passwd hadoop                   #为hadoop用户设置密码，之后需要连续输入两次密码
+$ sudo adduser hadoop sudo             #为hadoop用户增加管理员权限
+$ su - hadoop                          #切换当前用户为用户hadoop
+$ sudo apt-get update  
+
+```
+
+3.安装SSH,设置SSH无密码登陆
+
+```
+$ sudo apt-get install openssh-server   #安装SSH server
+$ ssh localhost                         #登陆SSH，第一次登陆输入yes
+$ exit                                  #退出登录的ssh localhost
+$ cd ~/.ssh/                            #如果没法进入该目录，执行一次ssh localhost
+$ ssh-keygen -t rsa
+$ cat ./id_rsa.pub >> ./authorized_keys #加入授权
+$ ssh localhost                         #此时已不需密码即可登录localhost，并可见下图。如果失败则可以搜索SSH免密码登录来寻求答案
+
+```
+
+4.安装jdk1.7
+
+```
+$ mkdir /usr/lib/jvm                           #创建jvm文件夹
+$ sudo tar zxvf jdk-7u80-linux-x64.tar.gz  -C /usr/lib #/ 解压到/usr/lib/jvm目录下
+$ cd /usr/lib/jvm                                 #进入该目录
+$ mv  jdk1.7.0_80 java                         #重命名为java
+$ vi ~/.bashrc  
+
+```
+
+5.打开.bashrc
+
+```
+export JAVA_HOME=/usr/lib/jvm/java
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+
+```
+
+
+
+
+7.安装hadoop
+
+```
+$ sudo tar -zxvf  hadoop-2.6.0.tar.gz -C /usr/local    #解压到/usr/local目录下
+$ cd /usr/local
+$ sudo mv  hadoop-2.6.0    hadoop                      #重命名为hadoop
+$ sudo chown -R hadoop ./hadoop                        #修改文件权限
+
+```
+
+8.打开.bashrc
+
+```
+export HADOOP_HOME=/usr/local/hadoop
+export CLASSPATH=$($HADOOP_HOME/bin/hadoop classpath):$CLASSPATH
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+```
+
+
+
+
+
+
+
