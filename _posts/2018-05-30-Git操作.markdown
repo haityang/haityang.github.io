@@ -573,3 +573,17 @@ Please move or remove them before you can switch branches.
 Aborting
 localhost:youdian iSwear$ rm .DS_Store 
 ```
+
+---------------------
+```
+rebase in progress; onto bcb38f58
+You are currently rebasing branch 'dev' on 'bcb38f58'.
+  (all conflicts fixed: run "git rebase --continue")
+
+nothing to commit, working tree clean
+
+1th: git rebase --skip  //跳过该补丁
+2th: git cherry-pick [commit number]  //再合并该补丁
+
+```
+

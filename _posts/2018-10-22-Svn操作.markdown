@@ -60,3 +60,8 @@ svn up   //更新到最新版本
 
 svn status
 svn revert [-R] a.png
+
+
+------------
+查看远端repository 地址
+svn info

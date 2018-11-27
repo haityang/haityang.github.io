@@ -1,0 +1,19 @@
+```
+// 如下所示,我们想要截取第一个中括号里面的字符串
+ // 假设这个字符串是服务器返回的,长度不定,中括号的位置也不定,先后通过简单的截取就比较困难了
+ // 这个时候就要用到**正则表达式**,相信大家知道,但如何在Swift中利用正则表达式来筛选值呢,我们来分析一下
+ // rangOfString本来是用来收索文中的字符串的,但是可以选择模式.这里选择(.RegularExpressionSearch)也就是正则的搜索
+ // 但是OC和Swift中都只有这一种收索方法,只有Search,没有其他的,相比其他的语言(Python,PHP)弱太多了
+
+ // 单纯匹配中括号里的字正则想必大家都会写 "\\[.*\\]",但是有一个问题就是收索的内容是'[thing] jflsdfs [do]',这显然不是我们想要的
+ // 这就要收到正则的贪婪模式了,默认它尽可能多的匹配符合要求的字符串,而我们想让他满足最精巧的那个,就需要加上一个?号,就是这个样子"\\[.*?\\]",这样搜索到的就是'[thing]'
+ // 你发现这还不是我们想要的,为什么要带上'['和']'呢,但是没办法,这是你的检索条件啊
+ // 但是什么也难不倒正则,正则当中有 零宽断言,<零宽度正预测先行断言(?=exp)> 断言自身出现的位置的后面能匹配表达式exp, 
+ // <零宽度正回顾后发断言(?<=exp)>，它断言自身出现的位置的前面能匹配表达式exp,最终我们的表达式是"(?<=\\[).*?(?=\\])"
+
+ let string = "I Want to Do some [thing] jflsdfs [do]"
+ if let result = string.rangeOfString("(?<=\\[).*?(?=\\])", options: .RegularExpressionSearch, range:string.startIndex..<string.endIndex, locale: nil)  {
+         print(string.substringWithRange(result))
+     }
+
+```
