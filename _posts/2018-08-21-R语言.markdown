@@ -78,8 +78,58 @@ setwd('~/Downloads')
 source('z.R', print.eval=T)
 
 
+```
+
+7.常用命令
 
 ```
+> ?fun
+> help("char")
+> apropos(fun)
+> help.search("char")
+> find
+> args("fun")
+
+```
+
+8.可以用eidt编辑数所
+
+```
+1. LC_CTYPE=C R  //打开R，并设置locale
+2. sessionInfo() //查看当前locale
+3. MTcars <- edit(mtcars) //编辑数据
+4. fix(mtcars) //直接编辑数据
+5. attach(mtcars) //挂载mtcars数据集
+> mpg //显示某一属性数据
+> table(cyl) //取频数
+> barplot(cyl) //显示直方图
+> stem(mpg) //茎叶图
+> hist(mpg) 
+> boxplot(mpg)
+> mean(mpg)
+> mean(mpg, trim = .1)
+> IQR(mpg)
+> quantile(mpg)
+> fivenum(mpg)
+> probs = c(0.1, 0.5, 99.5)/100
+> quantile(mpg, probs)
+> summary(mpg)
+> sd(mpg) //计算标准差
+> mad(mpg) //计算中位绝对离差
+6. plot(cyl,mpg) //画 二 维 散 点 图
+7. lm(formula = cyl ~ mpg) //拟合线性回归,线性回归的截距为11.2607, 斜率为-0.2525
+8. detach(mtcars)
+9. q()
+10. demo(graphics)   //为二维的图形示例;
+11. demo(persp)		//为三维的图形示例.
+
+
+```
+
+
+
+
+
 
 
 

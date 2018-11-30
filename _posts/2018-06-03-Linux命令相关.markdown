@@ -1955,9 +1955,7 @@ sloccount Deliveryœ
 
 ```
 csrutil status
-
-csrutil disable
-
+csrutil disable=
 csrutil enable
 
 ```
@@ -1968,6 +1966,14 @@ csrutil enable
 sudo chown -R $(whoami) /usr/local/include /usr/local/lib /usr/local/lib/pkgconfig /usr/local/share/info /usr/local/share/man/man3 /usr/local/share/man/man5 /usr/local/share/man/man7
 
 ```
+
+查看进程与哪个应用关联,找出占用内存或CPU的应用
+
+```
+spindump
+```
+
+
 
 
 
