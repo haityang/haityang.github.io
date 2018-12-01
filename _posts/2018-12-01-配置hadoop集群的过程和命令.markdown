@@ -1,0 +1,203 @@
+1.解压集群配置文件,在虚拟机中打开三个机器
+
+2.修改每台机器的固定IP地址,注意查看网关和DNS
+
+3.修改每台机器的hosts
+
+```
+sudo gedit /etc/hosts
+
+192.168.182.101 cloud01
+192.168.182.102 cloud02
+192.168.182.103 cloud03
+
+注：请将原文件最上面的第二行127.0.1.1删除掉,每台机器都要做
+```
+
+
+4.每台机器配公私钥
+
+```
+sudo apt-get install ssh
+
+mkdir .ssh
+cd .ssh
+ssh-keygen -t rsa
+cat id_rsa.pub>>authorized_keys
+sudo service ssh restart
+
+ssh localhost
+
+如果存在.ssh文件夹，则应先删除.ssh(rm -rf .ssh)
+
+```
+
+
+5.发送主机的公钥,并加入到每台机器的授权文件中
+
+```
+cd .ssh
+scp authorized_keys hduser@cloud02:~/.ssh/authorized_keys_from_cloud01
+
+```
+
+分别进入cloud02和cloud03，执行以下命令
+
+```
+cd .ssh
+cat authorized_keys_from_cloud01>>authorized_keys
+```
+
+6.在每台机器上安装jdk
+
+
+7.在主机上安装hadoop-2.2.0(tar -zxvf hadoop-2.2.0.tar.gz)
+
+8.在每台机器的主文件夹下新建以下三个文件夹
+
+```
+~/hddata/dfs/name
+~/hddata/dfs/data
+~/hdata/tmp
+
+scp -r ~/hddata hduser@cloud02:~/
+scp -r ~/hddata hduser@cloud03:~/
+
+```
+
+9.在主机上修改7个配置文件
+
+```
+cd hadoop-2.2.0
+
+（1）gedit etc/hadoop/hadoop-env.sh
+export JAVA_HOME=/usr/java/jdk1.7.0_51
+
+（2）gedit etc/hadoop/yarn-env.sh
+export JAVA_HOME=/usr/java/jdk1.7.0_51
+
+（3）gedit etc/hadoop/slaves
+cloud01
+cloud02
+cloud03
+
+（4）gedit etc/hadoop/core-site.xml
+<property>
+<name>fs.defaultFS</name>
+<value>hdfs://cloud01:9000</value>
+</property>
+<property>
+<name>io.file.buffer.size</name>
+<value>131072</value>
+</property>
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/home/hduser/hddata/tmp</value>
+</property>
+
+（5）gedit etc/hadoop/hdfs-site.xml
+<property>
+<name>dfs.namenode.secondary.http-address</name>
+<value>cloud01:9001</value>
+</property>
+<property>
+<name>dfs.namenode.name.dir</name>
+<value>/home/hduser/hddata/dfs/name</value>
+</property>
+<property>
+<name>dfs.datanode.data.dir</name>
+<value>/home/hduser/hddata/dfs/data</value>
+</property>
+<property>
+<name>dfs.replication</name>
+<value>2</value>
+</property>
+<property>
+<name>dfs.webhdfs.enabled</name>
+<value>true</value>
+</property>
+
+（6）cp etc/hadoop/mapred-site.xml.template etc/hadoop/mapred-site.xml
+gedit etc/hadoop/mapred-site.xml
+<property>
+<name>mapreduce.framework.name</name>
+<value>yarn</value>
+</property>
+<property>
+<name>mapreduce.jobhistory.address</name>
+<value>cloud01:10020</value>
+</property>
+<property>
+<name>mapreduce.jobhistory.webapp.address</name>
+<value>cloud01:19888</value>
+</property>
+
+（7）gedit etc/hadoop/yarn-site.xml
+<property>
+<name>yarn.nodemanager.aux-services</name>
+<value>mapreduce_shuffle</value>
+</property>
+<property>
+<name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+<value>org.apache.hadoop.mapred.ShuffleHandler</value>
+</property>
+<property>
+<name>yarn.resourcemanager.address</name>
+<value>cloud01:8132</value>
+</property>
+<property>
+<name>yarn.resourcemanager.scheduler.address</name>
+<value>cloud01:8130</value>
+</property>
+<property>
+<name>yarn.resourcemanager.resource-tracker.address</name>
+<value>cloud01:8131</value>
+</property>
+<property>
+<name>yarn.resourcemanager.admin.address</name>
+<value>cloud01:8133</value>
+</property>
+<property>
+<name>yarn.resourcemanager.webapp.address</name>
+<value>cloud01:8188</value>
+</property>
+```
+
+
+9.将主机上的hadoop-2.2.0的文件夹发送给另两台机器
+
+```
+scp -r hadoop-2.2.0 hduser@cloud02:~/
+scp -r hadoop-2.2.0 hduser@cloud03:~/
+
+```
+
+
+10.格式化namenode
+
+```
+cd hadoop-2.2.0
+./bin/hdfs namenode -format
+
+```
+
+11.启动hadoop
+
+```
+./sbin/start-all.sh
+
+
+查看文件块组成
+./bin/hdfs fsck / -files -blocks
+./bin/hdfs dfsadmin -report
+http://192.168.75.101:50070
+http://192.168.75.101:8188
+./sbin/mr-jobhistory-daemon.sh start historyserver
+```
+
+12.运行pi
+
+```
+./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar pi 10 20
+```
+

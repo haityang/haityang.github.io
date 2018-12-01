@@ -1,0 +1,131 @@
+1.从U盘中将jdk和hadoop安装文档拷贝到主文件夹下
+
+2.安装jdk
+
+```
+sudo mkdir /usr/java
+sudo cp jdk-7u51-linux-i586.tar.gz /usr/java
+cd /usr/java
+sudo tar -zxvf jdk-7u51-linux-i586.tar.gz
+
+```
+
+3.修改配置文件，使java能运行
+
+```
+
+sudo gedit  /etc/profile
+
+---
+export JAVA_HOME=/usr/java/jdk1.7.0_51
+export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
+export PATH=$JAVA_HOME/bin:$PATH
+---
+
+source /etc/profile
+java -version
+
+```
+
+
+4.安装hadoop
+
+```
+cd
+tar -zxvf hadoop-2.2.0.tar.gz
+
+```
+
+
+5.运行求PI值实验，10为人数，20为每人投掷次数
+
+```
+
+./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar pi 10 20
+
+```
+
+单机安装完毕，如果要安装伪分布，在解压完hadoop后，需要完成以下两步操作
+
+1.安装ssh
+
+```
+
+sudo apt-get install ssh
+mkdir .ssh
+
+cd .ssh
+ssh-keygen -t  rsa 
+cat id_rsa.pub >> authorized_keys
+service ssh restart
+ssh localhost
+
+注：如果在restart报错时，需要重新启动计算机
+```
+
+
+2.配置hadoop的环境变量，4个配置文件
+
+```
+tar -zxvf hadoop-2.2.0.tar.gz
+
+---
+gedit etc/hadoop/hadoop-env.sh
+export JAVA_HOME=/usr/java/jdk1.7.0_51
+
+---
+gedit etc/hadoop/core-site.xml
+
+<property>
+<name>fs.default.name</name>
+<value>hdfs://localhost:9000</value>
+</property>
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/home/hduser/hddata/tmp</value>
+</property>
+
+---
+gedit etc/hadoop/hdfs-site.xml
+<property>
+<name>dfs.namenode.name.dir</name>
+<value>/home/hduser/hddata/dfs/name</value>
+</property>
+<property>
+<name>dfs.datanode.data.dir</name>
+<value>/home/hduser/hddata/dfs/data</value>
+</property>
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+---
+cp etc/hadoop/mapred-site.xml.template etc/hadoop/mapred-site.xml
+gedit etc/hadoop/mapred-site.xml
+<property>
+<name>mapred.job.tracker</name>
+<value>localhost:54311</value>
+</property>
+<property>
+<name>mapred.map.tasks</name>
+<value>10</value>
+</property>
+<property>
+<name>mapred.reduce.tasks</name>
+<value>2</value>
+</property>
+
+./bin/hdfs namenode -format
+./sbin/start-all.sh
+
+jps
+
+./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar pi 10 20
+
+localhost:50070
+./sbin/stop-all.sh
+
+```
+
+
