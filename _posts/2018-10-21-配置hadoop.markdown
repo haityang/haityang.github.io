@@ -72,6 +72,87 @@ export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 ```
 
+----
+
+9.Hadoop 伪分布安装
+
+
+```
+tar -zxvf hadoop-2.2.0.tar.gz
+
+--- hadoop-env.sh
+gedit /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+export JAVA_HOME=/usr/lib/jvm/java
+
+--- core-site.xml
+gedit /usr/local/hadoop/etc/hadoop/core-site.xml
+
+<property>
+<name>fs.defaultFS</name>
+<value>hdfs://localhost:9000</value>
+</property>
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/usr/local/hadoop/tmp</value>
+</property>
+
+--- hdfs-site.xml
+gedit /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+<property>
+<name>dfs.namenode.name.dir</name>
+<value>file:/usr/local/hadoop/tmp/dfs/name</value>
+</property>
+<property>
+<name>dfs.datanode.data.dir</name>
+<value>file:/usr/local/hadoop/tmp/dfs/data</value>
+</property>
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+--- mapred-site.xml
+cp etc/hadoop/mapred-site.xml.template etc/hadoop/mapred-site.xml
+gedit /usr/local/hadoop/etc/hadoop/mapred-site.xml
+<property>
+<name>mapred.job.tracker</name>
+<value>localhost:50070</value>
+</property>
+<property>
+<name>mapred.map.tasks</name>
+<value>10</value>
+</property>
+<property>
+<name>mapred.reduce.tasks</name>
+<value>2</value>
+</property>
+
+
+```
+
+10.初始化
+
+```
+hadoop namenode -format //初始化
+start-all.sh  //启动所有进程
+jps //查看所有进程
+http://localhost:50070 //web界面
+stop-all.sh
+
+```
+
+
+11.操作HDFS目录,mapreduce计算
+
+```
+hadoop dfs -mkdir -p /user/hadoop
+hadoop dfs -put ./input/
+hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.1.jar grep input output 'dfs[a-z.]+'
+hadoop fs -cat output/*
+```
+
+
+
 
 
 
