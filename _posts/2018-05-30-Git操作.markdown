@@ -587,3 +587,11 @@ nothing to commit, working tree clean
 
 ```
 
+--------------
+
+```
+把某个文件回退到某一版本
+git checkout d98a0f565804ba639ba46d6e4295d4f787ff2949 src/main/main.c
+```
+
+

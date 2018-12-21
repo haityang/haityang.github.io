@@ -61,6 +61,7 @@ sudo netstat -tap | grep mysql
 
 ```
 install.packages('RMySQL')
+setRepositories() //设置软件源
 ```
 
 R语言的使用

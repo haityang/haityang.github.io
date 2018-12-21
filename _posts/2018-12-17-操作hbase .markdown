@@ -1,0 +1,6 @@
+1.进入hbase
+
+```
+hbase shell
+```
+
