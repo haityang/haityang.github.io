@@ -287,3 +287,24 @@ $ git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
 source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 ```
 
+画一个PDF 页面
+
+```
+CFURLRef pdfURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), 
+    (__bridge CFStringRef)self.fileName, NULL, NULL);
+CGPDFDocumentRef pdfDocument = 
+    CGPDFDocumentCreateWithURL((CFURLRef)pdfURL);
+CFRelease(pdfURL);
+CGContextTranslateCTM(context, 0.0, self.bounds.size.height);
+CGContextScaleCTM(context, 1.0, -1.0);
+CGPDFPageRef page = CGPDFDocumentGetPage(pdfDocument, self.pageNumber);
+CGContextSaveGState(context);
+CGAffineTransform pdfTransform = CGPDFPageGetDrawingTransform(page, 
+    kCGPDFCropBox, self.bounds, 0, true);
+CGContextConcatCTM(context, pdfTransform);
+CGContextDrawPDFPage(context, page);
+CGContextRestoreGState(context);
+
+```
+
+
