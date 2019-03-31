@@ -1,0 +1,110 @@
+1.RGB-->HSL
+
+```
+foreach ($colors as &$color) {
+       $color['hsl'] = hexToHsl($color['color']);
+}
+
+
+/**
+ * Convert a hexadecimal color in RGB
+ * @param string $hex
+ * @return array
+ */
+function hexToHsl($hex){
+    list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+    return rgbToHsl($r, $g, $b);
+}
+
+/**
+ * Convert a RGB color in its HSL value
+ * @param int $r red
+ * @param int $g green
+ * @param int $b blue
+ * @return array
+ */
+function rgbToHsl($r, $g, $b)
+{
+    $r /= 255;
+    $g /= 255;
+    $b /= 255;
+
+    $max = max($r, $g, $b);
+    $min = min($r, $g, $b);
+
+    $h = 0;
+    $l = ($max + $min) / 2;
+    $d = $max - $min;
+
+    if ($d == 0) {
+        $h = $s = 0; // achromatic
+    } else {
+        $s = $d / (1 - abs(2 * $l - 1));
+
+        switch ($max) {
+            case $r:
+                $h = 60 * fmod((($g - $b) / $d), 6);
+                if ($b > $g) {
+                    $h += 360;
+                }
+                break;
+
+            case $g:
+                $h = 60 * (($b - $r) / $d + 2);
+                break;
+
+            case $b:
+                $h = 60 * (($r - $g) / $d + 4);
+                break;
+        }
+    }
+    return array('h' => round($h, 2), 's' => round($s, 2), 'l' => round($l, 2));
+}
+
+
+```
+
+
+2.排序颜色
+
+```
+
+usort($colors, function ($a, $b) {
+    //Compare the hue when they are in the same "range"
+    if(!huesAreinSameInterval($a['hsl']['h'],$b['hsl']['h'])){
+       if ($a['hsl']['h'] < $b['hsl']['h'])
+           return -1;
+       if ($a['hsl']['h'] > $b['hsl']['h'])
+           return 1;
+    }
+    if ($a['hsl']['l'] < $b['hsl']['l'])
+        return 1;
+    if ($a['hsl']['l'] > $b['hsl']['l'])
+        return -1;
+    if ($a['hsl']['s'] < $b['hsl']['s'])
+         return -1;
+    if ($a['hsl']['s'] > $b['hsl']['s'])
+          return 1;
+    return 0;
+ });
+
+/**
+ * Check if two hues are in the same given interval
+ * @param float $hue1
+ * @param float $hue2
+ * @param int $interval
+ * @return bool
+ */
+function huesAreinSameInterval($hue1, $hue2, $interval = 30){
+    return (round(($hue1 / $interval), 0, PHP_ROUND_HALF_DOWN) === round(($hue2 / $interval), 0, PHP_ROUND_HALF_DOWN));
+}
+
+```
+
+3.颜色空间相关
+
+```
+https://blog.csdn.net/qq_34106574/article/details/80733067
+```
+
+
