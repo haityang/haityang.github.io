@@ -1,0 +1,18 @@
+1.[wafer2-startup](https://github.com/tencentyun/wafer2-startup/wiki/%E8%87%AA%E8%A1%8C%E9%83%A8%E7%BD%B2)
+----
+自行部署适用于想将腾讯云 Wafer SDK 和 Demo 部署在自己的服务器
+
+```
+git:
+https://github.com/tencentyun/wafer2-startup.git
+
+```
+
+
+2.[比较好的一篇布署文章](https://www.jianshu.com/p/408ae000fe1f?utm_campaign=hugo&utm_medium=reader_share&utm_content=note&utm_source=weixin-friends)
+----
+
+```
+
+
+```
