@@ -1,0 +1,42 @@
+
+1.在辅助功能中选择“开发人员工具”，勾选“USB调试”，“允许模拟位置”这两项
+
+2.关于本机-->更多信息->概系统览->系统报告->usb->你所连接的device-->供应商ID(Vendor ID)
+或者通过命令行：得到vid
+
+```
+system_profiler SPUSBDataType
+
+```
+
+3.把vid写入配置 
+
+```
+echo "0x2a45" > ~/.android/adb_usb.ini
+
+```
+
+4.重启一下adb sever进程，
+
+```
+adb kill-server
+adb start-server
+
+```
+
+5.查看下挂手机
+
+```
+adb devices
+
+```
+
+
+7.忙乎了半天，发现可能并不需要上面的操作。只是因为数据线坏了。
+
+
+
+
+
+
+

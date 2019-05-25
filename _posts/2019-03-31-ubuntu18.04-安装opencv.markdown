@@ -1,0 +1,22 @@
+1.安装pip3
+
+```
+sudo apt install python3-pip
+```
+
+2.安装libopencv-dev依赖包
+
+```
+sudo apt install libopencv-dev
+
+```
+
+3.安装opencv-python库
+
+```
+sudo pip3 install opencv-python
+```
+
+
+
+Done!
