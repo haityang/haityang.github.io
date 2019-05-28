@@ -31,7 +31,8 @@ https://github.com/tencentyun/wafer2-startup.git
 		* yum install mysql-community-server
 		* systemctl start mysqld
 		* systemctl status mysqld
-		* mysql> CREATE DATABASE IF NOT EXISTS cAuth DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
+		* mysql -u root -p
+		* ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码';		* mysql> CREATE DATABASE IF NOT EXISTS cAuth DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
 2.需申请ssl证书
@@ -134,18 +135,66 @@ https://github.com/tencentyun/wafer2-startup.git
 		    },
 		
 		    // 微信登录态有效期
-		    wxLoginExpires: 7200
-		}
+		    wxLoginExpires: 7200,
+		    serverHost: '',
+    		tunnelServerUrl: '',
+    		tunnelSignatureKey: '',
+    		qcloudAppId: '',
+    		qcloudSecretId: '',
+    		qcloudSecretKey: '',
+    		wxMessageToken: 'weixinmsgtoken',
+    		networkTimeout: 30000		}
 		
 		module.exports = process.env.NODE_ENV === 'local' ? Object.assign({}, CONF, require('./config.local')) : CONF;
 
 
 		```
 
+       c). 安装weapp中的依赖
+		       
+		```
+		* npm config set registry https://registry.npm.taobao.org
+		* npm i pm2 nodemon -g
+		* npm i
+		* node tools/initdb.js
+		* npm run dev
+		* npm start
+		* 
+		
+		```
+		
+		
+6.配置本地server环境：
 
+    1). 安装npm
+        brew install npm
+        
+    2). 替换及重置brew源
+    
+    ```
+    * 替换brew.git: 中科大源
+	cd "$(brew --repo)"
+	git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
 
+	* 替换homebrew-core.git:
+	cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+	git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+	
+	* echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
+	source ~/.bash_profile
+	
+	* 清华源
+	*重置brew.git:
+	cd "$(brew --repo)"
+	git remote set-url origin https://github.com/Homebrew/brew.git
 
-```
-
-
-```
+	重置homebrew-core.git:
+	cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+	git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+    
+    ```
+    
+    3). 安装mysql
+    
+    
+    
