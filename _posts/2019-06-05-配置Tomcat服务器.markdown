@@ -1,0 +1,67 @@
+1. 下载Tomcat  
+2. 改名放到 /usr/local/
+
+```
+$ sudo mv Tomcat /usr/local/
+$ cd /usr/local/Tomcat
+$ sudo chmod 755 ./bin/*.sh 
+$ vi ~/.bash_profile  export PATH="/usr/local/Tomcat/bin:$PATH"
+$ startup.sh //开启tomcat
+访问 http://localhost:8080/
+
+
+
+```
+
+
+3.管理App
+
+* 设置用户名密码：打开tomcat下的conf文件夹下的tomcat-users.xml
+
+```
+<user username="tomcat" password="tomcat" roles="manager-gui"/>
+
+```
+
+4.布署webapp
+
+* 方式1：把文件夹拷到webapp下。访问 http://localhost:8080/example/
+* 方式2：只需把打包的war文件放在webapps目录下。
+* 方式3：Manager Web管理
+
+5.提供https服务
+
+* 创建 keystore 文件
+
+```
+$ keytool -genkey -alias tomcat -keyalg RSA
+```
+
+
+* 配置 Tomcat 以使用 keystore 文件
+
+```
+$ vi ./conf/server.xml
+$ 新建一个<Service name="Catalina2">
+
+新加一个：
+<Connector SSLEnabled="true" acceptCount="100" clientAuth="false"
+    disableUploadTimeout="true" enableLookups="false" maxThreads="25"
+    port="8443" keystoreFile="/Users/loiane/.keystore" keystorePass="password"
+    protocol="org.apache.coyote.http11.Http11NioProtocol" scheme="https"
+    secure="true" sslProtocol="TLS" />
+    
+新加：
+<Engine name="Catalina2" defaultHost="localhost">
+
+配置：
+<Host name="localhost"  appBase="webapps2"
+
+
+```
+
+* 新建目录webapp2,把服务代码放进去
+* 访问 https://localhost:8443/
+
+
+  
