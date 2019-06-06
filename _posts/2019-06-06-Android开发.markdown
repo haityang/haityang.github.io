@@ -1,0 +1,150 @@
+Android Studio 配置
+---
+
+1.配置Android Studio中的gradle
+
+```
+1.首先打开android studio项目 找到项目目录gradle\wrapper\gradle-wrapper.properties这个文件 
+
+内容如下
+Wed Apr 10 15:27:10 PDT 2013
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=http\://services.gradle.org/distributions/gradle-1.9-all.zip
+
+最重要的就是最下面一句，android studio会联网下载符合当前版本的gradle插件，
+而这个网址虽然可以访问但速度实在太慢，所以每次更新需要花很长时间或直接超时
+下面是我尝试后解决问题的办法就是先通过下载工具下载
+http://services.gradle.org/distributions/gradle-1.9-all.zip 这个版本的插件，用下载工具会比较快下载后 
+直接把zip文件，不要解压拷贝到 ~\.gradle\wrapper\dists\gradle-1.9-all\3jdgemv0iv8uqohg3kcp2o88r1 目录下
+
+重新关闭android studio 重新打开 或 直接单击android studio工具栏 Sync Project Gradle Files
+
+android studio就是自动更新插件了，不用下载了
+
+---------------------------------------------
+1. 把 gradle-2.10.zip放到 ~/.gradle/wrapper/dists/gradle-2-all\3jdgemv0iv8uqohg3kcp2o88r1 目录下
+把原有目录下的内容清空
+2. revert掉gradle.properties (gradle/wrapper/gradle-wrapper.properties)
+3. gradle-2.9.zip 网络地址（在android_2 -> android_2 -> CTLibs -> gradle-wrapper.properties中定义)
+http://192.168.19.7:8081/nexus/content/groups/public/org/gradle/distributions/gradle/2.10/gradle-2.10-all.zip
+4.setting里的gradle目录设一下
+
+```
+
+2.同步Android SDK
+
+```
+1.在Android SDK Manager对话框中选择Tools->Options
+	http proxy server: mirrors.neusoft.edu.cn
+	http proxy port 80
+2.勾先 Force https://...
+
+```
+
+2.android studio 编译app
+
+```
+1. git reset --hard
+2. ./gradlew tasks
+3. ./gradlew assembleDebug
+4. open build/outputs/apk/
+
+```
+
+
+3.android studio 快捷键
+
+```
+1.Ctrl+E，可以显示最近编辑的文件列表
+
+2.Shift+Click可以关闭文件
+
+3.Ctrl+[或]可以跳到大括号的开头结尾
+
+4.Ctrl+Shift+Backspace可以跳转到上次编辑的地方
+
+5.Ctrl+F12，可以显示当前文件的结构
+
+6.Ctrl+F7可以查询当前元素在当前文件中的引用，然后按F3可以选择
+
+7.Ctrl+N，可以快速打开类
+
+8.Ctrl+Shift+N，可以快速打开文件
+
+9.Alt+Q可以看到当前方法的声明
+
+10.Ctrl+W可以选择单词继而语句继而行继而函数
+
+11.Alt+F1可以将正在编辑的元素在各个面板中定位
+
+12.Ctrl+P，可以显示参数信息
+
+13.Ctrl+Shift+Insert可以选择剪贴板内容并插入
+
+14.Alt+Insert可以生成构造器/Getter/Setter等
+
+15.Ctrl+Alt+V 可以引入变量。例如把括号内的SQL赋成一个变量
+
+16.Ctrl+Alt+T可以把代码包在一块内，例如try/catch
+
+17.Alt+Up and Alt+Down可在方法间快速移动
+
+18.在一些地方按Alt+Enter可以得到一些Intention Action，例如将”==”改为”equals()”
+
+19.Ctrl+Shift+Alt+N可以快速打开符号
+
+20.Ctrl+Shift+Space在很多时候都能够给出Smart提示
+
+21.Alt+F3可以快速寻找
+
+22.Ctrl+/和Ctrl+Shift+/可以注释代码
+
+23.Ctrl+Alt+B可以跳转到抽象方法的实现
+
+24.Ctrl+O可以选择父类的方法进行重写
+
+25.Ctrl+Q可以看JavaDoc
+
+26.Ctrl+Alt+Space是类名自动完成
+
+27.快速打开类/文件/符号时，可以使用通配符，也可以使用缩写
+
+28.Live Templates! Ctrl+J
+
+29.Ctrl+Shift+F7可以高亮当前元素在当前文件中的使用
+
+30.Ctrl+Alt+Up /Ctrl+Alt+Down可以快速跳转搜索结果
+
+31.Ctrl+Shift+J可以整合两行
+
+32.Alt+F8是计算变量值
+
+33.Ctrl+G 到某一行
+
+34.Ctrl+Shift+F 全局查查
+
+35.Ctrl+F 局部查找
+
+```
+
+
+Android命令
+----
+1.Android安装应用
+
+
+```
+adb devices //列出当前设备
+adb install -r D:\6.15.apk
+
+```
+  
+2.列出Chrome console 命令:
+
+```
+console.dir(console);			//在控制台执行
+
+```
