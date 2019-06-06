@@ -158,162 +158,188 @@ ffmpeg -i clip-2010-12-08\ 08\;43\;23.mov -s sqcif -pix_fmt rgb24  yht.gif
 3. telnet 192.168.1.138 8000           //telnet登录到某台主机
 4. sudo tcpdump -v -i en0 -A  port 80  //显示http信息
 
-=================================
+---------------------
+
 1. TCPDUMP DOWNLOAD: 
 
-To download TCPdump:  ----------
-#apt-get install tcpdump
+* To download TCPdump:  ----------
+
+	apt-get install tcpdump
 
 
-//To see the TCPdump dependencies:--------------
-#apt-cache depends tcpdump	
-tcpdump    
-Depends: libc6    
-Depends: libpcap0.8    
-Depends: libssl0.9.8  
+* To see the TCPdump dependencies:--------------
+
+	apt-cache depends tcpdump	
+	tcpdump    
+	Depends: libc6    
+	Depends: libpcap0.8    
+	Depends: libssl0.9.8  
 
 
-To see the installed TCPdump version:--------------
-#apt-cache policy tcpdump
-tcpdump:    
-Installed: 3.9.4-2ubuntu0.1    
-Candidate: 3.9.4-2ubuntu0.1    
-Version table:   *** 3.9.4-2ubuntu0.1 0             
-500 http://security.ubuntu.com dapper-security/main Packages            
-100 /var/lib/dpkg/status          
-3.9.4-2 0             
-500 http://ch.archive.ubuntu.com dapper/main Packages 
+* To see the installed TCPdump version:--------------
+
+	apt-cache policy tcpdump
+	tcpdump:    
+	Installed: 3.9.4-2ubuntu0.1    
+	Candidate: 3.9.4-2ubuntu0.1    
+	Version table:   *** 3.9.4-2ubuntu0.1 0             
+	500 http://security.ubuntu.com dapper-security/main Packages            
+	100 /var/lib/dpkg/status          
+	3.9.4-2 0             
+	500 http://ch.archive.ubuntu.com dapper/main Packages 
 
 
-2. TCPDUMP SYNTAX--------------
-Syntax:
-Protocol Direction Host(s) Value Logical Operations
-
-Other expression
-Example:
-tcp dst 10.1.1.1 80 and tcp dst 10.2.2.2 3128
-
-Protocol:
-Values: ether, fddi, ip, arp, rarp, decnet, lat, sca, moprc, mopdl, tcp and udp.
-If no protocol is specified, all the protocols are used. 
-
-Direction:
-Values: src, dst, src and dst, src or dst
-If no source or destination is specified, the "src or dst" keywords are applied. 
-For example, "host 10.2.2.2" is equivalent to "src or dst host 10.2.2.2".
-
-Host(s):
-Values: net, port, host, portrange.
-If no host(s) is specified, the "host" keyword is used.
-For example, "src 10.1.1.1" is equivalent to "src host 10.1.1.1". 
-
-Logical Operations:
-Values: not, and, or.Negation ("not") has highest precedence. 
-Alternation ("or") and concatenation ("and") have equal precedence and associate left to right.
-For example,"not tcp port 3128 and tcp port 23" is equivalent to "(not tcp port 3128) and tcp port 23".
-"not tcp port 3128 and tcp port 23" is NOT equivalent to "not (tcp port 3128 and tcp port 23)".
-
-
-3. TCPDUMP USE ----------
-
-To display the Standard TCPdump output:--------------
-#tcpdump
-tcpdump: verbose output suppressed, use -v or -vv for full protocol decode listening on eth0, 
-link-type EN10MB (Ethernet), capture size 96 bytes192.168.1.2.1034: UDP, length 36  
+* TCPDUMP SYNTAX--------------
+	Syntax:
+	Protocol Direction Host(s) Value Logical Operations
+	
+	Other expression
+	Example:
+	tcp dst 10.1.1.1 80 and tcp dst 10.2.2.2 3128
+	
+	Protocol:
+	Values: ether, fddi, ip, arp, rarp, decnet, lat, sca, moprc, mopdl, tcp and udp.
+	If no protocol is specified, all the protocols are used. 
+	
+	Direction:
+	Values: src, dst, src and dst, src or dst
+	If no source or destination is specified, the "src or dst" keywords are applied. 
+	For example, "host 10.2.2.2" is equivalent to "src or dst host 10.2.2.2".
+	
+	Host(s):
+	Values: net, port, host, portrange.
+	If no host(s) is specified, the "host" keyword is used.
+	For example, "src 10.1.1.1" is equivalent to "src host 10.1.1.1". 
+	
+	Logical Operations:
+	Values: not, and, or.Negation ("not") has highest precedence. 
+	Alternation ("or") and concatenation ("and") have equal precedence and associate left to right.
+	For example,"not tcp port 3128 and tcp port 23" is equivalent to "(not tcp port 3128) and tcp port 23".
+	"not tcp port 3128 and tcp port 23" is NOT equivalent to "not (tcp port 3128 and tcp port 23)".
 
 
-To display the verbose output:--------------
-#tcpdump -v
-tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 96 bytes 27014: UDP, length 53  
+TCPDUMP USE 
+----------
+
+* To display the Standard TCPdump output:--------------
+
+####tcpdump
+	tcpdump: verbose output suppressed, use -v or -vv for full protocol decode listening on eth0, 
+	link-type EN10MB (Ethernet), capture size 96 bytes192.168.1.2.1034: UDP, length 36  
 
 
-Network interfaces available for the capture:--------------
-#tcpdump -D
-1.eth0 2.any (Pseudo-device that captures on all interfaces) 3.lo
+* To display the verbose output:--------------
+####tcpdump -v
+	tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 96 bytes 27014: UDP, length 53  
 
 
-
-To display numerical addresses rather than symbolic (DNS) addresses:--------------
-#tcpdump -n
-tcpdump: verbose output suppressed, use -v or -vv for full protocol decode listening on eth0, link-type EN10MB (Ethernet), capture size 96 bytes  
-
-
-To display the quick output:--------------
-#tcpdump -q
-tcpdump: verbose output suppressed, use -v or -vv for full protocol decode listening on eth0, link-type EN10MB (Ethernet), capture size 96 bytes  
+* Network interfaces available for the capture:--------------
+####tcpdump -D
+	1.eth0 2.any (Pseudo-device that captures on all interfaces) 3.lo
 
 
 
-Capture the traffic of a particular interface:--------------
-#tcpdump -i eth0
+* To display numerical addresses rather than symbolic (DNS) addresses:--------------
+####tcpdump -n
+	tcpdump: verbose output suppressed, use -v or -vv for full protocol decode listening on eth0, link-type EN10MB (Ethernet), capture size 96 bytes  
+
+
+* To display the quick output:--------------
+####tcpdump -q
+	tcpdump: verbose output suppressed, use -v or -vv for full protocol decode listening on eth0, link-type EN10MB (Ethernet), capture size 96 bytes  
 
 
 
- To capture the UDP traffic:--------------
-#tcpdump udp
+* Capture the traffic of a particular interface:--------------
+####tcpdump -i eth0
 
 
- To capture the TCP port 80 traffic:--------------
-#tcpdump port http
+
+ * To capture the UDP traffic:--------------
+####tcpdump udp
 
 
- To capture the traffic from a filter stored in a file:--------------
-#tcpdump -F file_name
+ * To capture the TCP port 80 traffic:--------------
+####tcpdump port http
 
 
-To create a file where the filter is configured (here the TCP 80 port)--------------
-#vim file_name
-port 80
+ * To capture the traffic from a filter stored in a file:--------------
+####tcpdump -F file_name
 
 
- To stop the capture after 20 packets: --------------
-#tcpdump -c 20
+
+* To stop the capture after 20 packets: --------------
+
+####tcpdump -c 20
 
 
-To send the capture output in a file instead of directly on the screen:--------------
-#tcpdump -w capture.log
+* To send the capture output in a file instead of directly on the screen:--------------
+
+####tcpdump -w capture.log
 
 
- To read a capture file:--------------
-#tcpdump -r capture.log
+* To read a capture file:--------------
+ 
+####tcpdump -r capture.log
 
 
-reading from file capture.log, link-type EN10MB (Ethernet)-------------- 
-#tcpdump host www.openmaniak.com
+* reading from file capture.log, link-type EN10MB (Ethernet)--------------
 
 
- To display the FTP packets coming from 192.168.1.100 to 192.168.1.2: --------------
-#tcpdump src 192.168.1.100 and dst 192.168.1.2 and port ftp
+####tcpdump host www.openmaniak.com
 
 
- To display the packets content: --------------
-#tcpdump -A
+ * To display the FTP packets coming from 192.168.1.100 to 192.168.1.2: --------------
 
---------------------------------------------------------
+####tcpdump src 192.168.1.100 and dst 192.168.1.2 and port ftp
+
+
+* To display the packets content: --------------
+
+####tcpdump -A
+
+-------------------------------
+
 //the -A flag makes it display the packets' contents as text
 //-s0 makes it capture entire packets not just the headers
+
+```
 sudo tcpdump -v -A -s0 -ien0  src 10.2.6.87 or dst 10.2.6.87
 sudo tcpdump -v -A -i en0 src 192.168.1.198 and dst 192.168.1.179 and port 8000//监视回来的http包的详细信息
 sudo tcpdump -w a.log  -i en0 src 10.2.6.87 or dst 10.2.6.87 //存日志
 //转UTF8显示, 
 sudo tcpdump -vv -A -r a.log | iconv -c -f utf-8 -t cp1251 >a 
-==========================
+
+```
+
+
+-----
+
+计算代码行数
 wc -c a.txt   //计算字符数
-wc -l a.txt    //计算代码行数   20628 total
-=========================
+wc -l a.txt    //   20628 total
+
+-------
+
+
 net use x: \\vboxsvr\sharename          mac host ,windows guest下,windows端用命令挂载共享文件夹.
 
-====================================================
+------
+
 awk数值计算
 echo | awk '{print 19+7}'
-==========================================================
+
+-----
+
 –expr用法实例讲解
-==================================================
+
 Gnuplot 是一种免费分发的绘图工具
 gnuplot   //打开plot
 h          //帮助
 plot sin(x)       //画曲线
 reset              //重置
+
+------
 
 ==================================================
 unix 数学计算命令
@@ -326,69 +352,11 @@ unix 数学计算命令
 
 ==================================================
 文件共享服务器:
-#sudo python -m SimpleHTTPServer 10000
+####sudo python -m SimpleHTTPServer 10000
 
 ==============================================
 更新路径数据库的
-#sudo /usr/libexec/locate.updatedb
-
-=====================================
-在Mac OS X 10.6(Snow Leopard)中设置PATH环境变量
-解决办法:
-  sudo vim /etc/paths将路径添加到里面去， 一行一个路径
-注意：即便添加成功，未必运行成功；在制定路径下得脚本必须具是executable, 否则就会被在搜索时被忽略。
-sudo chmod +x XXX
-而在Ubuntu下，则只需要修改/etc/.profile或者 ~/.profile或~/.bashrc等修改
-参考：Mac OS X Tip: Setting PATH environment variables
-
-============================
-TranslateIt 词典目录存放处
-~/Library/Application Support/TranslateIt!
-
-
-============================
-1、为CA创建一个RSA私钥
-openssl genrsa -des3 -out ca.key 1024
-
-2、利用CA的RSA私钥创建一个自签名的CA证书
-openssl req -new -x509 -days 3650 -key ca.key -out ca.crt -config /opt/local/etc/openssl/openssl.cnf
-
-3、.pfx格式转成PEM格式
-openssl pkcs12 -in test.pfx -out test.pem -nodes
-
-4..cer到.pem的转换
-openssl x509 -in test.cer -out test.pem
-
-5.要使用64位编码打包二进制文件成文本文件，输入
-openssl base64 -e -in test -out t.bin
-
-6.要打开64位编码的文本文件
-openssl base64 -d -in t.bin -out a.txt
-
-7.对短字符串进行编码
-echo "The Linux Journal" | openssl base64 
-
-8.解码：
-echo "VGhlIExpbnV4IEpvdXJuYWwK" | openssl base64 -d
-
-9.sha1摘要
-openssl sha1 filename 
-
-
-10.md5摘要
-openssl md5 filename
-
-11.aes 加密
-openssl enc -aes-128-cbc -in test -out filename.aes-128-cbc
-
-12.aes解密
-openssl enc -d -aes-128-cbc -in filename.aes-128-cbc > filename
-
-13.OpenSSL能创建非常强壮的随机密语： 
-openssl rand 15 -base64 
-
-14.生成一个影子密码。（shadow password）密码的摘要
-openssl passwd -1 
+####sudo /usr/libexec/locate.updatedb
 
 
 =============================================
@@ -412,8 +380,9 @@ ls -l *.jpg|awk '{m=$9; gsub(/.jpg/,"-ipd.jpg",$9);print "mv "m " "$9}'|sh
 sed '/ABCD/d' file1 >file2
 
 
-=============================================
-vc6 配置 OpenGL：       
+
+vc6 配置 OpenGL：    
+-----   
 
 第一步：选择一个编译环境      
 第二步：安装GLUT工具包    
@@ -470,8 +439,11 @@ int main(int argc, char* argv[])
 ```
 
 
-制作ipa文件
 
+制作ipa文件
+-----
+
+```
 1: 在桌面上创建文件夹working，打开 working文件夹，并在里面新建文件夹Payload（注意大小写）
 2: 复制刚才创建好的 iTunesArtwork(用一个小的png文件修改而来) 件到working文件夹里，同时复制XXXX.app文件夹到Payload文件夹里
 3: 用xcode打开 XXXX.app目录里的Info.plist文件, 在段的最后加入下面的一行键值对,
@@ -480,11 +452,64 @@ SignerIdentity 					Apple iPhone OS Application Signing
 5: 重命名压缩文件为 XXXX.ipa
 6: 双击ipa文件，并导入iTunes
 
+```
+
+
 http://dns.v2ex.com
  ~/Library/Preferences/com.apple.Terminal.plist
 banner jacky
 
 ====================================
+
+OpenSSL
+------
+
+```
+
+1、为CA创建一个RSA私钥
+openssl genrsa -des3 -out ca.key 1024
+
+2、利用CA的RSA私钥创建一个自签名的CA证书
+openssl req -new -x509 -days 3650 -key ca.key -out ca.crt -config /opt/local/etc/openssl/openssl.cnf
+
+3、.pfx格式转成PEM格式
+openssl pkcs12 -in test.pfx -out test.pem -nodes
+
+4..cer到.pem的转换
+openssl x509 -in test.cer -out test.pem
+
+5.要使用64位编码打包二进制文件成文本文件，输入
+openssl base64 -e -in test -out t.bin
+
+6.要打开64位编码的文本文件
+openssl base64 -d -in t.bin -out a.txt
+
+7.对短字符串进行编码
+echo "The Linux Journal" | openssl base64 
+
+8.解码：
+echo "VGhlIExpbnV4IEpvdXJuYWwK" | openssl base64 -d
+
+9.sha1摘要
+openssl sha1 filename 
+
+
+10.md5摘要
+openssl md5 filename
+
+11.aes 加密
+openssl enc -aes-128-cbc -in test -out filename.aes-128-cbc
+
+12.aes解密
+openssl enc -d -aes-128-cbc -in filename.aes-128-cbc > filename
+
+13.OpenSSL能创建非常强壮的随机密语： 
+openssl rand 15 -base64 
+
+14.生成一个影子密码。（shadow password）密码的摘要
+openssl passwd -1 
+
+
 
 openssl加解密
 1. 使用aes-128-cbc算法加密文件：
@@ -524,36 +549,16 @@ cat in.log | openssl enc -base64 -d |openssl aes-128-cbc -d
 -rc2-cbc -rc2-cfb -rc2-ecb
 -rc2-ofb -rc4 -rc4-40
 
-=======================================
-Live Bytes
-The Living bytes, or Net bytes is how much memory your application is using at the time you select in the timeline. That will include leaked memory, since leaked memory is never deallocated.
+```
 
-#Living
-Living is how many allocations of a certain size/object type happened (and are still allocated). This is very useful when looking for leaks. For example, if you repetitively perform an action (like coming in an out of a modal view controller), and you see that #Living of an object grows by the same amount each time, then you're probably leaking those objects. You can then confirm by drilling down and seeing the exact line of code that is allocating the objects, and even see the time index each one was created.
-
-Overall Bytes
-Overall bytes includes memory that has been released. It's useful to track that number for performance optimization purposes, but not if you're just trying to see your current memory footprint or look for leaks.
-
-#Transitory
 
 
 ====================================
 sudo /Developer/Library/uninstall-devtools –mode=all
 
 
-====================================
 
-安装旧版本的sdk
-For those who wan't to avoid upgrading Xcode, do the following:
 
-Download the Xcode version dmg containing the iOS SDK you need
-Make sure Xcode is not running
-Double click the downloaded Xcode dmg, right click the Xcode.app icon, choose "Show Package Content"
-Copy Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/ to /Developer/Platforms/iPhoneOS.platform/Developer/SDKs (on you local machine)
-Copy Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/ to /Developer/Platforms/iPhoneSimulator.platform/Developer (on you local machine)
-Copy Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/ to /Developer/Platforms/iPhoneOS.platform/DeviceSupport (on you local machine)
-Right click Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/, choose "Make Alias", rename the alias to "Latest"
-Start Xcode
 
 ====================================
 4. bzip -d *.bz
@@ -568,7 +573,13 @@ unzip:
 2. tar -czvf *.tar.gz direcroty/
 
 ================================== 
+
+
 vi command: 
+----
+
+```
+
 1. u         --undo 
 
 2. ctrl-r    --redo 
@@ -688,49 +699,14 @@ vi command:
 61. < 2j        --向左移下面两行 
 62. :set fileformat=unix
 
-=========================================
-config vi     自动完成功能
-1. download omnicppcomplete-0.41.zip: http://www.vim.org/scripts/script.php?script_id=1520
-2. Unzip the plugin to ~/.vim (unix) or %HOMEPATH%\vimfiles (windows) 
-3. Run Vim and type the following command: :helptags $HOME/.vim/doc   (or :helptags $HOME/vimfiles/doc )
-5. Type :h omnicppcomplete     and please read the installation paragraph. (in vim)
-6. in your own document type: ctags -R --c++-kinds=+p --fields=+iaS --extra=+q 
-7.finish.
+```
 
-=======================================
-vi 左栏目录功能：
-http://www.vim.org/scripts/script.php?script_id=1658
-1.安装nerd Unzip the archive into your ~/.vim directory. 
-That should put NERD_tree.vim in ~/.vim/plugin and NERD_tree.txt in ~/.vim/doc. 
-2.f5显示/隐藏nerd
-3.用法：
-:NERDTree 打开NERDTree插件
-:q 退出当前窗口
-o.......打开文件或目录或书签.
-O.......打开所选目录下的所有子目录
-x.......关闭当前节点的目录X.......关闭所选目录下的所有子目录P.......跳到当前的根目录(什么是当前的根目录? 自己实际操作就明白了)p.......跳到父目录r......刷新当前目录
-m……打开命令菜单,可以创建文件/移动目录等
-i.......使用一个水平分割窗口来打开选中的文件. s.......使用一个垂直窗口来打开选中的文件 
-ctr+w+h  切到左侧窗口，ctrl+w+l 切到右侧窗口，多次 ctrl+w左右切换。
-...更多请查看官方文档
-=======================================
-vi 快速补全功能 YouCompleteMe
-mac下快速安装
 
-1.在.vimrc中添加下列代码
-Bundle 'Valloric/YouCompleteMe'
-
-保存退出后打开vim，在正常模式下输入
-:BundleInstall
-等待vundle将YouCompleteMe安装完成
-
-而后进行编译安装：
-1cd ~/.vim/bundle/YouCompleteMe
-2./install --clang-completer
-
-=======================================
 
 ubuntu配置：
+----
+
+```
 
 1.配置g++:sudo apt-get install build-essential
 
@@ -746,22 +722,25 @@ sudo apt-get install devhelp
 
 sudo apt-get install glade-gnome glade-common glade-doc
 
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 1. ls -l        --display property
+```
 
+
+linux权限管理
+----
+
+```
+1. ls -l        --display property
 
 2. chgrp ting cmpc -Rf    --change group to ting.
 
-
 3. chown ting cmpc -Rf    --change author to ting
-
 
 3. chmod u[g|o|a] +[-|=] r[w|x] directory    --user, group, others, all; +add, -remove, =set; read, write, execute, 
 
-
 4. chmod 777 cmpc        --owner = 4+2+1; group = 4+2+1; thers = 4+2+1;
 
-
 5. chmod o-rwx cmpc -Rf        --others remove read,write, and execute.
+```
 
 ==============================================
 
@@ -823,46 +802,6 @@ vim ifcfg-eth0
 
 ---------------
 
-# Intel Corporation 82801G (ICH7 Family) LAN Controller
-
-DEVICE=eth0
-
-BOOTPROTO=dhcp
-
-HWADDR=00:19:D1:5D:E3:85
-
-ONBOOT=yes
-
-DHCP_HOSTNAME=alfred
-
-NM_CONTROLLED=no
-
-TYPE=Ethernet
-
-USERCTL=no
-
-PEERDNS=yes
-
-IPV6INIT=no
-
-MTU=1500
-
-----------------
-
-ifconfig
-
-00:1D:0F:1C:32:1F
-
-vim /etc/resolv.conf    //config the DNS
-
-----------------
-
-nameserver 202.106.46.151
-
-nameserver 202.106.195.68
-
-----------------
-
 =================================================================
 
 1.ldd fx            //查看应用软件依赖库
@@ -878,57 +817,6 @@ nameserver 202.106.195.68
 2. kill -9 进程号
 
 
-============================================================
-```
-
-[fedora]
-
-name=Fedora $releasever - $basearch
-
-failovermethod=priority
-
-baseurl=http://mirrors.kernel.org/fedora/releases/$releasever/Everything/$basearch/os/
-#mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=$basearch
-enabled=1
-
-gpgcheck=1
-
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora file:///etc/pki/rpm-gpg/RPM-GPG-KEY
-
-
-[fedora-debuginfo]
-
-name=Fedora $releasever - $basearch - Debug
-
-failovermethod=priority
-
-#baseurl=http://download.fedora.redhat.com/pub/fedora/linux/releases/$releasever/Everything/$basearch/debug/
-mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-debug-$releasever&arch=$basearch
-enabled=0
-
-gpgcheck=1
-
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora file:///etc/pki/rpm-gpg/RPM-GPG-KEY
-
-
-[fedora-source]
-
-name=Fedora $releasever - Source
-
-failovermethod=priorit
-
-#baseurl=http://download.fedora.redhat.com/pub/fedora/linux/releases/$releasever/Everything/source/SRPMS/
-mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-source-$releasever&arch=$basearch
-enabled=0
-
-gpgcheck=1
-
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora file:///etc/pki/rpm-gpg/RPM-GPG-KEY
-```
-
-=====================================================
-
- ./makeself.sh ./cmpc_install/ cmpcsetup.sh "Install CMPC PDF Reader" ./Install.sh
 
 ====================================================
 
@@ -943,44 +831,11 @@ smba://192.168.0.210
 
 uname -r
 
-=========================
-
-/etc/sysconfig/selinux
-
-/usr/sbin/sestatus
-
-/etc/init.d/vmware-mgmt stop
-
-/etc/init.d/vmware-mgmt start
-
-chkconfig --list | grep xinetd
-
-chkconfig --list | grep vmware
 
 
 ======================================
  afconvert -f caff -d LEI16@44100 -c 1 in.wav out.caf  //convert wav to caf
  
-
-========================================
-Man pages for /usr/X11R6/bin/
-
-    * xfontsel - point and click selection of X11 font names
-    * showfont - font dumper for X font server
-    * xlsfonts - List all the fonts on your system
-    * fslsfonts - List fonts served by X font server
-    * mkfontdir - create an index of X font files in a directory
-    * fsinfo - X font server information utility
-    * fstobdf - generate BDF font from X font server
-    * xfd - display all the characters in an X font
-    * xfs - X font server
-    * chkfontpath - simple interface for adding, removing, and listing directories in the X font server's path
-    * fc-cache - create an index of FreeType font files in a directory
-
-Other:
-
-    * virmf - Metafont, a language for font and logo design
-    * consolechars - load EGA/VGA console screen font, screen-font map, and/or application-charset map
 
 ==========================================
 fc-list - list available fonts 
@@ -993,11 +848,13 @@ Type the following two command to install both ssh client and server:
 
 ```
 
-================================================
+挂载
+----
 
-1.挂载光盘镜像:
 
 ```
+1.挂载光盘镜像:
+
 #mount  -t  iso9660 -o loop  /tmp/cd.iso  /mnt/cdrom;
 
 2.挂载光盘:
@@ -1027,44 +884,46 @@ Type the following two command to install both ssh client and server:
 
 ```
 
-=============================================================================
-Could not open /dev/vmmon: No such file or directory. Please make sure that the kernel module 'vmmon' is loaded:
-please run: /etc/init.d/vmware start
 
-============================================================================
+
 sqlite:
+----
+
 sqliteman
 select * from tarea where Attr="省/直辖市";
 select * from tarea where Attr="地级市" and AreaCode like "150___";
 select * from tarea where Attr="县" and AreaCode like "1502__";
-============================================================================
-Yes, you can mix native iOS features within a single 'view'. If you're looking to insert a native iOS picker into the web view, that's not really possible. As nhahtdh mentioned, any native iOS views you add will be placed on top of your HTML5 UIWebView. To perform tasks like this, you'll need to master communication via Javascript. See frameworks like https://github.com/diy/conduit for techniques on how to easily communicate between ObjC and Javascript to pass values back and forth between native and HTML.
 
-It is possible to perform navigations from HTML pages (when clicking on links, for example), by setting up your iOS app to watch for specific URL requests, and perform some action based on them. I've used the NSURLCache for this purpose. So, if you wanted a link in your HTML to trigger a load of a xib file, you can watch for that URL to be requested via the NSURLCache, and load your xib when you see it. This link helped me master this technique.
 
-It is my understanding that all of the hybrid iOS + HTML frameworks use this general technique of establishing a REST-like set of URL requests that can be parsed out by a NSURLCache-like system and trigger native events based on those URLs. While using an existing framework may save you some time, it's not that difficult to implement yourself for more simple functionality. The big frameworks might help you along with more advanced caching of the HTML resources, however.
-
-============================================================================
+========================================
 简单http服务器:
 $ cd /home/somedir
 $ python -m SimpleHTTPServer
 
-============================================================================
+=====================================================
 安装pip   python包管理
 https://pip.pypa.io/en/latest/installing.html
 1.download get-pip.py. 
 2.python get-pip.py
 更新pip
 pip install -U pip
-============================================================================
+
+
 python学习
+----
+
+```
 1.python3 setup.py sdist  //构建一个发布文件
 2.sudo python3 setup.py install //将发布安装到本地副本中
 3.python3 setup.py register //注册
 4.python3 setup.py sdist upload //上传
-============================================================================
-Homebrew安装
 
+```
+
+Homebrew安装
+----
+
+```
 Get Command Line Tools
 xcode-select --install
 
@@ -1132,8 +991,9 @@ rm -rf $(brew --cache)
 更多详细的用法说明可以在终端输入"man brew"查看。
 PS：Mac 下类似 Homebrew 的软件管理工具还有 MacPorts、Fink。
 
+```
 
-============================================================================
+=============================================
 代理抓包
 Charles
 代理端口：5389 //需要同时在iphone，charles中设置。
@@ -1145,7 +1005,7 @@ ip为本机ip,用户名密码为自己的上网用户名密码
 
 
 
-============================================================================
+==========================================================
 fink
 1. fink install nedit		//install
 2. dpkg --remove			//remove
@@ -1153,7 +1013,6 @@ fink
 4. fink list            - list all packages
 5. fink list bash       - check if bash is available and what version
 6. fink list "gnome*"   - list all packages that start with 'gnome'
----------------
 7. /sw/bin/fink list objdump
 
 
@@ -1197,23 +1056,7 @@ $lldb MyApp.app
 (lldb) image lookup -v --address 0x00085f3c
 
 -----------
-atos -o Debug-iphoneos/CTRIP_WIRELESS.app.dSYM/Contents/Resources/DWARF/CTRIP_WIRELESS -l 0x02231160 0x0223a1e0 0x0223a134 0x02239ea2
-
------------
-n case someone else is looking for this feature, here is how: After opening the devices, view log, select all logs, and drag crash file from Finder into tree list, it will import itself and re-symbol itself!
-
------------
-first right click on xarchieve file-> show in finder
-again right click on xarchieve file-> show package contents
-Then open folder products->applications, here you get the your application file
-Now, Drag and drop this one to itunes store's app directory(find apps drop down menu at right top corner of itunes store). This will automatically converts archieve file to ipa file.
-then again right click on it and ->show in finder, this will show your ipa file. Now you can give this one to any user
-
-Using iTunes 11.4 under OS X Mavericks, this solution didn't seem to work for me. What did work was dragging the application file (step #4 from above) onto the Library section of iTunes, located on the top left (where Music, Movies, TV Shows, etc. are listed). From there, it created the .ipa file and, since it was the first app I'd added to iTunes this way, also created an Apps section under my iTunes Library. From there, you can right-click on the app and select Show in Finder to directly navigate to it.
-
-
-
-
+atos -o Debug-iphoneos/demo.app.dSYM/Contents/Resources/DWARF/demo -l 0x02231160 0x0223a1e0 0x0223a134 0x02239ea2
 
 
 -------------------------------------
@@ -1227,38 +1070,20 @@ segue传值
     }
 }
 
--------------------------------------
+pragma 注释
+----------------------------
+
+```
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic pop
 
+```
 
-==========================================================================
-ubuntu设置网络
-sudo vi /etc/network/interfaces
--------------
-    auto lo
-    iface lo inet loopback
-    
-    auto eth0
-    iface eth0 inet static
-    
-    address 172.16.157.213
-    netmask 255.255.255.0
-    gateway 172.16.157.251
---------------
-sudo vi /etc/resolv.conf
---------------
-nameserver 192.168.102.20
-nameserver 192.168.102.21
-nameserver 192.168.102.22
-nameserver 192.168.102.24
-nameserver 192.168.102.25
---------------
 
-sudo /etc/init.d/networking restart
 
-==========================================================================
+=======================================================
 Intellij
 1.全局查找： Ctrl+Shift+F
 2.查找文件:  Ctrl+Shift+N
@@ -1267,33 +1092,15 @@ Intellij
     netmask 255.255.255.0
     gateway 172.16.157.251
     
-一台机器可以分配两个ip
 
-flight_detail
-==========================================================================
+
 windows下查看端口占用情况
 netstat -ano | findstr "80" （注80是你想要看查看的端口号）
 
-==========================================================================
-公共已经提供新的打包证书和打包脚本，可支持最新推送证书，现在该脚本基础上做了一些修改以方便使用。
-使用方法如下：
-1.       解压附件，导入所有证书和Provisioning Profile文件
-2.       将buildIOS.sh和provision_replace.py复制到TRUNK\CTRIP_WIRELESS目录下。建议不要用日常开发的工程，而是重新checkOut一份新的，因为该脚本会更改很多信息且不能上传。
-3.       更新工程到最新，执行脚本./buildIOS.sh 6.0 SIT4 t  其中参数一是主版本 参数二是SIT版本 参数三是包类型（t 测试 b 堡垒 p 生产）。
-4.       生成的IPA文件位于TRUNK\CTRIP_WIRELESS\Build目录下，命名规则：CTRIP_WIRELESS_主版本_包类型(测试包为空)_for_SIT版本.ipa
-生成的DSYM文件位于TRUNK\CTRIP_WIRELESS\Build\Build\Products\Release-iphoneos目录下
 
-==========================================================================
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-    __dataSource.deviceToken = @"";
-#if TARGET_IPHONE_SIMULATOR
-    __dataSource.deviceToken = @"e65712b697c7bef3596fb1dbf6e9a4ba89f92a9d";
-#endif
-}
-==========================================================================
 删除crash log:
+----
+
 Not saving crash log because we have reached the limit for logs to store on disk. 
 Sync or otherwise clear logs from /var/mobile/Library/Logs/CrashReporter to save new log
 
@@ -1302,60 +1109,15 @@ On your dev machine you should look in:
 /Users/%username%/Library/Logs/CrashReporter/MobileDevice/%devicename%
 Move all reports to the Trash and then sync your device with iTunes. That should remove the logs from the device.
 
-==========================================================================
+=====================================================
 lldb:
 p (char*) [requestHeadData bytes]		//输出 NSData 的内容
--------------
-sotp:
-request head
-"1 120113127595888         1212500380000150454060F81DAD2A76        601.000 8890            100011021419319123539       14D2E1BF9E7E298C0DE47056247388B09153B55DD4F2CEFFAA7C2989F2AAC646"
-
-1( encodingCode ,2) 
-12(systemCode_ ,2) 
-01(__language ,2) 
-13127595888(userID_, 20) 
-12125003800001504540(getClientID, 20) 
-60F81DAD2A76(clientIDCreateByClient_ ,20) 
-601.000(version_, 8) 
-8890(sourceID_, 8 ) 
-空格 (getValidExtSourceStr, 8)
-10001102(businessCode, 8) 
-1419319123539(serialNumber, 20) 
-14D2E1BF9E7E298C0DE47056247388B09153B55DD4F2CEFFAA7C2989F2AAC646(getLoginTikcet, 64)
--------------
-prefix of request
-"272     0   5 "
-272 (lenght 全包长,8)
-0 (code, 4)	//0 : 无处理 1 : 压缩  2 既压缩又加密
-5 (版本升级为5, 2)
 
 -------------
-JDK 在mac中的安装目录
-/usr/bin/java
-/System/Libray/Frameworks/JavaVM.Framwork/Versions
 
-在MAC中设置JAVA_HOME环境变量 
-环境变量要再etc目录下的profile文件中配置，这样才是永久的配置。 
+安装express
+------------------
 
-vi /etc/profile 
-输入如下内容： 
-JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home 
-export JAVA_HOME 
-
-保存。然后重启或者注销，使环境变量的配置起作用
-
-----------------------------------------------------
-autolayout警告： Automatic Preferred Max Layout Width is not available on iOS versions prior to 8.0
-attribute unavailable
-1.relative to margin
-2.Automatic Preferred Max Layout Width  
-3.Baseline
-
-----------------------------------------------------
-我们的打包脚本在哪里加个宏，可以把DEBUG打开呢？我想让TLog输出到控制台，不知道怎么搞
-configurationName="Debug"
-
-----------------------------------------------------
  /usr/local/lib/node_modules/express
  sudo npm install -g express //安装express
  sudo npm install -g express-generator //express 的命令行管理
@@ -1379,7 +1141,9 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 ----------------------------------------------------
+
 安装mongodb
+-----
 brew install mongodb		//安装
 sudo mkdir /data
 sudo mkdir /data/db
@@ -1387,34 +1151,10 @@ sudo chown -R yht  /data	//使当前用户对/data有操作权限
 mongod		//开启mongodb server
 mongo		//进入mongodb client
 
-----------------------------------------
-数组
-排序：
-[array1 sortUsingFunction:compareFun context:nil]; 
-NSInteger compareFun(id arg1, id arg2, void *arg3)
-{
-    FlightInlandTagDetailInformationModel *mod1 = (FlightInlandTagDetailInformationModel*)arg1;
-    FlightInlandTagDetailInformationModel *mod2 = (FlightInlandTagDetailInformationModel*)arg2;
-    if (mod1.weight < mod2.weight) {
-        return -1L;
-    }else if (mod1.weight > mod2.weight) {
-        return 1L;
-    }else {
-        return 0;
-    }
-}
 
----------------
-去重：
-NSString *dupkey = [NSString stringWithFormat:@"%d_%d", model.tagType, subModel.subTagType];//去重
-if (![set containsObject:dupkey]) {
-	[array1 addObject:subModel];
-	[set addObject:dupkey];
-}
-
-
-===============================================
 纹理压缩
+-----
+
 https://developer.apple.com/library/ios/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/TextureTool/TextureTool.html
 Xcode texturetool
 cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/
@@ -1451,15 +1191,15 @@ cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Develo
 =========================================
 //crash log 符号化
 find . -name symbolicatecrash  //在Xcode目录里找
-dwarfdump --uuid CTRIP_WIRELESS.app.dSYM
-dwarfdump --uuid CTRIP_WIRELESS.app	/携程旅行
+dwarfdump --uuid demo.app.dSYM
+dwarfdump --uuid demo.app	/携程旅行
 export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer" //export DEVELOPER_DIR=`xcode-select --print-path`
-/Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash -v a.crash CTRIP_WIRELESS.app.dSYM/ 2 > a.log
+/Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash -v a.crash demo.app.dSYM/ 2 > a.log
 
 
 
 =========================================
-配置apach php
+配置apache php
 1. vi /etc/apache2/httpd.conf 
 LoadModule php5_module libexec/apache2/libphp5.so   //打开
 2.sudo apachectl restart  //生效
@@ -1514,13 +1254,13 @@ phpinfo();
 	3.将Build Settings中的Ohter Linker Flags设为-ObjC -lz -framework Reveal
 	
 		
-============================================================================
+==========================================
 从1970年的时间换算：
 date -r 526276800 +%m/%d/%y						//秒到日期
 date  "+%s"  									//当前日期到秒
 date -j -f "%Y%m%d %H%M" "20130122 1455" +%s	//特定日期到秒
 
-============================================================================
+==============================================
 clang的编译， 用于分析block
 clang tb.m -o t   //从源文件生成可执行文件
 clang -rewrite-objc tb.m	//生成.m对应的cpp文件
@@ -1532,12 +1272,14 @@ clang -rewrite-objc tb.m	//生成.m对应的cpp文件
     NSLog(@"zoneArrs:%@",zoneArrs);
     
 可以用该名来构建时区：NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:names];
+
 -------------------------------
-============================================================================
+
 sdcv hello -0  //stardict 
 
 
-============================================================================
+==================================================
+
 1 # 将文件下载到本地并命名为mygettext.html
 2 curl -o mygettext.html http://www.gnu.org/software/gettext/manual/gettext.html
 3 
@@ -1549,10 +1291,10 @@ sdcv hello -0  //stardict
 
 -------------------------------
 du -sh * 能罗列出来文件夹都有多大
-============================================================================
-enabledRemoteNotificationTypes	//判断push开关状态
-------
-============================================================================
+
+react-native相关
+----
+
 1.npm安装，使用镜像
 npm --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist install microtime
 2.安装cnpm
@@ -1570,6 +1312,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 react-native:
 react-native init AwesomeProject
 cnpm update //更新当前依赖
+
 -------------------------------
 查看当前运行端口：
 lsof -Pnl +M -i4
@@ -1577,23 +1320,17 @@ lsof -Pnl +M -i4
 -------------------------------
 打码兔
 print(u'\u54c8\u54c8')
+
 --------------------------------
 defaults write com.apple.CrashReporter DialogType none
 
 --------------------------------
-运行express工程：
-  run the app:
-     $ DEBUG=microblog:* ./bin/www
 
--------------------------------
-npm WARN EPEERINVALID mongodb-core@1.2.32 requires a peer of kerberos@~0.0 but none was installed.
- npm install --save kerberos mongodb    
- 
-============================================================================
+
 在模拟器中装一个app，只限（i386）的包 simulator
-/Applications/Xcode.app/Contents/usr/bin/simctl  install booted CTRIP_WIRELESS.app
+/Applications/Xcode.app/Contents/usr/bin/simctl  install booted demo.app
 在模拟器中唤醒一个app
-xcrun /Applications/Xcode.app/Contents/Developer/usr/bin/simctl openurl booted ctrip://h5.html
+xcrun /Applications/Xcode.app/Contents/Developer/usr/bin/simctl openurl booted demo://h5.html
 
 ============================================================================
 去掉UITableView多余分隔线
@@ -1631,8 +1368,10 @@ Xcode工程数据
 swift根据包生成工程
 swift package generate-xcodeproj
 
-===============================================
 docker:
+-----
+
+```
 安装
 sudo apt-get update
 sudo apt-get install docker.io
@@ -1683,9 +1422,13 @@ sudo docker inspect $CONTAINER_ID #查看container的实例属性，比如ip等�
 
 sudo docker run -t -i -v /home/linjiqin/dev/docker:/home/mycontainer:rw -p 8000:8000 mydocker /bin/bash
 
+```
+
+Node.js
 ---------
 
-====================================
+```
+
 1.nvm ls //当前系统中装的node.js版本
 2.npm install npm -g //更新npm工具
 3.npm install -g react-native-cli   //安装react-native
@@ -1731,7 +1474,7 @@ brew install flow
 
 ------------------------
 1.配置携程镜象
-yarn config set registry http://npm.dev.sh.ctripcorp.com:8001/
+yarn config set registry http://npm.dev.sh.democorp.com:8001/
 
 ------------------------
 清除淘宝镜像
@@ -1756,11 +1499,11 @@ $ nrm ls
   
 -------------------------------------
 2.安装crn-cli工具
-yarn global add @ctrip/crn-cli
+yarn global add @demo/crn-cli
 
 -------------------------------
 进入空铁目录
-1.　npm uninstall @ctrip/crn-cli -g && npm install @ctrip/crn-cli -g --registry=http://npm.dev.sh.ctripcorp.com:8001
+1.　npm uninstall @demo/crn-cli -g && npm install @demo/crn-cli -g --registry=http://npm.dev.sh.democorp.com:8001
 2.　npm  install 
 3.　crn-cli run-ios 或npm start 
 
@@ -1768,17 +1511,18 @@ yarn global add @ctrip/crn-cli
 
 crn-cli init 创建依赖于CRN框架的模板工程
 crn-cli start 启动RN服务,默认端口5389
-crn-cli run-ios 运行Ctrip IOS 模拟器
-crn-cli run-android 运行Ctrip Android 真机
+crn-cli run-ios 运行demo IOS 模拟器
+crn-cli run-android 运行demo Android 真机
 crn-cli run-patch 替换RN依赖文件
 crn-cli log 本地启动日志服务，默认端口5387
 crn-cli example 建立CRN组件和API调用示例工程
 crn-cli cli-update 更新cli版本
-crn-cli crn-update 更新@ctrip/crn版本
+crn-cli crn-update 更新@demo/crn版本
+
+```
 
 ---------------------------------
 
-====================================
 
 找到一个方法可以通过命令行来安装ipa，本地实验了下可行的。
 sudo npm install -g ios-deploy --unsafe-perm=true
