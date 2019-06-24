@@ -1,6 +1,6 @@
 1.[wafer2-startup](https://github.com/tencentyun/wafer2-startup/wiki/%E8%87%AA%E8%A1%8C%E9%83%A8%E7%BD%B2)
 ----
-自行部署适用于想将腾讯云 Wafer SDK 和 Demo 部署在自己的服务器
+自行部署适用于想将腾讯云 Wafer SDK 和 Demo 部署在自己的服务器，首先需要申请ECS服务器，域名，SSL证书。
 
 ```
 
@@ -91,7 +91,7 @@ https://github.com/tencentyun/wafer2-startup.git
 
 	1). 注册小程序，获得appid, appkey.
 	2). 配置业务服务器weapp. 
-		a). 把小程序server文件夹重命名到/data/release/weapp下
+		a). 将Warfer2-startup中的server文件夹重命名到/data/release/weapp下
 		b). 配置config.js文件
 
 		```
@@ -166,6 +166,7 @@ https://github.com/tencentyun/wafer2-startup.git
 		
 6.配置本地server环境：
 
+
     1). 安装npm
         brew install npm
         
@@ -191,10 +192,30 @@ https://github.com/tencentyun/wafer2-startup.git
 	重置homebrew-core.git:
 	cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
 	git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+	
     
     ```
     
-    3). 安装mysql
+    3). 安装mysql：
+    初始化数据库：npm run initdb
+    
+    
+7.运行服务：
+
+    1). node app.js 
+    
+
+8 . 使用Chrome调试 Node
+
+	1).npm install -g cnpm
+	2).cnpm install -g node-inspector
+	3).node --inspect app.js
+	4).打开chrome的开发模式，点击node图示。
+	5).打开浏览器窗口，访问localhost:5757/user
+
+    
+   
+    
     
     
     

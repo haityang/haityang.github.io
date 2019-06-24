@@ -254,7 +254,16 @@ server.bind(41234,'localhost');
 
 ```
 
+##### 10. 使用Chrome调度Node
 
+```
+1.npm install -g cnpm
+2.cnpm install -g node-inspector
+3.node --inspect app.js
+4.打开chrome的开发模式，点击node图示。
+5.打开浏览器窗口，访问localhost:5757/user
+
+```
 
 
 
