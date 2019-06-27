@@ -440,6 +440,39 @@ mysql -uroot -p
 ```
 
 
+Mysql 增加新用户并授权node使用某数据库
+
+```
+
+create user 'editest'@'localhost' identified by 'editest123456';
+create user 'editest'@'%' identified by 'editest123456';
+flush privileges;
+
+use mysql;
+select user, host from user;
+
+create database editestdb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+show databases;
+GRANT ALL PRIVILEGES ON editestdb.* TO 'editest'@'localhost';
+GRANT ALL PRIVILEGES ON editestdb.* TO 'editest'@'%';
+flush privileges;
+mysql -u editest -p
+show databases;
+
+
+create user 'root'@'%' identified by 'editest123456';
+ALTER user'root'@'%' IDENTIFIED WITH mysql_native_password BY 'editest123456';
+ALTER user'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'editest123456';
+
+alter user 'editest'@'localhost' identified with mysql_native_password by 'editest123456'
+alter user 'editest'@'%' identified with mysql_native_password by 'editest123456'
+flush privileges;
+
+```
+
+
+
+
 
 
 
