@@ -148,3 +148,18 @@ adb install -r D:\6.15.apk
 console.dir(console);			//在控制台执行
 
 ```
+
+
+3.Android webview在chrome中的调试
+
+```
+第一步，设置 WebView 调试模式。WebView 类包含一个公共静态方法，作为 Debug 开关：
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+    WebView.setWebContentsDebuggingEnabled(true);
+}
+
+二步，确保 USB 连接的前提下，打开 PC 中的 Chrome 浏览器，输入网址，打开页面：
+chrome://inspect
+点击对应网页下方的 inspect 选项便可以进入开发者工具页
+
+```

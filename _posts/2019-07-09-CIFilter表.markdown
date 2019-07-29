@@ -1,0 +1,7960 @@
+CIFilter 查询表
+---
+
+
+```
+
+模糊 CICategoryBlur
+CIGaussianBlur : 高斯模糊
+CIMaskedVariableBlur : 根据蒙版变量模糊
+CIMotionBlur : 运动模糊，物体移动式模糊
+色彩调节 CICategoryColorAdjustment
+CIColorClamp : 修改颜色值，使图像中的色值保持在指定范围内
+CIColorControls : 调整饱和度，亮度和对比度值
+CIExposureAdjust : 曝光调整
+CIGammaAdjust : 伽玛调整，中间调亮度
+CIHueAdjust : 色调调整
+CITemperatureAndTint : 温度和色调
+CIVibrance : 调整图像的饱和度
+色彩效果 CICategoryColorEffect
+CIColorInvert : 颜色反转
+CIColorMonochrome : 重新映射颜色，使其落入单一颜色的阴影中
+CIColorPosterize : 将红色，绿色和蓝色组件重新映射为为每个颜色组件指定的亮度值数
+CIFalseColor : 将亮度映射到两种颜色的颜色渐变
+CIMaskToAlpha : 将灰度图像转换为由alpha屏蔽的白色图像
+CIPhotoEffectChrome : 复古摄影胶片，有色彩
+CIPhotoEffectFade : 复古摄影胶片，褪色
+CIPhotoEffectInstant : 复古摄影胶片，带有扭曲颜色
+CIPhotoEffectMono : 黑白摄影胶片，低对比度
+CIPhotoEffectNoir : 黑白摄影胶片，夸张的对比度
+CIPhotoEffectProcess : 复古摄影胶片，强调冷色调
+CIPhotoEffectTonal : 黑白摄影胶片，不会显着改变对比度
+CIPhotoEffectTransfer : 复古摄影胶片，暖色调
+CISepiaTone : 棕褐色调
+CIVignette : 降低周边图像的亮度，边缘渐黑
+CIVignetteEffect : 修改指定区域周围图像的亮度
+图像组合 CICategoryCompositeOperation
+CIAdditionCompositing : 添加颜色成分以达到增亮效果，通常用于添加高光和镜头眩光效果
+CISourceAtopCompositing : 合成显示背景图像，仅显示源图像中背景可见部分的那些部分
+CISourceInCompositing : 使用背景图像裁剪输入图像
+CISourceOutCompositing : 和 CISourceInCompositing 相反，输入图片只保留背景图像未重合的部分
+CISourceOverCompositing : 将输入图像放在输入背景图像上
+CISubtractBlendMode : 减去混合模式，从源图像样本颜色中减去背景图像样本颜色
+失真效果 CICategoryDistortionEffect
+CIBumpDistortionLinear : 线性拉伸图片
+CICircularWrap : 围绕透明圆圈包裹图像
+CIGlassDistortion : 类似玻璃的纹理来扭曲图像，可以使用纹理图像
+CILightTunnel : 旋转扭曲产生类似隧道效果
+CIStretchCrop : 通过拉伸或裁剪图像以适合目标尺寸来扭曲图像
+生成器 CICategoryGenerator
+CIAztecCodeGenerator : 二维码生成器（Aztec）
+CICheckerboardGenerator : 棋盘图案生成器，黑白方块间隔
+CICode128BarcodeGenerator : 一维条形码生成器
+CIConstantColorGenerator : 纯色生成器
+CIPDF417BarcodeGenerator : 二维条形码生成器
+CIQRCodeGenerator : 二维条形码生成器
+CIStripesGenerator : 条纹图案生成器
+几何调节 CICategoryGeometryAdjustment
+CIAffineTransform : 对图像应用仿射变换
+CICrop : 裁剪图像
+CILanczosScaleTransform : 源图像的高质量缩放
+CIStraightenFilter : 旋转源图像
+梯度 CICategoryGradient
+CIGaussianGradient : 高斯梯度，生成从一种颜色到另一种颜色不同的渐变
+CILinearGradient : 线性梯度
+CIRadialGradient : 径向渐变梯度
+边缘效果 CICategorySharpen
+CISharpenLuminance : 锐化
+风格化
+CIBlendWithAlphaMask : 使用蒙版中的 alpha 值在图像和背景之间进行插值显示
+CIBloom : 柔化边缘并为图像产生光晕，高光
+CIComicEffect : 漫画效果
+CICrystallize : 通过聚合源像素颜色值创建多边形颜色块，结晶化
+CIDepthOfField : 模拟景深效果
+CIGloom : 使图像的高光变暗，和 CIBloom 相反
+CIHexagonalPixellate : 像素化
+CIHighlightShadowAdjust : 突出显示和阴影
+CILineOverlay : 用黑色笔触勾勒出图像边缘的草图
+CIPixellate : 像素化，类似马赛克
+
+
+平铺 CICategoryTileEffect
+CIAffineTile : 图像应用仿射变换，然后平铺变换后的图像
+CIKaleidoscope : 万花筒
+过渡转换 CICategoryTransition
+CIAccordionFoldTransition : 折叠过渡，从一个图像转换到另一个不同维度的图像
+CIBarsSwipeTransition : 条形过渡效果
+CICopyMachineTransition : 复印机效果
+CIDisintegrateWithMaskTransition : 蒙版定义的形状效果
+CIDissolveTransition : 溶解效果
+CIFlashTransition : 通闪光灯效果
+CIModTransition : 不规则形状的孔效果
+CIPageCurlTransition : 卷曲页面效果
+CIPageCurlWithShadowTransition : 卷曲页面效果
+CIRippleTransition : 波纹效果
+CISwipeTransition : 滑动效果
+
+作者：繁梦三千
+链接：https://www.jianshu.com/p/15cf13d104a1
+来源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+-----------
+
+
+CoreImage[6143:615100] FilterName:
+
+(
+
+    CIAccordionFoldTransition,
+
+    CIAdditionCompositing,
+
+    CIAffineClamp,
+
+    CIAffineTile,
+
+    CIAffineTransform,
+
+    CIAreaHistogram,
+
+    CIAztecCodeGenerator,
+
+    CIBarsSwipeTransition,
+
+    CIBlendWithAlphaMask,
+
+    CIBlendWithMask,
+
+    CIBloom,
+
+    CIBumpDistortion,
+
+    CIBumpDistortionLinear,
+
+    CICheckerboardGenerator,
+
+    CICircleSplashDistortion,
+
+    CICircularScreen,
+
+    CICode128BarcodeGenerator,
+
+    CIColorBlendMode,
+
+    CIColorBurnBlendMode,
+
+    CIColorClamp,
+
+    CIColorControls,
+
+    CIColorCrossPolynomial,
+
+    CIColorCube,
+
+    CIColorCubeWithColorSpace,
+
+    CIColorDodgeBlendMode,
+
+    CIColorInvert,
+
+    CIColorMap,
+
+    CIColorMatrix,
+
+    CIColorMonochrome,
+
+    CIColorPolynomial,
+
+    CIColorPosterize,
+
+    CIConstantColorGenerator,
+
+    CIConvolution3X3,
+
+    CIConvolution5X5,
+
+    CIConvolution9Horizontal,
+
+    CIConvolution9Vertical,
+
+    CICopyMachineTransition,
+
+    CICrop,
+
+    CIDarkenBlendMode,
+
+    CIDifferenceBlendMode,
+
+    CIDisintegrateWithMaskTransition,
+
+    CIDissolveTransition,
+
+    CIDivideBlendMode,
+
+    CIDotScreen,
+
+    CIEightfoldReflectedTile,
+
+    CIExclusionBlendMode,
+
+    CIExposureAdjust,
+
+    CIFalseColor,
+
+    CIFlashTransition,
+
+    CIFourfoldReflectedTile,
+
+    CIFourfoldRotatedTile,
+
+    CIFourfoldTranslatedTile,
+
+    CIGammaAdjust,
+
+    CIGaussianBlur,
+
+    CIGaussianGradient,
+
+    CIGlassDistortion,
+
+    CIGlideReflectedTile,
+
+    CIGloom,
+
+    CIHardLightBlendMode,
+
+    CIHatchedScreen,
+
+    CIHighlightShadowAdjust,
+
+    CIHistogramDisplayFilter,
+
+    CIHoleDistortion,
+
+    CIHueAdjust,
+
+    CIHueBlendMode,
+
+    CILanczosScaleTransform,
+
+    CILightenBlendMode,
+
+    CILightTunnel,
+
+    CILinearBurnBlendMode,
+
+    CILinearDodgeBlendMode,
+
+    CILinearGradient,
+
+    CILinearToSRGBToneCurve,
+
+    CILineScreen,
+
+    CILuminosityBlendMode,
+
+    CIMaskToAlpha,
+
+    CIMaximumComponent,
+
+    CIMaximumCompositing,
+
+    CIMinimumComponent,
+
+    CIMinimumCompositing,
+
+    CIModTransition,
+
+    CIMultiplyBlendMode,
+
+    CIMultiplyCompositing,
+
+    CIOverlayBlendMode,
+
+    CIPerspectiveCorrection,
+
+    CIPhotoEffectChrome,
+
+    CIPhotoEffectFade,
+
+    CIPhotoEffectInstant,
+
+    CIPhotoEffectMono,
+
+    CIPhotoEffectNoir,
+
+    CIPhotoEffectProcess,
+
+    CIPhotoEffectTonal,
+
+    CIPhotoEffectTransfer,
+
+    CIPinchDistortion,
+
+    CIPinLightBlendMode,
+
+    CIPixellate,
+
+    CIQRCodeGenerator,
+
+    CIRadialGradient,
+
+    CIRandomGenerator,
+
+    CISaturationBlendMode,
+
+    CIScreenBlendMode,
+
+    CISepiaTone,
+
+    CISharpenLuminance,
+
+    CISixfoldReflectedTile,
+
+    CISixfoldRotatedTile,
+
+    CISmoothLinearGradient,
+
+    CISoftLightBlendMode,
+
+    CISourceAtopCompositing,
+
+    CISourceInCompositing,
+
+    CISourceOutCompositing,
+
+    CISourceOverCompositing,
+
+    CISRGBToneCurveToLinear,
+
+    CIStarShineGenerator,
+
+    CIStraightenFilter,
+
+    CIStripesGenerator,
+
+    CISubtractBlendMode,
+
+    CISwipeTransition,
+
+    CITemperatureAndTint,
+
+    CIToneCurve,
+
+    CITriangleKaleidoscope,
+
+    CITwelvefoldReflectedTile,
+
+    CITwirlDistortion,
+
+    CIUnsharpMask,
+
+    CIVibrance,
+
+    CIVignette,
+
+    CIVignetteEffect,
+
+    CIVortexDistortion,
+
+    CIWhitePointAdjust
+
+)
+
+2015-06-01 11:03:44.618 CoreImage[6143:615100] CIAccordionFoldTransition:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTransition,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Accordion Fold Transition";
+
+    CIAttributeFilterName = CIAccordionFoldTransition;
+
+    inputBottomHeight =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputFoldShadowAmount =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.1";
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputNumberOfFolds =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 3;
+
+        CIAttributeMax = 50;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 10;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputTargetImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTime =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeTime;
+
+    };
+
+}
+
+2015-06-01 11:03:44.619 CoreImage[6143:615100] CIAdditionCompositing:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryHighDynamicRange,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Addition;
+
+    CIAttributeFilterName = CIAdditionCompositing;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.620 CoreImage[6143:615100] CIAffineClamp:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Affine Clamp";
+
+    CIAttributeFilterName = CIAffineClamp;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTransform =     {
+
+        CIAttributeClass = NSValue;
+
+        CIAttributeDefault = "CGAffineTransform: {{1, 0, 0, 1}, {0, 0}}";
+
+        CIAttributeIdentity = "CGAffineTransform: {{1, 0, 0, 1}, {0, 0}}";
+
+    };
+
+}
+
+2015-06-01 11:03:44.620 CoreImage[6143:615100] CIAffineTile:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Affine Tile";
+
+    CIAttributeFilterName = CIAffineTile;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTransform =     {
+
+        CIAttributeClass = NSValue;
+
+        CIAttributeDefault = "CGAffineTransform: {{1, 0, 0, 1}, {0, 0}}";
+
+        CIAttributeIdentity = "CGAffineTransform: {{1, 0, 0, 1}, {0, 0}}";
+
+    };
+
+}
+
+2015-06-01 11:03:44.621 CoreImage[6143:615100] CIAffineTransform:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGeometryAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Affine Transform";
+
+    CIAttributeFilterName = CIAffineTransform;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTransform =     {
+
+        CIAttributeClass = NSValue;
+
+        CIAttributeDefault = "CGAffineTransform: {{1, 0, 0, 1}, {0, 0}}";
+
+        CIAttributeIdentity = "CGAffineTransform: {{1, 0, 0, 1}, {0, 0}}";
+
+        CIAttributeType = CIAttributeTypeTransform;
+
+    };
+
+}
+
+2015-06-01 11:03:44.622 CoreImage[6143:615100] CIAreaHistogram:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryReduction,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Area Histogram";
+
+    CIAttributeFilterName = CIAreaHistogram;
+
+    inputCount =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 64;
+
+        CIAttributeMax = 256;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 256;
+
+        CIAttributeSliderMin = 10;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputExtent =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 300 300]";
+
+        CIAttributeType = CIAttributeTypeRectangle;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputScale =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.623 CoreImage[6143:615100] CIAztecCodeGenerator:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGenerator,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Aztec Code Generator";
+
+    CIAttributeFilterName = CIAztecCodeGenerator;
+
+    inputCompactStyle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+    };
+
+    inputCorrectionLevel =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 23;
+
+        CIAttributeMax = 95;
+
+        CIAttributeMin = 5;
+
+        CIAttributeSliderMax = 95;
+
+        CIAttributeSliderMin = 5;
+
+    };
+
+    inputLayers =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeMax = 32;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 32;
+
+        CIAttributeSliderMin = 1;
+
+    };
+
+    inputMessage =     {
+
+        CIAttributeClass = NSData;
+
+    };
+
+}
+
+2015-06-01 11:03:44.623 CoreImage[6143:615100] CIBarsSwipeTransition:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTransition,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Bars Swipe Transition";
+
+    CIAttributeFilterName = CIBarsSwipeTransition;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "3.141592653589793";
+
+        CIAttributeSliderMax = "6.283185307179586";
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputBarOffset =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 10;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 100;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTargetImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTime =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeTime;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 30;
+
+        CIAttributeMin = 2;
+
+        CIAttributeSliderMax = 300;
+
+        CIAttributeSliderMin = 2;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.624 CoreImage[6143:615100] CIBlendWithAlphaMask:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Blend With Alpha Mask";
+
+    CIAttributeFilterName = CIBlendWithAlphaMask;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputMaskImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.625 CoreImage[6143:615100] CIBlendWithMask:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Blend With Mask";
+
+    CIAttributeFilterName = CIBlendWithMask;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputMaskImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.626 CoreImage[6143:615100] CIBloom:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Bloom;
+
+    CIAttributeFilterName = CIBloom;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputIntensity =     {
+
+        CIAttributeClass = NSNumber;
+
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 10;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 100;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.627 CoreImage[6143:615100] CIBumpDistortion:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryDistortionEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Bump Distortion";
+
+    CIAttributeFilterName = CIBumpDistortion;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 300;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 600;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputScale =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.5";
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = "-1";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.627 CoreImage[6143:615100] CIBumpDistortionLinear:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryDistortionEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Bump Distortion Linear";
+
+    CIAttributeFilterName = CIBumpDistortionLinear;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeSliderMax = "6.283185307179586";
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 300;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 600;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputScale =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.5";
+
+        CIAttributeIdentity = 1;
+
+        CIAttributeMin = "-1";
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.629 CoreImage[6143:615100] CICheckerboardGenerator:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGenerator,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Checkerboard;
+
+    CIAttributeFilterName = CICheckerboardGenerator;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputColor0 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 1 1 1)";
+
+    };
+
+    inputColor1 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(0 0 0 1)";
+
+    };
+
+    inputSharpness =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 80;
+
+        CIAttributeSliderMax = 800;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.629 CoreImage[6143:615100] CICircleSplashDistortion:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryDistortionEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Circle Splash Distortion";
+
+    CIAttributeFilterName = CICircleSplashDistortion;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 150;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1000;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.630 CoreImage[6143:615100] CICircularScreen:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryHalftoneEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Circular Screen";
+
+    CIAttributeFilterName = CICircularScreen;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputSharpness =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.7";
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 6;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 50;
+
+        CIAttributeSliderMin = 2;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.631 CoreImage[6143:615100] CICode128BarcodeGenerator:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGenerator,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Code128 Barcode Generator";
+
+    CIAttributeFilterName = CICode128BarcodeGenerator;
+
+    inputMessage =     {
+
+        CIAttributeClass = NSData;
+
+    };
+
+    inputQuietSpace =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 7;
+
+        CIAttributeMax = 20;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 20;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.632 CoreImage[6143:615100] CIColorBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Blend Mode";
+
+    CIAttributeFilterName = CIColorBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.632 CoreImage[6143:615100] CIColorBurnBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Burn Blend Mode";
+
+    CIAttributeFilterName = CIColorBurnBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.633 CoreImage[6143:615100] CIColorClamp:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Clamp";
+
+    CIAttributeFilterName = CIColorClamp;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputMaxComponents =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[1 1 1 1]";
+
+    };
+
+    inputMinComponents =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 0 0]";
+
+    };
+
+}
+
+2015-06-01 11:03:44.633 CoreImage[6143:615100] CIColorControls:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Controls";
+
+    CIAttributeFilterName = CIColorControls;
+
+    inputBrightness =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = "-1";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputContrast =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 1;
+
+        CIAttributeSliderMax = 4;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputSaturation =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 1;
+
+        CIAttributeSliderMax = 2;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.635 CoreImage[6143:615100] CIColorCrossPolynomial:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Cross Polynomial";
+
+    CIAttributeFilterName = CIColorCrossPolynomial;
+
+    inputBlueCoefficients =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 1 0 0 0 0 0 0 0]";
+
+        CIAttributeIdentity = "[0 0 1 0 0 0 0 0 0 0]";
+
+    };
+
+    inputCoefficients =     {
+
+        CIAttributeClass = CIVector;
+
+    };
+
+    inputGreenCoefficients =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 1 0 0 0 0 0 0 0 0]";
+
+        CIAttributeIdentity = "[0 1 0 0 0 0 0 0 0 0]";
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRedCoefficients =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[1 0 0 0 0 0 0 0 0 0]";
+
+        CIAttributeIdentity = "[1 0 0 0 0 0 0 0 0 0]";
+
+    };
+
+}
+
+2015-06-01 11:03:44.636 CoreImage[6143:615100] CIColorCube:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Cube";
+
+    CIAttributeFilterName = CIColorCube;
+
+    inputCubeData =     {
+
+        CIAttributeClass = NSData;
+
+        CIAttributeDefault = <00000000 00000000 00000000 0000803f 0000803f 00000000 00000000 0000803f 00000000 0000803f 00000000 0000803f 0000803f 0000803f 00000000 0000803f 00000000 00000000 0000803f 0000803f 0000803f 00000000 0000803f 0000803f 00000000 0000803f 0000803f 0000803f 0000803f 0000803f 0000803f 0000803f>;
+
+        CIAttributeIdentity = <00000000 00000000 00000000 0000803f 0000803f 00000000 00000000 0000803f 00000000 0000803f 00000000 0000803f 0000803f 0000803f 00000000 0000803f 00000000 00000000 0000803f 0000803f 0000803f 00000000 0000803f 0000803f 00000000 0000803f 0000803f 0000803f 0000803f 0000803f 0000803f 0000803f>;
+
+    };
+
+    inputCubeDimension =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 2;
+
+        CIAttributeIdentity = 2;
+
+        CIAttributeMax = 64;
+
+        CIAttributeMin = 2;
+
+        CIAttributeType = CIAttributeTypeCount;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.637 CoreImage[6143:615100] CIColorCubeWithColorSpace:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Cube with ColorSpace";
+
+    CIAttributeFilterName = CIColorCubeWithColorSpace;
+
+    inputColorSpace =     {
+
+        CIAttributeClass = NSObject;
+
+    };
+
+    inputCubeData =     {
+
+        CIAttributeClass = NSData;
+
+        CIAttributeDefault = <00000000 00000000 00000000 0000803f 0000803f 00000000 00000000 0000803f 00000000 0000803f 00000000 0000803f 0000803f 0000803f 00000000 0000803f 00000000 00000000 0000803f 0000803f 0000803f 00000000 0000803f 0000803f 00000000 0000803f 0000803f 0000803f 0000803f 0000803f 0000803f 0000803f>;
+
+        CIAttributeIdentity = <00000000 00000000 00000000 0000803f 0000803f 00000000 00000000 0000803f 00000000 0000803f 00000000 0000803f 0000803f 0000803f 00000000 0000803f 00000000 00000000 0000803f 0000803f 0000803f 00000000 0000803f 0000803f 00000000 0000803f 0000803f 0000803f 0000803f 0000803f 0000803f 0000803f>;
+
+    };
+
+    inputCubeDimension =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 2;
+
+        CIAttributeIdentity = 2;
+
+        CIAttributeMax = 64;
+
+        CIAttributeMin = 2;
+
+        CIAttributeType = CIAttributeTypeCount;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.638 CoreImage[6143:615100] CIColorDodgeBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Dodge Blend Mode";
+
+    CIAttributeFilterName = CIColorDodgeBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.639 CoreImage[6143:615100] CIColorInvert:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Invert";
+
+    CIAttributeFilterName = CIColorInvert;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.639 CoreImage[6143:615100] CIColorMap:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Map";
+
+    CIAttributeFilterName = CIColorMap;
+
+    inputGradientImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.640 CoreImage[6143:615100] CIColorMatrix:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Matrix";
+
+    CIAttributeFilterName = CIColorMatrix;
+
+    inputAVector =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 0 1]";
+
+        CIAttributeIdentity = "[0 0 0 1]";
+
+    };
+
+    inputBVector =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 1 0]";
+
+        CIAttributeIdentity = "[0 0 1 0]";
+
+    };
+
+    inputBiasVector =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 0 0]";
+
+        CIAttributeIdentity = "[0 0 0 0]";
+
+    };
+
+    inputGVector =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 1 0 0]";
+
+        CIAttributeIdentity = "[0 1 0 0]";
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRVector =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[1 0 0 0]";
+
+        CIAttributeIdentity = "[1 0 0 0]";
+
+    };
+
+}
+
+2015-06-01 11:03:44.641 CoreImage[6143:615100] CIColorMonochrome:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Monochrome";
+
+    CIAttributeFilterName = CIColorMonochrome;
+
+    inputColor =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(0.6 0.45 0.3 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputIntensity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.642 CoreImage[6143:615100] CIColorPolynomial:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Polynomial";
+
+    CIAttributeFilterName = CIColorPolynomial;
+
+    inputAlphaCoefficients =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 1 0 0]";
+
+        CIAttributeIdentity = "[0 1 0 0]";
+
+    };
+
+    inputBlueCoefficients =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 1 0 0]";
+
+        CIAttributeIdentity = "[0 1 0 0]";
+
+    };
+
+    inputGreenCoefficients =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 1 0 0]";
+
+        CIAttributeIdentity = "[0 1 0 0]";
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRedCoefficients =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 1 0 0]";
+
+        CIAttributeIdentity = "[0 1 0 0]";
+
+    };
+
+}
+
+2015-06-01 11:03:44.643 CoreImage[6143:615100] CIColorPosterize:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Color Posterize";
+
+    CIAttributeFilterName = CIColorPosterize;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputLevels =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 6;
+
+        CIAttributeIdentity = 300;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 30;
+
+        CIAttributeSliderMin = 2;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.643 CoreImage[6143:615100] CIConstantColorGenerator:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGenerator,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Constant Color";
+
+    CIAttributeFilterName = CIConstantColorGenerator;
+
+    inputColor =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 0 0 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+}
+
+2015-06-01 11:03:44.644 CoreImage[6143:615100] CIConvolution3X3:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "3X3 Convolution";
+
+    CIAttributeFilterName = CIConvolution3X3;
+
+    inputBias =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWeights =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 0 0 1 0 0 0 0]";
+
+        CIAttributeIdentity = "[0 0 0 0 1 0 0 0 0]";
+
+    };
+
+}
+
+2015-06-01 11:03:44.644 CoreImage[6143:615100] CIConvolution5X5:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "5X5 Convolution";
+
+    CIAttributeFilterName = CIConvolution5X5;
+
+    inputBias =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWeights =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0]";
+
+        CIAttributeIdentity = "[0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0]";
+
+    };
+
+}
+
+2015-06-01 11:03:44.645 CoreImage[6143:615100] CIConvolution9Horizontal:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Horizontal 9 Convolution";
+
+    CIAttributeFilterName = CIConvolution9Horizontal;
+
+    inputBias =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWeights =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 0 0 1 0 0 0 0]";
+
+        CIAttributeIdentity = "[0 0 0 0 1 0 0 0 0]";
+
+    };
+
+}
+
+2015-06-01 11:03:44.646 CoreImage[6143:615100] CIConvolution9Vertical:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Vertical 9 Convolution";
+
+    CIAttributeFilterName = CIConvolution9Vertical;
+
+    inputBias =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWeights =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 0 0 1 0 0 0 0]";
+
+        CIAttributeIdentity = "[0 0 0 0 1 0 0 0 0]";
+
+    };
+
+}
+
+2015-06-01 11:03:44.647 CoreImage[6143:615100] CICopyMachineTransition:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTransition,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Copy Machine";
+
+    CIAttributeFilterName = CICopyMachineTransition;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = "6.283185307179586";
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputColor =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(0.6 1 0.8 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputExtent =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 300 300]";
+
+        CIAttributeType = CIAttributeTypeRectangle;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputOpacity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "1.3";
+
+        CIAttributeIdentity = "1.3";
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 3;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputTargetImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTime =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeTime;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 200;
+
+        CIAttributeIdentity = 200;
+
+        CIAttributeMin = "0.1";
+
+
+        CIAttributeSliderMax = 500;
+
+        CIAttributeSliderMin = "0.1";
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.648 CoreImage[6143:615100] CICrop:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGeometryAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Crop;
+
+    CIAttributeFilterName = CICrop;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRectangle =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[-1.70141e+38 -1.70141e+38 3.40282e+38 3.40282e+38]";
+
+        CIAttributeIdentity = "[-1.70141e+38 -1.70141e+38 3.40282e+38 3.40282e+38]";
+
+        CIAttributeType = CIAttributeTypeRectangle;
+
+    };
+
+}
+
+2015-06-01 11:03:44.649 CoreImage[6143:615100] CIDarkenBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Darken Blend Mode";
+
+    CIAttributeFilterName = CIDarkenBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.650 CoreImage[6143:615100] CIDifferenceBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Difference Blend Mode";
+
+    CIAttributeFilterName = CIDifferenceBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.650 CoreImage[6143:615100] CIDisintegrateWithMaskTransition:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTransition,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Disintegrate With Mask";
+
+    CIAttributeFilterName = CIDisintegrateWithMaskTransition;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputMaskImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputShadowDensity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.65";
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputShadowOffset =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 -10]";
+
+        CIAttributeIdentity = "[0 0]";
+
+        CIAttributeType = CIAttributeTypeOffset;
+
+    };
+
+    inputShadowRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 8;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 50;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputTargetImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTime =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.5";
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.651 CoreImage[6143:615100] CIDissolveTransition:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTransition,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Dissolve;
+
+    CIAttributeFilterName = CIDissolveTransition;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTargetImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTime =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeTime;
+
+    };
+
+}
+
+2015-06-01 11:03:44.652 CoreImage[6143:615100] CIDivideBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Divide Blend Mode";
+
+    CIAttributeFilterName = CIDivideBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.653 CoreImage[6143:615100] CIDotScreen:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryHalftoneEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Dot Screen";
+
+    CIAttributeFilterName = CIDotScreen;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputSharpness =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.7";
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 6;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 50;
+
+        CIAttributeSliderMin = 2;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.654 CoreImage[6143:615100] CIEightfoldReflectedTile:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Eightfold Reflected Tile";
+
+    CIAttributeFilterName = CIEightfoldReflectedTile;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeIdentity = 100;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 200;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.655 CoreImage[6143:615100] CIExclusionBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Exclusion Blend Mode";
+
+    CIAttributeFilterName = CIExclusionBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.656 CoreImage[6143:615100] CIExposureAdjust:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Exposure Adjust";
+
+    CIAttributeFilterName = CIExposureAdjust;
+
+    inputEV =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = 10;
+
+        CIAttributeSliderMin = "-10";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.656 CoreImage[6143:615100] CIFalseColor:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "False Color";
+
+    CIAttributeFilterName = CIFalseColor;
+
+    inputColor0 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(0.3 0 0 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputColor1 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 0.9 0.8 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.657 CoreImage[6143:615100] CIFlashTransition:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTransition,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Flash;
+
+    CIAttributeFilterName = CIFlashTransition;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputColor =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 0.8 0.6 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputExtent =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 300 300]";
+
+        CIAttributeType = CIAttributeTypeRectangle;
+
+    };
+
+    inputFadeThreshold =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.85";
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputMaxStriationRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "2.58";
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 10;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputStriationContrast =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "1.375";
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 5;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputStriationStrength =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.5";
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 3;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputTargetImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTime =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeTime;
+
+    };
+
+}
+
+2015-06-01 11:03:44.659 CoreImage[6143:615100] CIFourfoldReflectedTile:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Fourfold Reflected Tile";
+
+    CIAttributeFilterName = CIFourfoldReflectedTile;
+
+    inputAcuteAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "1.570796326794897";
+
+        CIAttributeIdentity = "1.570796326794897";
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeIdentity = 100;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 200;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.660 CoreImage[6143:615100] CIFourfoldRotatedTile:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Fourfold Rotated Tile";
+
+    CIAttributeFilterName = CIFourfoldRotatedTile;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeIdentity = 100;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 200;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.661 CoreImage[6143:615100] CIFourfoldTranslatedTile:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Fourfold Translated Tile";
+
+    CIAttributeFilterName = CIFourfoldTranslatedTile;
+
+    inputAcuteAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "1.570796326794897";
+
+        CIAttributeIdentity = "1.570796326794897";
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeIdentity = 100;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 200;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.662 CoreImage[6143:615100] CIGammaAdjust:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Gamma Adjust";
+
+    CIAttributeFilterName = CIGammaAdjust;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputPower =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 4;
+
+        CIAttributeSliderMin = "0.25";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.663 CoreImage[6143:615100] CIGaussianBlur:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryBlur,
+
+        CICategoryStillImage,
+
+        CICategoryVideo,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Gaussian Blur";
+
+    CIAttributeFilterName = CIGaussianBlur;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 10;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 100;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.663 CoreImage[6143:615100] CIGaussianGradient:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGradient,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Gaussian Gradient";
+
+    CIAttributeFilterName = CIGaussianGradient;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputColor0 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 1 1 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputColor1 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(0 0 0 0)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 300;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 800;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.664 CoreImage[6143:615100] CIGlassDistortion:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryDistortionEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Glass Distortion";
+
+    CIAttributeFilterName = CIGlassDistortion;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputScale =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 200;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 500;
+
+        CIAttributeSliderMin = "0.01";
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputTexture =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.665 CoreImage[6143:615100] CIGlideReflectedTile:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Glide Reflected Tile";
+
+    CIAttributeFilterName = CIGlideReflectedTile;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeIdentity = 100;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 200;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.665 CoreImage[6143:615100] CIGloom:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Gloom;
+
+    CIAttributeFilterName = CIGloom;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputIntensity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 10;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 100;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.666 CoreImage[6143:615100] CIHardLightBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Hard Light Blend Mode";
+
+    CIAttributeFilterName = CIHardLightBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.667 CoreImage[6143:615100] CIHatchedScreen:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryHalftoneEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Hatched Screen";
+
+    CIAttributeFilterName = CIHatchedScreen;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputSharpness =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.7";
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 6;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 50;
+
+        CIAttributeSliderMin = 2;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.668 CoreImage[6143:615100] CIHighlightShadowAdjust:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Highlights and Shadows";
+
+    CIAttributeFilterName = CIHighlightShadowAdjust;
+
+    inputHighlightAmount =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 1;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = "0.3";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 10;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputShadowAmount =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = "-1";
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = "-1";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.669 CoreImage[6143:615100] CIHistogramDisplayFilter:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryReduction,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Histogram Display";
+
+    CIAttributeFilterName = CIHistogramDisplayFilter;
+
+    inputHeight =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeMax = 200;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 100;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputHighLimit =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputLowLimit =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.670 CoreImage[6143:615100] CIHoleDistortion:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryDistortionEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Hole Distortion";
+
+    CIAttributeFilterName = CIHoleDistortion;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 150;
+
+        CIAttributeIdentity = "0.1";
+
+        CIAttributeMin = "0.01";
+
+        CIAttributeSliderMax = 1000;
+
+        CIAttributeSliderMin = "0.01";
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.670 CoreImage[6143:615100] CIHueAdjust:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Hue Adjust";
+
+    CIAttributeFilterName = CIHueAdjust;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.671 CoreImage[6143:615100] CIHueBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Hue Blend Mode";
+
+    CIAttributeFilterName = CIHueBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.671 CoreImage[6143:615100] CILanczosScaleTransform:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGeometryAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Lanczos Scale Transform";
+
+    CIAttributeFilterName = CILanczosScaleTransform;
+
+    inputAspectRatio =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = "2.5";
+
+        CIAttributeSliderMin = "0.05";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputScale =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = "1.5";
+
+        CIAttributeSliderMin = "0.05";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.672 CoreImage[6143:615100] CILightenBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Lighten Blend Mode";
+
+    CIAttributeFilterName = CILightenBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.673 CoreImage[6143:615100] CILightTunnel:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryDistortionEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Light Tunnel";
+
+    CIAttributeFilterName = CILightTunnel;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = 500;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputRotation =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "1.570796326794897";
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+}
+
+2015-06-01 11:03:44.674 CoreImage[6143:615100] CILinearBurnBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Linear Burn Blend Mode";
+
+    CIAttributeFilterName = CILinearBurnBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.674 CoreImage[6143:615100] CILinearDodgeBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Linear Dodge Blend Mode";
+
+    CIAttributeFilterName = CILinearDodgeBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.675 CoreImage[6143:615100] CILinearGradient:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGradient,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Linear Gradient";
+
+    CIAttributeFilterName = CILinearGradient;
+
+    inputColor0 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 1 1 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputColor1 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(0 0 0 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputPoint0 =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputPoint1 =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[200 200]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+}
+
+2015-06-01 11:03:44.676 CoreImage[6143:615100] CILinearToSRGBToneCurve:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Linear to sRGB Tone Curve";
+
+    CIAttributeFilterName = CILinearToSRGBToneCurve;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.677 CoreImage[6143:615100] CILineScreen:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryHalftoneEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Line Screen";
+
+    CIAttributeFilterName = CILineScreen;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputSharpness =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.7";
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 6;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 50;
+
+        CIAttributeSliderMin = 2;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.678 CoreImage[6143:615100] CILuminosityBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Luminosity Blend Mode";
+
+    CIAttributeFilterName = CILuminosityBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+
+}
+
+2015-06-01 11:03:44.678 CoreImage[6143:615100] CIMaskToAlpha:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Mask to Alpha";
+
+    CIAttributeFilterName = CIMaskToAlpha;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.679 CoreImage[6143:615100] CIMaximumComponent:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Maximum Component";
+
+    CIAttributeFilterName = CIMaximumComponent;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.679 CoreImage[6143:615100] CIMaximumCompositing:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryHighDynamicRange,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Maximum;
+
+    CIAttributeFilterName = CIMaximumCompositing;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.680 CoreImage[6143:615100] CIMinimumComponent:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+
+    CIAttributeFilterDisplayName = "Minimum Component";
+
+    CIAttributeFilterName = CIMinimumComponent;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.680 CoreImage[6143:615100] CIMinimumCompositing:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryHighDynamicRange,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Minimum;
+
+    CIAttributeFilterName = CIMinimumCompositing;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.681 CoreImage[6143:615100] CIModTransition:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTransition,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Mod;
+
+    CIAttributeFilterName = CIModTransition;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 2;
+
+        CIAttributeSliderMax = "6.283185307179586";
+
+        CIAttributeSliderMin = "-6.283185307179586";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputCompression =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 300;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 800;
+
+        CIAttributeSliderMin = 100;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 150;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 200;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputTargetImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTime =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeTime;
+
+    };
+
+}
+
+2015-06-01 11:03:44.681 CoreImage[6143:615100] CIMultiplyBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Multiply Blend Mode";
+
+    CIAttributeFilterName = CIMultiplyBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.682 CoreImage[6143:615100] CIMultiplyCompositing:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryHighDynamicRange,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Multiply;
+
+    CIAttributeFilterName = CIMultiplyCompositing;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.682 CoreImage[6143:615100] CIOverlayBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Overlay Blend Mode";
+
+    CIAttributeFilterName = CIOverlayBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.683 CoreImage[6143:615100] CIPerspectiveCorrection:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGeometryAdjustment,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Perspective Correction";
+
+    CIAttributeFilterName = CIPerspectiveCorrection;
+
+    inputBottomLeft =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[155 153]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputBottomRight =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[548 140]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTopLeft =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[118 484]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputTopRight =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[646 507]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+}
+
+2015-06-01 11:03:44.684 CoreImage[6143:615100] CIPhotoEffectChrome:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Photo Effect Chrome";
+
+    CIAttributeFilterName = CIPhotoEffectChrome;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.684 CoreImage[6143:615100] CIPhotoEffectFade:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Photo Effect Fade";
+
+    CIAttributeFilterName = CIPhotoEffectFade;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.684 CoreImage[6143:615100] CIPhotoEffectInstant:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Photo Effect Instant";
+
+    CIAttributeFilterName = CIPhotoEffectInstant;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.685 CoreImage[6143:615100] CIPhotoEffectMono:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Photo Effect Mono";
+
+    CIAttributeFilterName = CIPhotoEffectMono;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.685 CoreImage[6143:615100] CIPhotoEffectNoir:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Photo Effect Noir";
+
+    CIAttributeFilterName = CIPhotoEffectNoir;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.686 CoreImage[6143:615100] CIPhotoEffectProcess:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Photo Effect Process";
+
+    CIAttributeFilterName = CIPhotoEffectProcess;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.686 CoreImage[6143:615100] CIPhotoEffectTonal:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Photo Effect Tonal";
+
+    CIAttributeFilterName = CIPhotoEffectTonal;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.687 CoreImage[6143:615100] CIPhotoEffectTransfer:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Photo Effect Transfer";
+
+    CIAttributeFilterName = CIPhotoEffectTransfer;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.687 CoreImage[6143:615100] CIPinchDistortion:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryDistortionEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Pinch Distortion";
+
+    CIAttributeFilterName = CIPinchDistortion;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 300;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1000;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputScale =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.5";
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 2;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.688 CoreImage[6143:615100] CIPinLightBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Pin Light Mode";
+
+    CIAttributeFilterName = CIPinLightBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.689 CoreImage[6143:615100] CIPixellate:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryStylize,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Pixelate;
+
+    CIAttributeFilterName = CIPixellate;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputScale =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 8;
+
+        CIAttributeIdentity = 1;
+
+        CIAttributeMin = 1;
+
+        CIAttributeSliderMax = 100;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.689 CoreImage[6143:615100] CIQRCodeGenerator:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGenerator,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "QRCode Generator";
+
+    CIAttributeFilterName = CIQRCodeGenerator;
+
+    inputCorrectionLevel =     {
+
+        CIAttributeClass = NSString;
+
+        CIAttributeDefault = M;
+
+    };
+
+    inputMessage =     {
+
+        CIAttributeClass = NSData;
+
+    };
+
+}
+
+2015-06-01 11:03:44.690 CoreImage[6143:615100] CIRadialGradient:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGradient,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Radial Gradient";
+
+    CIAttributeFilterName = CIRadialGradient;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputColor0 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 1 1 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputColor1 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(0 0 0 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputRadius0 =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 5;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 800;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputRadius1 =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 800;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.690 CoreImage[6143:615100] CIRandomGenerator:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGenerator,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Random Generator";
+
+    CIAttributeFilterName = CIRandomGenerator;
+
+}
+
+2015-06-01 11:03:44.691 CoreImage[6143:615100] CISaturationBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Saturation Blend Mode";
+
+    CIAttributeFilterName = CISaturationBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.691 CoreImage[6143:615100] CIScreenBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Screen Blend Mode";
+
+    CIAttributeFilterName = CIScreenBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.692 CoreImage[6143:615100] CISepiaTone:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn,
+
+        CICategoryXMPSerializable
+
+    );
+
+    CIAttributeFilterDisplayName = "Sepia Tone";
+
+    CIAttributeFilterName = CISepiaTone;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputIntensity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.692 CoreImage[6143:615100] CISharpenLuminance:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategorySharpen,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Sharpen Luminance";
+
+    CIAttributeFilterName = CISharpenLuminance;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputSharpness =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.4";
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = 2;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.694 CoreImage[6143:615100] CISixfoldReflectedTile:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Sixfold Reflected Tile";
+
+    CIAttributeFilterName = CISixfoldReflectedTile;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeIdentity = 100;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 200;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.695 CoreImage[6143:615100] CISixfoldRotatedTile:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Sixfold Rotated Tile";
+
+    CIAttributeFilterName = CISixfoldRotatedTile;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeIdentity = 100;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 200;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.696 CoreImage[6143:615100] CISmoothLinearGradient:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGradient,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Smooth Linear Gradient";
+
+    CIAttributeFilterName = CISmoothLinearGradient;
+
+    inputColor0 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 1 1 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputColor1 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(0 0 0 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputPoint0 =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputPoint1 =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[200 200]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+}
+
+2015-06-01 11:03:44.696 CoreImage[6143:615100] CISoftLightBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Soft Light Blend Mode";
+
+    CIAttributeFilterName = CISoftLightBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.697 CoreImage[6143:615100] CISourceAtopCompositing:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryHighDynamicRange,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Source Atop";
+
+    CIAttributeFilterName = CISourceAtopCompositing;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.697 CoreImage[6143:615100] CISourceInCompositing:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryHighDynamicRange,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Source In";
+
+    CIAttributeFilterName = CISourceInCompositing;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.698 CoreImage[6143:615100] CISourceOutCompositing:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryHighDynamicRange,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Source Out";
+
+    CIAttributeFilterName = CISourceOutCompositing;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.698 CoreImage[6143:615100] CISourceOverCompositing:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryHighDynamicRange,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Source Over";
+
+    CIAttributeFilterName = CISourceOverCompositing;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.698 CoreImage[6143:615100] CISRGBToneCurveToLinear:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "sRGB Tone Curve to Linear";
+
+    CIAttributeFilterName = CISRGBToneCurveToLinear;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.699 CoreImage[6143:615100] CIStarShineGenerator:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGenerator,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Star Shine";
+
+    CIAttributeFilterName = CIStarShineGenerator;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputColor =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 0.8 0.6 1)";
+
+    };
+
+    inputCrossAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.6";
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCrossOpacity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "-2";
+
+        CIAttributeMin = "-8";
+
+        CIAttributeSliderMax = 0;
+
+        CIAttributeSliderMin = "-8";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputCrossScale =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 15;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 100;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputCrossWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "2.5";
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 10;
+
+        CIAttributeSliderMin = "0.5";
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+    inputEpsilon =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "-2";
+
+        CIAttributeMin = "-8";
+
+        CIAttributeSliderMax = 0;
+
+        CIAttributeSliderMin = "-8";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 50;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 300;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.700 CoreImage[6143:615100] CIStraightenFilter:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGeometryAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Straighten;
+
+    CIAttributeFilterName = CIStraightenFilter;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.701 CoreImage[6143:615100] CIStripesGenerator:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryGenerator,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Stripes;
+
+    CIAttributeFilterName = CIStripesGenerator;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputColor0 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 1 1 1)";
+
+    };
+
+    inputColor1 =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(0 0 0 1)";
+
+    };
+
+    inputSharpness =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 80;
+
+        CIAttributeSliderMax = 800;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.702 CoreImage[6143:615100] CISubtractBlendMode:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryCompositeOperation,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Subtract Blend Mode";
+
+    CIAttributeFilterName = CISubtractBlendMode;
+
+    inputBackgroundImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.702 CoreImage[6143:615100] CISwipeTransition:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTransition,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Swipe;
+
+    CIAttributeFilterName = CISwipeTransition;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputColor =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 1 1 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputExtent =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0 300 300]";
+
+        CIAttributeType = CIAttributeTypeRectangle;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputOpacity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputTargetImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputTime =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeTime;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 300;
+
+        CIAttributeMin = "0.1";
+
+        CIAttributeSliderMax = 800;
+
+        CIAttributeSliderMin = "0.1";
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.704 CoreImage[6143:615100] CITemperatureAndTint:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Temperature and Tint";
+
+    CIAttributeFilterName = CITemperatureAndTint;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputNeutral =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[6500 0]";
+
+        CIAttributeIdentity = "[6500 0]";
+
+        CIAttributeType = CIAttributeTypeOffset;
+
+    };
+
+    inputTargetNeutral =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[6500 0]";
+
+        CIAttributeIdentity = "[6500 0]";
+
+        CIAttributeType = CIAttributeTypeOffset;
+
+    };
+
+}
+
+2015-06-01 11:03:44.705 CoreImage[6143:615100] CIToneCurve:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Tone Curve";
+
+    CIAttributeFilterName = CIToneCurve;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputPoint0 =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0 0]";
+
+        CIAttributeIdentity = "[0 0]";
+
+        CIAttributeType = CIAttributeTypeOffset;
+
+    };
+
+    inputPoint1 =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0.25 0.25]";
+
+        CIAttributeIdentity = "[0.25 0.25]";
+
+        CIAttributeType = CIAttributeTypeOffset;
+
+    };
+
+    inputPoint2 =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0.5 0.5]";
+
+        CIAttributeIdentity = "[0.5 0.5]";
+
+        CIAttributeType = CIAttributeTypeOffset;
+
+    };
+
+    inputPoint3 =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[0.75 0.75]";
+
+        CIAttributeIdentity = "[0.75 0.75]";
+
+        CIAttributeType = CIAttributeTypeOffset;
+
+    };
+
+    inputPoint4 =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[1 1]";
+
+        CIAttributeIdentity = "[1 1]";
+
+        CIAttributeType = CIAttributeTypeOffset;
+
+    };
+
+}
+
+2015-06-01 11:03:44.706 CoreImage[6143:615100] CITriangleKaleidoscope:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Triangle Kaleidoscope";
+
+    CIAttributeFilterName = CITriangleKaleidoscope;
+
+    inputDecay =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.85";
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputPoint =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputRotation =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "5.924285296593801";
+
+        CIAttributeSliderMax = "6.283185307179586";
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputSize =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 700;
+
+        CIAttributeSliderMax = 1000;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.707 CoreImage[6143:615100] CITwelvefoldReflectedTile:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryTileEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Twelvefold Reflected Tile";
+
+    CIAttributeFilterName = CITwelvefoldReflectedTile;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "3.141592653589793";
+
+        CIAttributeSliderMin = "-3.141592653589793";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputWidth =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 100;
+
+        CIAttributeIdentity = 100;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 200;
+
+        CIAttributeSliderMin = 1;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.708 CoreImage[6143:615100] CITwirlDistortion:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryDistortionEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Twirl Distortion";
+
+    CIAttributeFilterName = CITwirlDistortion;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "3.141592653589793";
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "12.56637061435917";
+
+        CIAttributeSliderMin = "-12.56637061435917";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 300;
+
+        CIAttributeIdentity = 300;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 500;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.709 CoreImage[6143:615100] CIUnsharpMask:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategorySharpen,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Unsharp Mask";
+
+    CIAttributeFilterName = CIUnsharpMask;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputIntensity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.5";
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "2.5";
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 100;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.710 CoreImage[6143:615100] CIVibrance:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Vibrance;
+
+    CIAttributeFilterName = CIVibrance;
+
+    inputAmount =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = "-1";
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = "-1";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+
+2015-06-01 11:03:44.710 CoreImage[6143:615100] CIVignette:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = Vignette;
+
+    CIAttributeFilterName = CIVignette;
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputIntensity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 0;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = "-1";
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = "-1";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeMax = 2;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 2;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+}
+
+2015-06-01 11:03:44.711 CoreImage[6143:615100] CIVignetteEffect:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorEffect,
+
+        CICategoryVideo,
+
+        CICategoryInterlaced,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Vignette Effect";
+
+    CIAttributeFilterName = CIVignetteEffect;
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputFalloff =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "0.5";
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputIntensity =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 1;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMax = 1;
+
+        CIAttributeMin = "-1";
+
+        CIAttributeSliderMax = 1;
+
+        CIAttributeSliderMin = "-1";
+
+        CIAttributeType = CIAttributeTypeScalar;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 150;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 2000;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.712 CoreImage[6143:615100] CIVortexDistortion:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryDistortionEffect,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "Vortex Distortion";
+
+    CIAttributeFilterName = CIVortexDistortion;
+
+    inputAngle =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = "56.54866776461628";
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeSliderMax = "94.24777960769379";
+
+        CIAttributeSliderMin = "-94.24777960769379";
+
+        CIAttributeType = CIAttributeTypeAngle;
+
+    };
+
+    inputCenter =     {
+
+        CIAttributeClass = CIVector;
+
+        CIAttributeDefault = "[150 150]";
+
+        CIAttributeType = CIAttributeTypePosition;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+    inputRadius =     {
+
+        CIAttributeClass = NSNumber;
+
+        CIAttributeDefault = 300;
+
+        CIAttributeIdentity = 0;
+
+        CIAttributeMin = 0;
+
+        CIAttributeSliderMax = 800;
+
+        CIAttributeSliderMin = 0;
+
+        CIAttributeType = CIAttributeTypeDistance;
+
+    };
+
+}
+
+2015-06-01 11:03:44.713 CoreImage[6143:615100] CIWhitePointAdjust:
+
+{
+
+    CIAttributeFilterCategories =     (
+
+        CICategoryColorAdjustment,
+
+        CICategoryVideo,
+
+        CICategoryStillImage,
+
+        CICategoryInterlaced,
+
+        CICategoryNonSquarePixels,
+
+        CICategoryBuiltIn
+
+    );
+
+    CIAttributeFilterDisplayName = "White Point Adjust";
+
+    CIAttributeFilterName = CIWhitePointAdjust;
+
+    inputColor =     {
+
+        CIAttributeClass = CIColor;
+
+        CIAttributeDefault = "(1 1 1 1)";
+
+        CIAttributeIdentity = "(1 1 1 1)";
+
+        CIAttributeType = CIAttributeTypeColor;
+
+    };
+
+    inputImage =     {
+
+        CIAttributeClass = CIImage;
+
+        CIAttributeType = CIAttributeTypeImage;
+
+    };
+
+}
+--------------------- 
+作者：czxghostyueqiu 
+来源：CSDN 
+原文：https://blog.csdn.net/czxghostyueqiu/article/details/46301445 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+
+
+```

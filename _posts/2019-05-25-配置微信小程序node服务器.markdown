@@ -32,7 +32,9 @@ https://github.com/tencentyun/wafer2-startup.git
 		* systemctl start mysqld
 		* systemctl status mysqld
 		* mysql -u root -p
-		* ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码';		* mysql> CREATE DATABASE IF NOT EXISTS cAuth DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
+		* ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码';		
+		//创建一验证数据库
+		* CREATE DATABASE IF NOT EXISTS cAuth DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
 2.需申请ssl证书

@@ -1056,7 +1056,7 @@ $lldb MyApp.app
 (lldb) image lookup -v --address 0x00085f3c
 
 -----------
-atos -o Debug-iphoneos/demo.app.dSYM/Contents/Resources/DWARF/demo -l 0x02231160 0x0223a1e0 0x0223a134 0x02239ea2
+atos -o Debug-iphoneos/demo.app.dSYM/Contents/Resources/DWARF/demo -l 0x103c40000 0x00000001041c1fb8
 
 
 -------------------------------------

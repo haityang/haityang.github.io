@@ -85,19 +85,33 @@ list (0) //list出源代码
 continue  //c 继续执行
 next //n
 step //s
-out  //0
+out  //o
 watch('使用的表达式')
 unwatch('使用的表达式')
-setBreakPoint(filename, line) //sb(filename, line)
-clearBreakPoint(filename, line) //cb(filename, line)
+setBreakPoint(filename, line) //sb('app.js', 1);
+clearBreakPoint(filename, line) //cb('app.js', 1);
 backtrace //bt
-repl //进入repl环境 
-restart //
+repl //进入repl环境,直接输入变量名，可以查看变量值 
+restart //重新开始调试
 kill //
 run  //
 scripts   //当前正在运行的文件和被加载文件
 version  //
+
 ``` 
+
+##### 5. Node.js 远端调试
+
+```
+1.在远端机器键入命令：
+# node --debug-brk app.js
+Debugger listening on port 5858
+
+2.在本地机器使用以下命令调试：
+node debug 192.168.1.126:5858
+
+```
+
 
 ##### 6.模块与npm包管理工具
 
@@ -254,14 +268,13 @@ server.bind(41234,'localhost');
 
 ```
 
-##### 10. 使用Chrome调度Node
+##### 10. 使用Chrome调试Node
 
 ```
-1.npm install -g cnpm
-2.cnpm install -g node-inspector
 3.node --inspect app.js
+3.node --inspect-brk ./server.js   //这个会在进入node后代码第一行，以断点调试模式停住
 4.打开chrome的开发模式，点击node图示。
-5.打开浏览器窗口，访问localhost:5757/user
+5.打开浏览器窗口，访问某个网址localhost:5757/user
 
 ```
 
