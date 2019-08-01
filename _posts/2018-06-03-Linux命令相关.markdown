@@ -1022,42 +1022,6 @@ diskutil list
 diskutil unmountDisk /dev/disk4
 sudo dd bs=1m if=2014-09-09-wheezy-raspbian.img of=/dev/disk4
 
-============================================================================
-crash log:
-设备中存放地址：
-/var/mobile/Library/Logs/CrashReporter/InterfaithExplorer_2010-11-22-140841_ianvinkipad.plist 
-
-------------
-设备中可以看到:
-Settings
-General
-About
-Diagnostics & Usage
-Diagnotstic & Usage Data
-
-把崩溃日志拷贝成.crash后导入organizer,即可符号化
-
------------
-用itune同步后，在mac中可以看到
-~/Library/Logs/CrashReporter/MobileDevice/
-
------------
-符号化：
-Crash reports with stack traces need to be symbolicated before they can be analyzed. 
-Symoblication replaces memory addresses with human-readable function names and line numbers. 
-If you get crash logs off a device through Xcode's Organizer window, then they will be symbolicated for you automatically after a few seconds. 
-Otherwise you will need to symbolicate the .crash file yourself by importing it to the Xcode Organizer.
- See Symbolication for details
- ----------
- 
- Put your release build and your .dSYM file in the same directory and open terminal
- $cd directory
-$lldb MyApp.app
-(lldb) image lookup -v --address 0x00085f3c
-
------------
-atos -o Debug-iphoneos/demo.app.dSYM/Contents/Resources/DWARF/demo -l 0x103c40000 0x00000001041c1fb8
-
 
 -------------------------------------
 segue传值
@@ -1098,16 +1062,7 @@ windows下查看端口占用情况
 netstat -ano | findstr "80" （注80是你想要看查看的端口号）
 
 
-删除crash log:
-----
 
-Not saving crash log because we have reached the limit for logs to store on disk. 
-Sync or otherwise clear logs from /var/mobile/Library/Logs/CrashReporter to save new log
-
-Disconnect your device and close Xcode.
-On your dev machine you should look in:
-/Users/%username%/Library/Logs/CrashReporter/MobileDevice/%devicename%
-Move all reports to the Trash and then sync your device with iTunes. That should remove the logs from the device.
 
 =====================================================
 lldb:
@@ -1188,13 +1143,6 @@ cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Develo
 //Encode Image.png into PVRTC using perceptual weights and 2 bpp, and saving the output as ImageP2.pvrtc and a PNG preview as ImageP2.png
 ./texturetool -e PVRTC --channel-weighting-perceptual --bits-per-pixel-2 -o ImageP2.pvrtc -p ImageP2.png Image.png
 
-=========================================
-//crash log 符号化
-find . -name symbolicatecrash  //在Xcode目录里找
-dwarfdump --uuid demo.app.dSYM
-dwarfdump --uuid demo.app	/携程旅行
-export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer" //export DEVELOPER_DIR=`xcode-select --print-path`
-/Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash -v a.crash demo.app.dSYM/ 2 > a.log
 
 
 

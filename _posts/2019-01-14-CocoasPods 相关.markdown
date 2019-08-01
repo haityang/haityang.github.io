@@ -14,4 +14,33 @@ gem sources -l
 pod repo update
 ```
 
-3.
+3.查看当前版本
+
+```
+pod --version
+
+```
+
+
+4.更新到某一版本
+
+```
+sudo gem install cocoapods -v 1.5.3
+
+```
+
+5.更新到最新版本
+
+```
+sudo gem install cocoapods
+
+
+```
+
+
+6.删除当前版本
+
+```
+sudo gem uninstall 
+
+```
