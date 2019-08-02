@@ -8,12 +8,14 @@
 
 
 * 设备中可以看到:
+
 Settings -> General -> About -> Diagnostics & Usage
 把崩溃日志拷贝成.crash后导入organizer,即可符号化
 
 
 
 * 用itune同步后，在mac中可以看到
+
 ~/Library/Logs/CrashReporter/MobileDevice/
 
 
