@@ -1,28 +1,24 @@
-1. crash log 符号化
------
 
-
-crash log 设备中存放地址：
+* crash log 设备中存放地址：
 
 ```
 /var/mobile/Library/Logs/CrashReporter/InterfaithExplorer_2010-11-22-140841_ianvinkipad.plist 
 
 ```
 
-------------
 
-设备中可以看到:
+* 设备中可以看到:
 Settings -> General -> About -> Diagnostics & Usage
 把崩溃日志拷贝成.crash后导入organizer,即可符号化
 
------------
 
-用itune同步后，在mac中可以看到
+
+* 用itune同步后，在mac中可以看到
 ~/Library/Logs/CrashReporter/MobileDevice/
 
------------
 
-符号化：
+
+* 符号化
 
 ```
 Crash reports with stack traces need to be symbolicated before they can be analyzed. 
@@ -33,9 +29,8 @@ Otherwise you will need to symbolicate the .crash file yourself by importing it 
  
 ```
  
-----------
  
-Put your release build and your .dSYM file in the same directory and open terminal
+* Put your release build and your .dSYM file in the same directory and open terminal
  
 ```
 $cd directory
@@ -46,16 +41,16 @@ $lldb MyApp.app
 
 
 
-利用atos工具
+* 利用atos工具
 
 ```
 atos -o Debug-iphoneos/demo.app.dSYM/Contents/Resources/DWARF/demo -l 0x103c40000 0x00000001041c1fb8
 
 ```
 
------------
 
-//crash log 符号化
+
+* crash log 符号化
 
 ```
 find . -name symbolicatecrash  //在Xcode目录里找
@@ -67,7 +62,7 @@ export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer" //export DEVEL
 ```
 
 
-##### 删除crash log:
+* 删除crash log:
 
 Not saving crash log because we have reached the limit for logs to store on disk. 
 Sync or otherwise clear logs from /var/mobile/Library/Logs/CrashReporter to save new log
