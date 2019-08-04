@@ -8,7 +8,7 @@
 
 ## Boilerplate (beta)
 
-Want to clone a boilerplate instead of my buzz blog? Here comes this!  
+Want to clone a  boilerplate instead of my buzz blog? Here comes this!  
 
 ```
 $ git clone git@github.com:Huxpro/huxblog-boilerplate.git
