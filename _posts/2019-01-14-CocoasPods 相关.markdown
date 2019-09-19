@@ -41,6 +41,6 @@ sudo gem install cocoapods
 6.删除当前版本
 
 ```
-sudo gem uninstall 
+sudo gem uninstall cocoapods
 
 ```

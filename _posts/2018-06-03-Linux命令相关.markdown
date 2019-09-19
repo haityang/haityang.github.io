@@ -991,6 +991,31 @@ rm -rf $(brew --cache)
 更多详细的用法说明可以在终端输入"man brew"查看。
 PS：Mac 下类似 Homebrew 的软件管理工具还有 MacPorts、Fink。
 
+
+切换USTC源：https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git
+1.  更换brew.git的源
+cd "$(brew --repo)"
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+2. 更换homebrew-core.git的源
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+
+brew update
+3. 还需要更换Homebrew Bottle源
+vi ~/.bash_profile
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
+
+重置官方源：
+cd "$(brew --repo)"
+git remote set-url origin https://github.com/Homebrew/brew.git
+
+# 重置homebrew-core.git:
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+
+
+
 ```
 
 =============================================
