@@ -26,3 +26,20 @@ OpenCV和VS2015的配置
 
 
 ```
+
+OpenCV MacOS的配置
+
+```
+brew install cmake
+git clone https://github.com/opencv/opencv.git
+git clone https://github.com/opencv/opencv_contrib.git
+cd~ / opencv
+mkdir build
+cd build
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+make -j6＃并行运行6个作业
+sudo make install
+
+
+```
+

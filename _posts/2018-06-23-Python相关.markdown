@@ -108,3 +108,45 @@ ax1 = fig.add_subplot(2, 2, 1)
 sudo pip install sklearn
 ```
 
+
+##### 安装homebrew
+
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+```
+
+##### 安装 python3
+
+```
+brew install python3
+
+```
+
+
+##### 下载anaconda
+
+```
+https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=A
+
+添加清华源：
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+
+vi .condarc
+channels:
+- defaults
+show_channel_urls: true
+default_channels:
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+custom_channels:
+conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+
+
+```
