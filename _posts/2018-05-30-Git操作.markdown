@@ -24,7 +24,7 @@ git branch --set-upstream-to＝origin/rel/7.10
 常用命令：
 
 ```
-branch -r						//查看远端分枝
+branch -r						//查看远端分枝/远程分枝
 
 git checkout -b dev origin/master 	//创建本地分枝dev，获取远程分支
 
@@ -62,7 +62,7 @@ git checkout -b fio6.4 origin/dev/flight6.4	//检出6.4分枝，进行fio开发
 
 git push origin 					//把本地修改推送到远端分枝(本地分枝和远程分枝建立关系后，这条可以直接用,但它可能把本地修改推到所有远端分枝)
 
-git push origin --delete <branchName>	//删除远端分枝
+git push origin --delete <branchName>	//删除远端分枝//远程分枝
 
 git reset --hard 38679ed709fd0a3767b79b93d0fba5bb8dd235f8 回退到 38679ed709fd0a3767b79b93d0fba5bb8dd235f8 版本
 
@@ -142,7 +142,7 @@ git remote set-url origin ssh://htyang@wirelesscode.ctripcorp.com:29418/Wireless
 -----------------
 
 git branch --contains b64d270		//查看哪个分枝里包含指定的revision
-git branch -r --contains b64d270		//查看哪个分枝里包含指定的revision (列出远端分枝)
+git branch -r --contains b64d270		//查看哪个分枝里包含指定的revision (列出远端分枝//远程分枝)
 
 -----------------
 
@@ -179,7 +179,7 @@ git rebase dev						//也是合并分枝，但会自动把dev分枝和上游分�
 git pull = git fetch; git merge dev //把括上面两步操作，合并所有分枝
 git pull --rebase = git fetch; git rebase dev //会自动融合所有分枝，并总是把分枝合并到上游分枝最后	
 git pull --rebase origin dev/flight6.4:fio6.4	//将flight6.4分枝更新到本地fio6.4分枝
-git pull --rebase origin dev/flight6.4 //只合并远程flight6.4分枝，在本地的fio分枝也是用该命令，(省略本地分枝名，默认本地分枝和远端分枝名称相同)
+git pull --rebase origin dev/flight6.4 //只合并远程flight6.4分枝，在本地的fio分枝也是用该命令，(省略本地分枝名，默认本地分枝和远端分枝/远程分枝名称相同)
 git pull --prune  刷新分枝
 
 ----------------
@@ -205,7 +205,7 @@ git rebase 解决冲突
 8.重新提交代码： git push for-*
 
 ----------------------
-git push origin dev/flight6.4			//往上推分枝dev/flight6.4分枝，要求本地分枝和远端分枝同名
+git push origin dev/flight6.4			//往上推分枝dev/flight6.4分枝，要求本地分枝和远端分枝/远程分枝同名
 git push origin fio6.4:dev/flight6.4	//把本地fio6.4分枝推到远端
 git push origin fio6.4:refs/for/dev/flight6.4  //把本地fio6.4分枝推到远端Gerrit
 git push origin HEAD:refs/for/release/6.3	//push走Gerrit
@@ -260,10 +260,11 @@ git log -p -- CTBusiness/CTBusiness/Component/PageInfo/NSDictionaryBuilder/NSDic
         OK，一切都搞定了。
         
 =============================================
+//合并分枝
 CTRIP_WIRELESS/CTRIP_WIRELESS/Resource/Database/ctrip_userinfo.db
 git push orgin dev
 git checkout dev
-git push -u origin dev  		//用本地分枝创建远端分枝
+git push -u origin dev  		//用本地分枝创建远端分枝/远程分枝
 git checkout master
 git merge dev
 git push origin 
@@ -366,7 +367,7 @@ git push origin develop
 	git push origin xiaolin:develop   //本地分支提交到远程分支
 23. git checkout -b 本地分支名 远程分支名 //获取远程分支
 	git checkout -b temp origin/develop
-24. git push origin :Compile //删除远程分枝
+24. git push origin :Compile //删除远程分枝,删除远端分枝
 	git gc --prune=now
 	git remote prune test3
 	git remote prune origin test3 # if thats the the remote source
@@ -427,7 +428,7 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 git lg
 
 =============================================
-创建远程分枝
+创建远程分枝/远端分枝
 git checkout -b temp demo2 //先创建本地分枝temp
 git push -u origin temp	//再创建远程分枝temp
 
@@ -439,8 +440,9 @@ git merge temp
 git push origin demo2
 
 =============================================
-删除远程分枝
+删除远程分枝/远端分枝
 git push origin :Compile //删除远程分枝
+git push origin --delete <branchName> //删除远程分枝
 git branch -d experiment  //删除本地分枝
 
 =============================================
@@ -596,5 +598,46 @@ nothing to commit, working tree clean
 把某个文件回退到某一版本
 git checkout d98a0f565804ba639ba46d6e4295d4f787ff2949 src/main/main.c
 ```
+
+--------------
+
+在阿里云上布署git服务
+
+```
+1.安装git
+$ apt-get install git # ubuntu
+
+2.增加用户
+$ adduser git
+
+3.禁止这个用户使用ssh连接上去进行操作
+$ vi /etc/passwd
+找到类似于git:x:1001:1001:,,,:/home/git:/bin/bash
+改为git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+
+4.设置密码
+$ passwd git 123456(你的密码)
+
+5.设置登录验证公钥
+$ cd /home/git/
+$ mkdir .ssh
+$ cd .ssh
+$ vi authorized_keys
+
+6.初始化git
+$ cd /var
+$ mkdir git$ chown -R git:git git$chmod 777 git$ cd git
+$ cd git
+$ git init --bare sample.git
+$ cd sample.git
+$ sudo chgrp -R groupname .
+$ sudo chmod -R g+rwX .
+$ find . -type d -exec chmod g+s '{}' +
+
+7.克隆
+$ git clone git@10.0.0.121:/var/git/sample.git
+
+```
+
 
 
