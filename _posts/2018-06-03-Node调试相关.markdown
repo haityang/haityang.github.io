@@ -99,3 +99,100 @@ enable delete 断点编号
 enable display 显示编号
 enable mem 内存区域
 ```
+
+
+命令行调试
+---
+
+```
+
+1. 在代码中写入debugger; 就会在该处中断
+
+2. 运行调试
+$ node inspect app.js 
+
+3.继续
+debug> cont //c
+
+4.进入交互环境
+debug> repl
+
+5.下一行
+debug> next //n
+
+6.退出
+debug> .exit
+
+7.进入
+debug> step //s
+
+8.出来
+debug> out //o
+
+
+```
+
+
+设置断点
+---
+
+```
+setBreakpoint(), sb() - 在当前行上设置断点。
+setBreakpoint(line), sb(line) - 在特定行上设置断点。
+setBreakpoint('fn()'), sb(...) - 在函数体的第一个语句上设置断点。
+setBreakpoint('script.js', 1), sb(...) - 在 script.js 的第一行设置断点。
+clearBreakpoint('script.js', 1), cb(...) - 清除 script.js 中第一行的断点
+
+比如：
+debug> setBreakpoint('mod.js', 22)
+
+```
+
+信息
+---
+
+```
+backtrace, bt - 打印当前执行帧的回溯。
+list(5) - 列出具有 5 行上下文的脚本源代码（前后各 5 行）。
+watch(expr) - 将表达式添加到监视列表。
+unwatch(expr) - 从监视列表中移除表达式。
+watchers - 列出所有监视器及其值（在每个断点上自动列出）。
+repl - 在调试脚本的上下文中打开调试器的 repl 以进行运行。
+exec expr - 在调试脚本的上下文中执行表达式。
+
+```
+
+执行控制
+---
+
+```
+run - 运行脚本（在调试器启动时自动运行）。
+restart - 重启脚本。
+kill - 杀死脚本。
+
+```
+
+
+杂项
+---
+
+```
+scripts - 列出所有已加载的脚本。
+version - 显示 V8 的版本。
+
+```
+
+
+在chrome中调试
+---
+
+```
+node --inspect app.js
+
+在chrome中打开：
+chrome://inspect
+
+```
+
+
+
