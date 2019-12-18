@@ -150,3 +150,37 @@ pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 
 
 ```
+
+
+#### python简单http服务器:
+
+```
+sudo python -m SimpleHTTPServer 10000
+python -m http.server
+
+```
+
+#### python简单https服务器
+
+```
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import ssl
+
+httpd = HTTPServer(('localhost', 4443), BaseHTTPRequestHandler)
+
+httpd.socket = ssl.wrap_socket (httpd.socket, 
+        keyfile="/Users/yanghaitao/Applications/cert/key.pem", 
+        certfile='/Users/yanghaitao/Applications/cert/cert.pem', server_side=True)
+
+httpd.serve_forever()
+
+```
+
+#### 生成自签名的证书，用于https
+
+```
+openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+
+```
+
+

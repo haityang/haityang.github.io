@@ -350,9 +350,6 @@ unix 数学计算命令
 -c bc 只编译，而不将编译结果送dc，将其送到标准输出上-l 预定义一个数学函数库，
 可在bc中使用以下函数s(x) sinec(x) cosinee(x) exponentiall(x) loga(x) arctangentj(n，x) Bessel
 
-==================================================
-文件共享服务器:
-####sudo python -m SimpleHTTPServer 10000
 
 ==============================================
 更新路径数据库的
@@ -1539,6 +1536,24 @@ sudo chown -R $(whoami) /usr/local/include /usr/local/lib /usr/local/lib/pkgconf
 
 ```
 spindump
+```
+
+*  text analysis ---
+
+```
+tail -n 3 jan2017articles.csv
+head -n 1 jan2017articles.csv
+wc -l jan2017articles.csv
+grep -i "security" jan2017articles.csv
+grep -i "security" jan2017articles.csv | wc -l
+grep "20 Jan 2017" jan2017articles.csv | tr ',' '\t' > jan20only.tsv
+sort -nr -t$'\t' -k8 jan20only.tsv | head -n 1
+sed '1 d' jan2017articles.csv > jan17no_headers.csv
+sort authors.txt | uniq -c > authors-sorted.txt
+awk -F "\t" '{print $3 "  " $NF}' jan20only.tsv
+grep "authentication failure" /var/log/auth.log | cut -d '=' -f 8
+
+
 ```
 
 

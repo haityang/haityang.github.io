@@ -261,8 +261,6 @@ git log -p -- CTBusiness/CTBusiness/Component/PageInfo/NSDictionaryBuilder/NSDic
         
 =============================================
 //合并分枝
-CTRIP_WIRELESS/CTRIP_WIRELESS/Resource/Database/ctrip_userinfo.db
-git push orgin dev
 git checkout dev
 git push -u origin dev  		//用本地分枝创建远端分枝/远程分枝
 git checkout master
@@ -298,7 +296,8 @@ git
 --------------------------------
 git rebase后commit丢失, git pull --rebase, git rebase --skip  导致的丢失
 git reflog  
-git checkout -b recovery 5aw24s2 
+git checkout -b recovery 5aw24s2 //可以不用调用这句
+git cherry-pick [commit number]  //再合并该补丁
  
 --------------------------------
 git reset --hard 误操作后的恢复：
