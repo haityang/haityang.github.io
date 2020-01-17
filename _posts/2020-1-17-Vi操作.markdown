@@ -1,0 +1,123 @@
+vi command: 
+----
+
+```
+
+1. u         --undo 
+
+2. ctrl-r    --redo 
+
+3. zz        --write file and exit 
+ 
+4. :help    --help  
+
+5. :help x    --help x command 
+
+6. Ctrl-u 	--向上滚动半屏
+ 
+7. Ctrl-d    --scroll half screen 向下 
+
+8. cw        --change a word  
+
+9. 5ra        --replace 5 character with a  
+
+10.vi file    --edit another file 
+
+11 vi f1 f2    --open mult-file 
+
+11. args        --look current file 
+
+12. previous    --previous file 
+
+13. next    --next file 
+
+14. split    --open a split window  
+
+15.ctrl-wj    --bottom window 
+
+16. ctrl-wk    --top window 
+
+17. split f2    --split window and open file 2 
+
+18. split new    --split window and new a file 
+
+19. %        --match pair 
+
+20. >%        --shift a block of text 
+
+30. i}        --inner } 
+
+31. K        --open man page 
+
+32. ctags *.c        --produce tag file (for function location ) 
+
+33. :tag function    --goto function 
+
+34. ctrl-]        --goto function at cursor position 
+
+35. :tags        --show the list of the tags 
+
+36. ctrl-t        --go back the preceding tag. 
+
+33. 2ctrl-t        --go back preceding for 2 jump 
+
+34. stag function    --split and show new function 
+
+35. ctrl-w]        --split current window and jump to tag under the cursor in the uppper window 
+
+36. :tag/write    --finding a procedure when you only know part(here is write) of name 
+
+37. :tag/^read    --procedure begin with read 
+
+38. :tag/DoFile\|do_file\|Do_File        --not sure procedure is DoFile, do_file or Do_file. 
+
+39. tselect name        --can select different tag. 
+
+40. g[            --does a tselect command on cursor 
+
+41. :2 tnext        --go to next tag 
+
+42. :2 tprevious    --go to the previous tag 
+
+43. :2 trewind    --goto the first tag 
+
+44. :2 tlast        --goto the last tag. 
+
+45. stselect        --split window, and tselect 
+
+46. set list        --put vim in list mode 
+
+46. set nolist    --close list mode 
+
+47. :make         --make a file in vim 
+
+48. :cnext        --goto next error 
+
+49. :cc        --display current error 
+
+50. :clist        -- display error list 
+
+51. clist 3,5        --list error 3 through 5 
+
+52 clist ,5        --list error 3 throught 5 
+
+53 clist 5,        --list error 5 to the end 
+
+54 clist!        --list all 
+
+55 cquit        --exit without recompilation 
+
+56 grep -w ground_point *.c        --find occurences of the variable[-w full words only, cnext, cprvious, cc to navigator] 
+
+57 cnfile        --goto first error of next file 
+
+58 :abbreviate ad advertisement    --define the abbreviation
+
+59 :%s/FR_HTABITEMWND/FR_HWND/g    --replace
+
+60. ps -ef |grep fx        --查看当前进程号
+
+61. < 2j        --向左移下面两行 
+62. :set fileformat=unix
+
+```

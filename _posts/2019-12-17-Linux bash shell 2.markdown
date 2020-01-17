@@ -376,6 +376,9 @@ awk -F, '{print $1}' 1.log > r.txt   从文件到文件
 egrep '597836978.766218' 1.log >r.log  提取有关键字的行到文件
 awk '/597836978.766218/{print}' 1.log > r.log   提取有关键字的行到文件
 awk '/will_disappear/ && /598245715/ {print}' 3.log > r.log  多条件的
+awk 'NR==1{print}' filename  打印文本第一行   
+sed -n '2, 1p' filename  打印文本第二行
+cat 1.log |tr "\r\n" ","  | sed 's/\r\n/,/g' >temp.json  替换回车成逗号并合并成一行   
 
 ```
 

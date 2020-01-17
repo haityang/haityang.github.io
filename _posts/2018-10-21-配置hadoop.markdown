@@ -78,7 +78,6 @@ export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 
 ```
-tar -zxvf hadoop-2.2.0.tar.gz
 
 --- hadoop-env.sh
 gedit /usr/local/hadoop/etc/hadoop/hadoop-env.sh
