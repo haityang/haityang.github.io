@@ -1,0 +1,109 @@
+part1:
+---
+
+Bitcoin core is the reference implementation of Bitcoin code.
+
+1) Download Bitcoin core from github
+
+```
+https://github.com/bitcoin/bitcoin
+
+```
+
+2) Build it
+
+```
+/autogen.sh
+./configure --enable_debug
+make
+make install
+
+```
+
+3) Setup the bitconf.conf. In the minimum, setup the rcpuser and rpcpassword field
+bitconf.conf configuration file path:
+
+```
+OS                Default bitcoin datadir      Typical path to configuration file
+Windows     %APPDATA%\Bitcoin\     C:\Users\username\AppData\Roaming\Bitcoin\bitcoin.conf
+Linux           $HOME/.bitcoin/               /home/username/.bitcoin/bitcoin.conf
+Mac OSX    $HOME/Library/Application Support/Bitcoin/             /Users/username/Library/Application Support/Bitcoin/bitcoin.conf
+
+```
+
+4) Useful commands
+
+```
+bitcoind -daemon  ; bitcoin-cli stop      - start and stop bitcoin daemon
+bitcoind -printtoconsole                        - print debug message to console
+bitcoind -daemon -proxy=192.168.1.1:80   - run bitcoind w/o downloading new blocks
+bitcoind -testnet    bitcoin-cli -testnet      - run in test network
+bitcoind -regtest    bitcoin-cli -regtest     - run in regression test network
+bitcoind -debug=rpc                              - set the debug level
+
+bitcoin-cli getblockhash <number>
+bitcoin-cli getblock <hash>
+bitcoin-cli getblockcount
+bitcoin-cli -regtest getblockchaininfo
+bitcoin-cli -regtest generate 500      - mine 500 blocks
+bitcoin-cli -regtest getbalance          - check rewards
+
+```
+
+5) Source code walk through is based on v0.14.99.0 (bitcoind -version)
+
+```
+
+bitcoind.cpp  
+main() calls AppInit()
+AppInit() calls AppInitParameterInteraction()
+then calls AppInitMain(threadGroup, scheduler) - main init function
+init.cpp
+AppInitParameterInteraction() - setup debug level, register RPC commands
+AppInitMain()
+            lock directory
+            start lightweight task scheduler thread
+            AppInitServers() -  start App servers, such as HTTP, RPC servers
+            RegisterNodeSignals(GetNodeSignals())
+            create zero message queue
+            cache size calculations
+            LoadBlockIndex(chainparams)
+            check genesis block
+            InitBlockIndex(chainparams)
+            InitLoadWallet()
+            GetConsensus()
+           CConnman::Start(scheduler, connOptions)
+           wallet->postInitProcess(scheduler)
+net.cpp
+CConnman::Start(...)     - start threads to accept connections, process messages
+call InitBinds(std::vector<CService>&, std::vector<CService>&) - bind to address and port number
+InitBinds() call GetListenPort()
+validation.cpp
+LoadBlockIndex(chainparams)        - load block index from db
+GetBlockSubsidy(nHeight, consensusParams)       - get mining block rewards
+merkleblock.cpp
+CMerkleBlock constructor initialises CPartialMerkleTree
+CPartialMerkleTree constructor calls TraverseAndBuild()
+net_processing.cpp
+ProcessMessages->ProcessMessage->ProcessGetData->CMerkleBlock
+net.h
+RegisterNodeSignals->CNodeSignals.ProcessMessages
+init.cpp 
+RegisterNodeSignals
+rpc/server.cpp
+StartRPC()  - called by AppInitServers
+httpserver.cpp
+StartHTTPServer()  - clled by AppInitServers
+util.cpp
+LogPrintStr
+util.h
+LogPrint          - debug log macro
+LogPrintf         - debug log macro
+LogAcceptCategory   - check the BCLog category and decide to print log or not
+httprpc.cpp
+HTTPReq_JSONRPC(HTTPRequest* req, const std::string &)     - parse the rpc request that is sent from bitcoin-cli 
+
+```
+
+
+

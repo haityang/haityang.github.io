@@ -350,9 +350,6 @@ unix 数学计算命令
 -c bc 只编译，而不将编译结果送dc，将其送到标准输出上-l 预定义一个数学函数库，
 可在bc中使用以下函数s(x) sinec(x) cosinee(x) exponentiall(x) loga(x) arctangentj(n，x) Bessel
 
-==================================================
-文件共享服务器:
-####sudo python -m SimpleHTTPServer 10000
 
 ==============================================
 更新路径数据库的
@@ -574,132 +571,6 @@ unzip:
 
 ================================== 
 
-
-vi command: 
-----
-
-```
-
-1. u         --undo 
-
-2. ctrl-r    --redo 
-
-3. zz        --write file and exit 
- 
-4. :help    --help  
-
-5. :help x    --help x command 
-
-6. Ctrl-u 
- 
-7. Ctrl-d    --scroll half screen 
-
-8. Ctrl-u 
-
-8. cw        --change a word  
-
-9. 5ra        --replace 5 character with a  
-
-10.vi file    --edit another file 
-
-11 vi f1 f2    --open mult-file 
-
-11. args        --look current file 
-
-12. previous    --previous file 
-
-13. next    --next file 
-
-14. split    --open a split window  
-
-15.ctrl-wj    --bottom window 
-
-16. ctrl-wk    --top window 
-
-17. split f2    --split window and open file 2 
-
-18. split new    --split window and new a file 
-
-19. %        --match pair 
-
-20. >%        --shift a block of text 
-
-30. i}        --inner } 
-
-31. K        --open man page 
-
-32. ctags *.c        --produce tag file (for function location ) 
-
-33. :tag function    --goto function 
-
-34. ctrl-]        --goto function at cursor position 
-
-35. :tags        --show the list of the tags 
-
-36. ctrl-t        --go back the preceding tag. 
-
-33. 2ctrl-t        --go back preceding for 2 jump 
-
-34. stag function    --split and show new function 
-
-35. ctrl-w]        --split current window and jump to tag under the cursor in the uppper window 
-
-36. :tag/write    --finding a procedure when you only know part(here is write) of name 
-
-37. :tag/^read    --procedure begin with read 
-
-38. :tag/DoFile\|do_file\|Do_File        --not sure procedure is DoFile, do_file or Do_file. 
-
-39. tselect name        --can select different tag. 
-
-40. g[            --does a tselect command on cursor 
-
-41. :2 tnext        --go to next tag 
-
-42. :2 tprevious    --go to the previous tag 
-
-43. :2 trewind    --goto the first tag 
-
-44. :2 tlast        --goto the last tag. 
-
-45. stselect        --split window, and tselect 
-
-46. set list        --put vim in list mode 
-
-46. set nolist    --close list mode 
-
-47. :make         --make a file in vim 
-
-48. :cnext        --goto next error 
-
-49. :cc        --display current error 
-
-50. :clist        -- display error list 
-
-51. clist 3,5        --list error 3 through 5 
-
-52 clist ,5        --list error 3 throught 5 
-
-53 clist 5,        --list error 5 to the end 
-
-54 clist!        --list all 
-
-55 cquit        --exit without recompilation 
-
-56 grep -w ground_point *.c        --find occurences of the variable[-w full words only, cnext, cprvious, cc to navigator] 
-
-57 cnfile        --goto first error of next file 
-
-58 :abbreviate ad advertisement    --define the abbreviation
-
-59 :%s/FR_HTABITEMWND/FR_HWND/g    --replace
-
-60. ps -ef |grep fx        --查看当前进程号
-
-61. < 2j        --向左移下面两行 
-62. :set fileformat=unix
-
-```
 
 
 
@@ -990,6 +861,31 @@ rm -rf $(brew --cache)
 
 更多详细的用法说明可以在终端输入"man brew"查看。
 PS：Mac 下类似 Homebrew 的软件管理工具还有 MacPorts、Fink。
+
+
+切换USTC源：https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git
+1.  更换brew.git的源
+cd "$(brew --repo)"
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+2. 更换homebrew-core.git的源
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+
+brew update
+3. 还需要更换Homebrew Bottle源
+vi ~/.bash_profile
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
+
+重置官方源：
+cd "$(brew --repo)"
+git remote set-url origin https://github.com/Homebrew/brew.git
+
+# 重置homebrew-core.git:
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+
+
 
 ```
 
@@ -1514,6 +1410,24 @@ sudo chown -R $(whoami) /usr/local/include /usr/local/lib /usr/local/lib/pkgconf
 
 ```
 spindump
+```
+
+*  text analysis ---
+
+```
+tail -n 3 jan2017articles.csv
+head -n 1 jan2017articles.csv
+wc -l jan2017articles.csv
+grep -i "security" jan2017articles.csv
+grep -i "security" jan2017articles.csv | wc -l
+grep "20 Jan 2017" jan2017articles.csv | tr ',' '\t' > jan20only.tsv
+sort -nr -t$'\t' -k8 jan20only.tsv | head -n 1
+sed '1 d' jan2017articles.csv > jan17no_headers.csv
+sort authors.txt | uniq -c > authors-sorted.txt
+awk -F "\t" '{print $3 "  " $NF}' jan20only.tsv
+grep "authentication failure" /var/log/auth.log | cut -d '=' -f 8
+
+
 ```
 
 

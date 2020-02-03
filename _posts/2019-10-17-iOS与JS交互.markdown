@@ -1,0 +1,114 @@
+1.iOS---执行--->JS
+---
+1.使用UIWebView的对象方法
+
+\- (nullable NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script;
+
+
+
+```
+[webView stringByEvaluatingJavaScriptFromString:@"alert('JS弹框')"];
+
+```
+
+
+2.WKWebView执行JS代码
+
+\- (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler;
+
+```
+ NSString *jsStr_1 = @"var p = document.getElementsByTagName('p')[0];";
+ NSString *jsStr_2 = @"p.innerHTML = '使用JavaScript很🐂';";
+
+ [webView evaluateJavaScript:jsStr_1 completionHandler:nil];
+ [webView evaluateJavaScript:jsStr_2 completionHandler:^(id _Nullable value, NSError * _Nullable error) {
+        NSLog(@"value: %@",value); //打印出插入的内容：使用JavaScript很🐂
+    }];
+
+```
+
+3.使用JSContext运行JS代码
+
+\- (JSValue *)evaluateScript:(NSString *)script;
+
+```
+JSValue *value1 = [context evaluateScript:@"var arr = [88, 'mengyueping', 66];"];
+JSValue *jsArr = context[@"arr"];
+jsArr[0] = @"www.";
+
+```
+
+4.取出存储的js函数，并执行
+
+```
+[context evaluateScript:@"function add(a, b){ return a + b; }"];
+JSValue *addValue = context[@"add"]; 
+
+JSValue *sum = [addValue callWithArguments:@[@1,@2]];
+
+```
+
+5.另一种方法，取出存储的js函数，并执行。
+
+```
+JSValue *jsValue = [context evaluateScript:@"function multiply(a, b){ return a * b; }"];
+JSValue *multiplyValue = [jsValue.context.globalObject invokeMethod:@"multiply" withArguments:@[@3,@6]]; //第一种形式
+
+```
+
+或者：
+
+```
+JSValue *jsValue = [context evaluateScript:@"function multiply(a, b){ return a * b; }"];
+JSValue *multiplyValue = [context.globalObject invokeMethod:@"multiply" withArguments:@[@3,@6]]; //第二种形式
+NSLog(@"multiplyValue: %d",multiplyValue.toInt32); 
+
+```
+
+
+2.JS---执行--->iOS
+---
+1.WKWebView与JS之间的通信
+
+通过WKWebViewConfiguration，WKUserContentController，WKScriptMessageHandler实现。
+
+
+```
+
+1. OC 代码 ----：
+WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+[userContentController addScriptMessageHandler:self name:@"JSMessageToIOS"];
+
+WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+configuration.userContentController = userContentController; 
+
+WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:configuration];
+
+回调：
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
+{
+    [self openCamera];
+}
+
+2. JS端----：
+window.webkit.messageHandlers.JSMessageToIOS.postMessage(message);
+
+
+```
+
+
+2.把Block注册到JSContext中
+
+```
+context[@"log"] = ^(){
+    NSArray *args = [JSContext currentArguments];
+    for (JSValue *jsVal in args) {
+        NSLog(@"%@",jsVal);
+    }
+    JSValue *this = [JSContext currentThis];
+};
+
+[context evaluateScript:@"log('mengyueping', [10,20], {'hello': 'world', 'number': '100'})"];
+
+```
+

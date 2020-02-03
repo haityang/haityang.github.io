@@ -1,0 +1,95 @@
+1. OpenCV和VS2015的配置
+
+```
+
+1. 下載合適的庫包。 https://opencv.org/
+下载相应版本到 d:\opencv
+
+2. 以管理员身份运行powershell
+setx -m OPENCV_DIR d:\opencv\build\x64\vc15
+设置path变量，添加：%OPENCV_DIR%\bin
+
+3. 右擊工程名，配置屬性—>VC++目錄—>包含目錄—>
+D:\opencv\build\include
+
+4. 添加“庫目錄”：
+添加D:\OpenCV\build\x64\vc15\lib目錄
+
+5. 添加“附加庫目錄”：
+右擊工程名—>屬性—>配置屬性—>連接器-->常規—>附加庫目錄—>編輯
+和上面一樣將D:\OpenCV\build\x64\vc15\lib添加進去
+
+5. 添加“附加依賴項”：
+右擊工程名—>屬性—>配置屬性—>連接器-->輸入—>附加依賴項—>編輯
+接下來將lib文件夾中所有文件名最後面為d（debug）的lib文件全名添加進去。
+
+
+
+```
+
+
+
+2.安装OpenCV for mac
+
+```
+
+git clone git@github.com:opencv/opencv.git
+git clone git@github.com:opencv/opencv_contrib.git
+
+cd opencv
+mkdir build
+cd build
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D WITH_TBB=ON \
+      -D BUILD_NEW_PYTHON_SUPPORT=ON \
+      -D WITH_V4L=ON \
+      -D WITH_OPENGL=ON \
+      -D INSTALL_C_EXAMPLES=OFF \
+      -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules ..
+      
+# Add -D WITH_QT=ON if needed.
+make -j4 ＃并行运行4个作业
+sudo make install
+
+```
+
+
+
+2、在CMakeList中添加c11 # Enable C++11
+
+```
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+
+```
+
+3. 变量替换
+
+```
+CV_LOAD_IMAGE_COLOR cv::IMREAD_COLOR
+CV_WINDOW_AUTOSIZE  cv::WINDOW_AUTOSIZE
+CV_COVAR_NORMAL cv::COVAR_NORMAL
+CV_COVAR_ROWS cv::COVAR_ROWS
+CV_WINDOW_OPENGL cv::WINDOW_OPENGL
+CV_INPAINT_TELEA INPAINT_TELEA
+CV_CAP_PROP_FPS cv::CAP_PROP_FPS
+CV_CAP_PROP_FRAME_WIDTH cv::CAP_PROP_FRAME_WIDTH
+CV_CAP_PROP_FRAME_HEIGHT cv::CAP_PROP_FRAME_HEIGHT
+CV_FOURCC(‘P’, ‘I’, ‘M’, ‘1’)CV_FOURCC(‘M’,‘J’,‘P’,‘G’)，已经改为cv::CAP_OPENCV_MJPEG
+CV_WARP_FILL_OUTLIERS cv::WARP_FILL_OUTLIERS
+CV_CAP_PROP_POS_FRAMES cv::CAP_PROP_POS_FRAMES
+CV_CAP_PROP_FRAME_COUNT cv::CAP_PROP_FRAME_COUNT
+CV_CAP_PROP_FRAME_WIDTH cv::CAP_PROP_FRAME_WIDTH
+CV_CAP_PROP_FRAME_HEIGHT cv::CAP_PROP_FRAME_HEIGHT
+
+
+#if defined(__APPLE__)
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#else
+#include <GL/gl.h>
+#include <GL/glu.h>
+#endif
+
+```

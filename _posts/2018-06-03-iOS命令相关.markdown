@@ -1,5 +1,5 @@
 
-* crash log 设备中存放地址：
+* #### crash log 设备中存放地址：
 
 ```
 /var/mobile/Library/Logs/CrashReporter/InterfaithExplorer_2010-11-22-140841_ianvinkipad.plist 
@@ -75,3 +75,25 @@ On your dev machine you should look in:
 Move all reports to the Trash and then sync your device with iTunes. That should remove the logs from the device.
 
 
+* Main Thread Checker: UI API called on a background thread
+
+```
+
+It's hard to find the UI code which is not executed in main thread sometimes. You can use the trick below to locate it and fix it.
+
+1. Choose Edit Scheme -> Diagnostics, tick Main Thread Checker and Pause on issues. enter image description here
+2. Run your iOS application to reproduce this issue. (Xcode should pause on the first issue.) enter image description here
+3. Wrap the code that modify the UI in DispatchQueue.main.async {}
+
+```
+
+
+* NaN的bug
+
+```
+[Unknown process name] Error: this application, or a library it uses, has passed an invalid numeric value (NaN, or not-a-number) to CoreGraphics API and this value is being ignored. Please fix this problem.
+[Unknown process name] If you want to see the backtrace, please set CG_NUMERICS_SHOW_BACKTRACE environmental variable.
+
+可以在菜单: Product -> Scheme -> Edit Scheme.  "Run" 选项里, 找到 "Arguments" , 然后在 "Environmental Variables" 一行, 添加CG_CONTEXT_SHOW_BACKTRACE （或 CG_NUMERICS_SHOW_BACKTRACE等 ， 看你运行时候的提示而定 ）并且把数值设置为 YES.
+
+```
