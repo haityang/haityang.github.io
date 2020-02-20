@@ -93,3 +93,55 @@ CV_CAP_PROP_FRAME_HEIGHT cv::CAP_PROP_FRAME_HEIGHT
 #endif
 
 ```
+
+##### opencv for machin learning
+
+
+```
+
+download opencv-4.2.0.tar.gz caffe-1.0.tar.gz libsvm-3.17.tar.gz liblinear-211.tar.gz
+
+sudo apt-get install build-essential cmake libgtk2.0-dev libgtk-3-dev pkg-config python-dev python-numpy python3-dev python3-numpy libavcodec-dev libavformat-dev libswscale-dev libv4l-dev ffmpeg libjpeg-dev libtiff5-dev
+sudo apt install libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev
+sudo apt install libpng-dev libopenexr-dev libtiff-dev libwebp-dev
+sudo apt-get install libgdal-dev gdal-bin
+sudo apt-get install libvtk7.1 libvtk7-qt-dev libvtk7-dev
+---
+$ cd opencv-4.2.0
+$ mkdir build
+$ cd build
+$ cmake -D CMATYPE=Release -D OPENCV_GENERATE_PKGCONFIG=YES -D CMAKE_INSTALL_PREFIX=/usr/local ..
+$ make -j7
+$ sudo make install
+---
+$ sudo find / -iname opencv4.pc    //找到opencv4.pc文件所在目录
+$ sudo vim /etc/profile.d/pkgconfig.sh  //将路径加入pkgconfig.sh
+    export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+$ source /etc/profile
+$ pkg-config --libs opencv4  //验证是否配置成功
+-L/usr/local/opencv4/lib -lopencv_ml -lopencv_dnn -lopencv_video -lopencv_stitching -lopencv_objdetect -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_flann -lopencv_photo -lopencv_gapi -lopencv_imgproc -lopencv_core
+-----
+sudo vim /etc/ld.so.conf.d/opencv4.conf //配置OpenCV动态库环境——程序执行时加载动态库*.so的路径
+   /usr/local/lib
+$ sudo ldconfig
+-----
+$ cd opencv-4.0.0/samples/cpp/example_cmake //测试OpenCV
+vim Makefile
+
+
+CXX ?= g++
+
+CXXFLAGS += -c -Wall $(shell pkg-config --cflags opencv4)
+LDFLAGS += $(shell pkg-config --libs --static opencv4)
+
+all: opencv_example
+
+opencv_example: example.o; $(CXX) $< -o $@ $(LDFLAGS)
+
+%.o: %.cpp; $(CXX) $< -o $@ $(CXXFLAGS)
+
+clean: ; rm -f example.o opencv_example
+
+
+
+```
