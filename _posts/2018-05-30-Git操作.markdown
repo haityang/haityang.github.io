@@ -428,8 +428,8 @@ git lg
 
 =============================================
 创建远程分枝/远端分枝
-git checkout -b temp demo2 //先创建本地分枝temp
-git push -u origin temp	//再创建远程分枝temp
+git checkout -b dev_5.6.0 dev //先创建本地分枝dev_5.6.0,dev为现有分枝
+git push -u origin dev_5.6.0	//再创建远程分枝origin/dev_5.6.0
 
 =============================================
 将temp分枝合并到demo2上

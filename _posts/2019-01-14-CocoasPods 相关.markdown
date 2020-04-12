@@ -25,7 +25,7 @@ pod --version
 4.更新到某一版本
 
 ```
-sudo gem install cocoapods -v 1.5.3
+sudo gem install cocoapods -v 1.6.0
 
 ```
 
@@ -42,5 +42,16 @@ sudo gem install cocoapods
 
 ```
 sudo gem uninstall cocoapods
+
+```
+
+
+7.issue
+
+```
+Include of non-modular header inside framework module ...
+
+Build Setting — Apple LLVM 8.1 Language Modules — Allow Non-modular Includes In Framework Modules
+设置为YES，则可以在Framework中使用模块外的Include，不过这种过于粗暴
 
 ```

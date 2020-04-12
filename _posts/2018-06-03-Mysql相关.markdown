@@ -1,4 +1,4 @@
-MySql database:
+##### MySql database:
 
 ```
 
@@ -13,16 +13,14 @@ sudo service mysql start;
 mysql -uroot -p;
 ```
 
---------------------------------------------
-需要启动mysql时对用户名有要求：分配目录给wheel组_mysql用户
+
+##### 需要启动mysql时对用户名有要求：分配目录给wheel组_mysql用户
 
 ```
 sudo chown -R  _mysql:wheel  /usr/local/mysql/data
 sudo chown -R yht:staff /usr/local/mysql/data
 ```
-
---------------------------------------------
-DATABASE:
+#####  DATABASE:
 
 ```
 1. mysql -h 192.168.0.1 -u root -p
@@ -43,7 +41,7 @@ select * from flight_city where cityName="台中"
 
 select cityDataID,cityID,cityName,cityName_Combine,cityNameEn,countryEnum,cityCode,districtID,stationID,stationProperty,airportCode,airportName from city_query_history where business_type=#business_type# order by date desc limit |num|
 
---------------------------------------------
+-----
 
 1.To login (from unix shell) use -h only if needed.
 -#[mysql dir]/bin/mysql -h hostname -u root -p
@@ -204,7 +202,7 @@ mysql> create table [table name] (personid int(50) not null auto_increment prima
 
 -# create table user(name VARCHAR(20), age int, phone VARCHAR(25));
 
---------------------------------------------
+------------
 mysql 终端
 cd /usr/local/mysql/bin/
 ./mysqladmin -u root -p password 123             //更改root用户密码
@@ -223,11 +221,13 @@ sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop
 3.mysqladmin -h localhost -u root password "waiting" //修改密码
 4.mysql -h localhost -u root -p
 
+```
 
 
+##### sqlite 说明
 
-说明
---------------------------------------------- 
+```
+
 sqlite3          *db, 数据库句柄，跟文件句柄FILE很类似
 sqlite3_stmt      *stmt, 这个相当于ODBC的Command对象，用于保存编译好的SQL语句
 sqlite3_open(),   打开数据库，没有数据库时创建。
@@ -375,7 +375,9 @@ select
 }
 
 
-----------------------------------------------(void)execSql:(NSString *)sql
+---------------------
+
+-(void)execSql:(NSString *)sql
 {
     char *err;
     if (sqlite3_exec(db, [sql UTF8String], NULL, NULL, &err) != SQLITE_OK) {
@@ -383,6 +385,7 @@ select
         NSLog(@"数据库操作数据失败!");
     }
 }
+
 
 -----create
 NSString *sqlCreateTable = @"CREATE TABLE IF NOT EXISTS PERSONINFO (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER, address TEXT)";
@@ -426,10 +429,10 @@ NSString *sql1 = [NSString stringWithFormat:
 UPDATE mysql.user SET password=password('whateverpasswordyoulike')
 WHERE user='root' AND host='localhost';
 
------------
+
 ```
 
-Mac上操作
+##### Mac上操作
 
 ```
 PATH="$PATH":/usr/local/mysql/bin
@@ -440,7 +443,7 @@ mysql -uroot -p
 ```
 
 
-[Mysql 增加新用户并授权node使用某数据库](https://www.liaoxuefeng.com/wiki/1022910821149312/1101571555324224)
+##### [Mysql 增加新用户并授权node使用某数据库](https://www.liaoxuefeng.com/wiki/1022910821149312/1101571555324224)
 
 ```
 
@@ -469,6 +472,8 @@ alter user 'editest'@'%' identified with mysql_native_password by 'editest123456
 flush privileges;
 
 ```
+
+
 
 
 

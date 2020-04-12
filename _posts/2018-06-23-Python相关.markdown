@@ -183,8 +183,15 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 
 ```
 
-#### python 代码碎片
+#### python 装不同的版本
+If you are using mac, you can install pyenv from Brew, install the desired versions, list the installed versions, and activate each version locally or globally.
 
 ```
+brew install pyenv
+pyenv install 3.6.9
+pyenv install 3.7.4    
+pyenv versions
+pyenv global 3.7.4 3.6.9
+
 
 ```
