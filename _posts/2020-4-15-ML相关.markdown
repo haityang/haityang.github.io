@@ -1,0 +1,38 @@
+#### 安装运行Turicreate（transfer）
+
+#####1. 安装virtualenv
+
+```
+$ pip install virtualenv
+
+```
+
+
+#####2. 创建并激活虚拟环境
+
+```
+$ cd ~
+$ virtualenv venv
+$ source ~/venv/bin/activate
+```
+
+#####3. 使用Anacoda的虚拟环境
+
+```
+$ conda create -n virtual_environment_name anaconda
+$ conda activate virtual_environment_name
+```
+
+
+#####4. 安装turicreate
+
+```
+$ (venv) pip install -U turicreate
+
+```
+
+####安装CoreML转换工具(conversion)
+
+```
+pip install CoreMLtools
+```

@@ -1,0 +1,11 @@
+##### openssl错误，重装。
+
+
+```
+$ brew install rbenv
+$ rbenv install 2.6.3
+$ rbenv versions
+$ rbenv global 2.6.3
+$ brew switch openssl 1.0.2s
+
+```
