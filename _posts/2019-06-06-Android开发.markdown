@@ -163,3 +163,11 @@ chrome://inspect
 点击对应网页下方的 inspect 选项便可以进入开发者工具页
 
 ```
+
+
+#### android 查看当前activity
+
+```
+1. adb shell dumpsys activity top
+2. 在logcat中  搜resume
+```

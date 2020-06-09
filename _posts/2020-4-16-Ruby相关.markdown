@@ -9,3 +9,92 @@ $ rbenv global 2.6.3
 $ brew switch openssl 1.0.2s
 
 ```
+
+##### 安装rvm
+
+```
+// 安装rvm，可能被强了，需要想办法翻墙，比如代理、Lantern
+$ curl -L get.rvm.io | bash -s stable
+// 要想使用 'rvm'命令需要执行下面一行代码
+$ source ~/.rvm/scripts/rvm
+
+```
+
+##### 安装Ruby
+
+```
+// 列出ruby可安装的版本信息
+rvm list known
+// 安装一个ruby版本
+rvm install 2.1.4
+// 如果想设置为默认版本，可以用这条命令来完成
+rvm use 2.1.4 --default 
+// 查看已安装的ruby
+rvm list
+// 卸载一个已安装ruby版本
+rvm remove 2.1.4
+
+```
+
+
+##### 切换源
+
+```
+查看已有的源
+
+gem source
+显示会如下：
+CURRENT SOURCES
+http://rubygems.org/
+然后我们需要来修改更换源（由于国内被墙）所以要把源切换至淘宝镜像服务器 在终端执行以下命令
+$ gem update --system
+$ gem uninstall rubygems-update
+$ gem sources -r http://rubygems.org/
+$ gem sources -a https://ruby.taobao.org
+```
+
+##### 切换Ruby版本
+
+```
+上面的步骤完成之后，就可以通过 rvm 来切换 ruby 版本了：
+rvm use system # 使用系统 ruby
+rvm use 2.2.3  # 使用 rvm ruby
+在切换 ruby 版本之后，gem 也会跟着切换，我们就可以安装两个版本的 CocoaPods 了。
+```
+
+------------
+[1]. To upgrade from Ruby 2.3 to 2.6 first you'll need to upgrade your version of ruby. To do this, we will use the Ruby Version Manager you installed when you did your original system install.
+
+```
+rvm install 2.6.1
+rvm use 2.6.1 --default
+```
+
+[2]. We need to upgrade our entire version of RubyGems. To do this we have to run the following command
+
+```
+gem update --system
+```
+
+[3]. Now we need to reinstall some gems we use globally
+
+```
+gem install bundler
+gem install learn-co
+gem install nokogiri
+```
+
+[4]. Finally, we need to install the right version of Rails. To do this, please run:
+
+```
+gem install rails -v '5.0.7.1'
+```
+
+[5]. If everything worked you should be able to check your ruby version and bundler version with the following commands
+
+```
+ruby -v
+bundle -v
+```
+
+For ruby you should have Ruby 2.6.1, for bundler you should have at least version 2.0.1

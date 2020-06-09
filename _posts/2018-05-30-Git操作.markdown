@@ -638,5 +638,12 @@ $ git clone git@10.0.0.121:/var/git/sample.git
 
 ```
 
+回到某个版本
+
+```
+git reset --hard 2dcc5ec35
+git clean -f -X	
+
+```
 
 
