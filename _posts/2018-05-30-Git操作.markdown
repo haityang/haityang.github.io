@@ -111,7 +111,7 @@ git branch --contains f3a765986201dfc4052d19f482602bfe8eb92870
 ----------------------
 
 ```
-git log dev --oneline --author=yanghaitao //只看某分枝的提交记录
+git log dev --oneline --author=yanghaitao --since=2020.7.20 --until=2020.7.25 //只看某分枝的提交记录
 
 
 git log --pretty=oneline -p -- CTInlandFlightOrderViewController.m //查看文件的修改记录,-p 显示patch信息

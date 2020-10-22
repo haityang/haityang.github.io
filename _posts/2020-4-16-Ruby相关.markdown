@@ -14,7 +14,7 @@ $ brew switch openssl 1.0.2s
 
 ```
 // 安装rvm，可能被强了，需要想办法翻墙，比如代理、Lantern
-$ curl -L get.rvm.io | bash -s stable
+$ curl -L get.rvm.io | bash -s stable --auto-dotfiles
 // 要想使用 'rvm'命令需要执行下面一行代码
 $ source ~/.rvm/scripts/rvm
 

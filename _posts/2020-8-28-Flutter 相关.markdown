@@ -1,0 +1,23 @@
+##### Flutter常用命令
+
+
+```
+$ flutter run  //（默认为debug环境）
+$ flutter run --release //(以release模式运行)
+$ flutter -h //帮助
+$ flutter doctor   //诊断flutter
+$ flutter --version //查看flutter版本号
+$ flutter upgrade    //flutter升级
+$ flutter channel  //查看flutter当前版本
+$ flutter channel master   切换flutter版本的master
+$ flutter packages get //获取flutter packages包
+$ flutter pub get   //获取flutter packages包
+$ flutter packages upgrade //升级到依赖package的最新版本
+$ flutter pub upgrade //升级到依赖package的最新版本
+$ flutter pub outdated //标识过期依赖包。
+$ flutter version v1.9.1+hotfix.3  //选择一个选定的flutter版本
+$ flutter version 1.17.5 降级到1.17.5
+$ flutter clean 删除.ios目录 
+
+
+```

@@ -1,67 +1,89 @@
 ====================================
 
+```
 svn: Aborting commit: remains in conflict
 svn remove --force filename
 svn resolve --accept=working filename
 svn commit
 svn copy trunk tags/Portal.2.0 //增加当前主分枝为一个tag版本
 
+```
+
 ---------------------------
 
+```
  linux下删除所有.svn目录方法为
     find . -type d -name ".svn"|xargs rm -rf
     或者
     find . -type d -iname ".svn" -exec rm -rf {} \;
+```
     
 ---------------------------
 
 Could not add all targets because some targets don't exist
+
+```
 svn ci ico_flight_choosetra_atob\@3x.png@ -m "值机行程图片"
+```
 
 ---------------------------
     
 svn: Checksum mismatch while updating
 This solution I can across a while ago is to open a command shell in the folder where the problem file is located and execute the following:
 
+```
+
 svn update --set-depth empty
 svn update --set-depth infinity
+
+```
 I cannot remember where I found the solution, I would like to give credit where due but I can't remember, I found this in shell command history.
 
 ============================
 
+```
 svn log -v |grep "低价助手" -C 10    //查看svn log
 svn diff -r r203409:r203410
+```
 
 ===========================
 
+```
 svn status --show-updates   //显示可满足的更新
 or svn status -u
+```
 
 ===========================
 
 svn 回滚:
+
+```
 svn update
 svn merge -r 150:140 .  //当前版本：目标版本
 svn commit -m "Rolled back to r140"
+```
 
 --------------
 
+```
 svn revert -R . //丢弃掉本地所有的改动
-
---------------
-
 svn up . -r 338037 //更新到某个历史版本
-
---------------
-
 svn up   //更新到最新版本
-
+```
 --------------
 
+```
 svn status
 svn revert [-R] a.png
+
+```
 
 
 ------------
 查看远端repository 地址
+
+```
 svn info
+
+```
+
