@@ -229,8 +229,40 @@ while ([rs next]) {
 ##### 7.多线程信号量编程时注意的点
 
 ```
-1.要注意signal loop的退出问题。
-2.要注意signal loop的线程阻塞问题。
+1.要注意signal loop的退出问题，外部退出，内部退出。
+2.要注意signal loop的线程阻塞问题。在有信号量的loop内，具体任务要在新线程来做，防止线程阻塞。
 3.要注意线程安全问题。
+
+```
+
+
+##### 8.打出崩溃日志
+
+```
+static NSUncaughtExceptionHandler *previousUncaughtExecptionHandler;
+
+static void UncaughtExceptionHandler(NSException *exception) {
+     NSArray *arr = [exception callStackSymbols];
+     NSString *reason = [exception reason];
+     NSString *name = [exception name];
+   
+     NSString *content = [NSString stringWithFormat:@"name:\n%@\nreason:\n%@\ncallStackSymbols:\n%@",
+                   name,reason,[arr componentsJoinedByString:@"\n"]];
+    NSTimeInterval tv = [[NSDate date] timeIntervalSince1970];
+    NSString *fileName = [NSString stringWithFormat:@"exception_%f", tv];
+    NSString *path = [Util getDocumentPath];
+    path = [path stringByAppendingPathComponent:fileName];
+    [content writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
+    //执行其它sdk异常处理函数
+    if (previousUncaughtExecptionHandler) {
+        previousUncaughtExecptionHandler(exception);
+    }
+}
+
+- (void)registerUncaughtExceptionHandler {
+    previousUncaughtExecptionHandler = NSGetUncaughtExceptionHandler();
+    NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+}
 
 ```

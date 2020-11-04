@@ -307,4 +307,9 @@ CGContextRestoreGState(context);
 
 ```
 
+#####测滑返回
 
+```
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+
+```
