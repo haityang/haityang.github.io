@@ -266,3 +266,63 @@ static void UncaughtExceptionHandler(NSException *exception) {
 }
 
 ```
+
+##### 9.编译的环境变量宏定义
+
+```
+环境变量：
+$(BUILT_PRODUCTS_DIR)
+build成功后的，最终产品路径－－可以在Build Settings参数的Per-configuration Build Products Path项里设置
+
+$(TARGET_NAME)
+目标工程名称
+
+$(SRCROOT)
+工程文件（比如Nuno.xcodeproj）的路径
+
+$(CURRENT_PROJECT_VERSION)
+当前工程版本号
+
+```
+
+##### 10.音视频权限
+
+```
+Privacy - Microphone Usage Description //麦克风权限
+Privacy - Contacts Usage Description   //通讯录权限
+Privacy - Camera Usage Description     //摄像头权限
+Privacy - NSSiriUsageDescription       //Siri的权限
+Privacy - Bluetooth Peripheral Usage Description //蓝牙
+Privacy - Reminders Usage Description  //提醒事项
+Privacy - Motion Usage Description     //运动与健康
+Privacy - Media Libaray Usage Description //媒体资源库
+Privacy - Calendars Usage Description  //日历
+Privacy - Photo Library Usage Description //相册
+Privacy - Location Always Usage Description //始终访问位置
+Privacy - Location Usage Description 位置
+Privacy - Location When In Use Usage Description 在使用期间访问位置
+Privacy - Health Share Usage Description //访问健康分享
+Privacy - Health Update Usage Description //访问健康更新
+Privacy - Motion Usage Description//访问运动与健身
+Privacy - Reminders Usage Description //访问提醒事项
+---
+
+允许http请求：
+ 1.点击加号添加一行 App Transport Security Settings  这是一个数组（此时没有元素）
+ 2.再往该数组中添加一个   Allow Arbitrary Loads  元素，同时设为 YES。
+ 
+
+```
+
+##### 11.目录操作
+
+```
+NSHomeDirectory();
+NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+STemporaryDirectory();
+
+```
+
+
+

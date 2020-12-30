@@ -14,6 +14,7 @@ git push mine master
 
 There is no tracking information for the current branch.
 是因为本地分支和远程分支没有建立联系
+
 ```
 git branch -vv
 git branch --set-upstream-to＝origin/rel/7.10
@@ -85,7 +86,7 @@ git diff dev/flight def/fio			//diff两个分枝
 
 ----------------------
 
-git cherry-pick 合分枝流程(把7.8.2分枝上的commit合并到7.9)
+git cherry-pick 合分枝流程 (把7.8.2分枝上的commit合并到7.9)
 
 ```
 1.checkout rel/7.9
@@ -109,6 +110,8 @@ git branch --contains f3a765986201dfc4052d19f482602bfe8eb92870
 ```
 
 ----------------------
+
+git log 相关
 
 ```
 git log dev --oneline --author=yanghaitao --since=2020.7.20 --until=2020.7.25 //只看某分枝的提交记录
@@ -260,7 +263,7 @@ git log -p -- CTBusiness/CTBusiness/Component/PageInfo/NSDictionaryBuilder/NSDic
         OK，一切都搞定了。
         
 =============================================
-//合并分枝
+//合并分枝， 新建远端分枝
 git checkout dev
 git push -u origin dev  		//用本地分枝创建远端分枝/远程分枝
 git checkout master
@@ -383,14 +386,6 @@ git push origin develop
 24. git commit //提交刚才add的文件。
 25. git branch -d experiment  //删掉本地分枝
 26. git branch -D experiment  //强制删掉本地分枝
-27. git tag //列出git中现有的所有标签
-28. git checkout tag_name //用标签名检出对应版本
-28. git tag -l v1.4.2.*  //列出特定的标签
-29. git tag -a v1.4 -m 'version 1.4' //在git中创建带注释的标签非常简单
-30. git show v1.4		//查看相应标签的版本信息
-31. git tag -s v1.5 -m 'my signed 1.5 tag'		//用GPG私钥设标签
-32. git tag v1.4-lw  //加轻量级标签
-33. git tag -v v1.4.2.1 //用到GPG来验证签名
 34. git log --pretty=oneline //整个提交历史
 35. git push --tags //将tag也提交
 36. git log -p  //显示补丁
@@ -421,13 +416,39 @@ git push origin develop
 71. git mergetool 图形化工具解决冲突
     git commit -m "commit all merge"
     
+```
+------------------------------------
+
+git tag 打标签
+
+```
+1. git tag //列出git中现有的所有标签
+2. git checkout tag_name //用标签名检出对应版本
+3. git tag -l v1.4.2.*  //列出特定的标签
+5. git show v1.4		//查看相应标签的版本信息
+6. git tag -s v1.5 -m 'my signed 1.5 tag'		//用GPG私钥设标签
+7. git tag v1.4-lw  //加轻量级标签
+8. git tag -v v1.4.2.1 //用到GPG来验证签名
+----
+git tag -a v1.4 -m 'version 1.4' //在git中创建带注释的标签非常简单
+git push origin --tags //推送到远端
+git tag -d V1.4 //删除本地Tag
+git push origin :refs/tags/V1.4 删除远端tag
+
+
+```
+    
 =============================================
+
+git 
+
+```
 git log高亮：
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
 git lg
 
 =============================================
-创建远程分枝/远端分枝
+创建远程分枝/远端分枝 新建远端分枝
 git checkout -b dev_5.6.0 dev //先创建本地分枝dev_5.6.0,dev为现有分枝
 git push -u origin dev_5.6.0	//再创建远程分枝origin/dev_5.6.0
 
