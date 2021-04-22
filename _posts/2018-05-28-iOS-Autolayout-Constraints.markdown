@@ -120,6 +120,22 @@ NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(buttonA,buttonB);
 @"|-50-[buttonA(80@100)]-[buttonB(90@200)]-50-|" //左右边距都为50，中间有两个按钮，相隔缺省宽度，一个控件宽度为80，约束优先级为100；另一个控件宽度为90，约束优先级为200
 @"V:[buttonA(80)]-20-[buttonB(==buttonA)]" //垂直方向有一个高度为80的buttonA，然后间隔20有一个和buttonA同样高度的buttonB
 ```
+
+```
+vstr = [NSString stringWithFormat:@"H:|-%d-[v]-%d-|", (int)margin, (int)margin];
+    [self addConstrain:self.textView vfl:vstr];
+    
+- (void)addConstrain:(UIView*)v vfl:(NSString *)vfl {
+    NSArray *cons = [NSLayoutConstraint
+                                constraintsWithVisualFormat:vfl
+                                options:NSLayoutFormatDirectionLeadingToTrailing
+                                metrics:nil
+                                views:NSDictionaryOfVariableBindings(v)];
+    [self.view addConstraints:cons];
+}
+
+```
+
 #### apple VFL
 ```
 Standard Space

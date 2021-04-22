@@ -433,7 +433,7 @@ git tag 打标签
 git tag -a v1.4 -m 'version 1.4' //在git中创建带注释的标签非常简单
 git push origin --tags //推送到远端
 git tag -d V1.4 //删除本地Tag
-git push origin :refs/tags/V1.4 删除远端tag
+git push -d origin v1.4 删除远端tag
 
 
 ```
@@ -448,7 +448,7 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 git lg
 
 =============================================
-创建远程分枝/远端分枝 新建远端分枝
+创建远程分枝/远端分枝 新建远端分枝，新建分枝
 git checkout -b dev_5.6.0 dev //先创建本地分枝dev_5.6.0,dev为现有分枝
 git push -u origin dev_5.6.0	//再创建远程分枝origin/dev_5.6.0
 
@@ -667,4 +667,9 @@ git clean -f -X
 
 ```
 
+拉取所有子模块
 
+```
+git submodule foreach git pull --rebase
+
+```

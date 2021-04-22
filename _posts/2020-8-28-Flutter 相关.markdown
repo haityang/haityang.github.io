@@ -15,9 +15,37 @@ $ flutter pub get   //获取flutter packages包
 $ flutter packages upgrade //升级到依赖package的最新版本
 $ flutter pub upgrade //升级到依赖package的最新版本
 $ flutter pub outdated //标识过期依赖包。
-$ flutter version v1.9.1+hotfix.3  //选择一个选定的flutter版本
-$ flutter version 1.17.5 降级到1.17.5
-$ flutter clean 删除.ios目录 
+$ flutter clean //删除.ios目录 
+$ flutter analyze //命令行下静态分析flutter代码
+
+-----
+//升级到最新分版本
+$ flutter channel master
+$ flutter upgrade
+
+//降级flutter 
+$ flutter channel stable //切换到stable channel
+$ flutter downgrade 1.17.5 //降级到最近的一个版
+$ flutter upgrade //相当于刷新到最新版
+
+```
+
+
+调试
+
+```
+debugDumpApp()  //widget树
+debugDumpRenderTree() //渲染树
+debugDumpLayerTree() //Layer树
+debugDumpSemanticsTree() //语义树
+debugPrintBeginFrameBanner和debugPrintEndFrameBanner //标识帧的开始和结束
+
+```
+
+
+dart SDK
+
+```
 
 
 ```

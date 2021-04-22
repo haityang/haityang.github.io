@@ -212,3 +212,28 @@ pyenv global 3.6.5 2.7.14
 
 
 ```
+
+安装pip
+
+```
+$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py   # 下载安装脚本
+$ sudo python get-pip.py    # 运行安装脚本
+$ sudo python3 get-pip.py
+$ sudo pip3 install --upgrade pip
+```
+
+安装jupyter
+
+```
+$ pip3 install jupyter
+$ pip show jupyter
+$ vi ~/.zshrc
+export PATH=/Users/yanghaitao/Library/Python/3.8/bin/:$PATH
+```
+
+打开notebook
+
+```
+$ jupyter notebook
+
+```

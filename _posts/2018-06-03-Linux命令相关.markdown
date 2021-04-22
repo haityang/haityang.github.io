@@ -1,5 +1,12 @@
+1.chroot用法
+
+```
 
 
+```
+
+
+-------
 1. class-dump 
 提取框架中的头文件：  
 class-dump -H -o /Users/iSwear/Desktop/headFold /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/System/Library/PrivateFrameworks/Calendar

@@ -91,3 +91,13 @@ post_install do |installer|
 end
 
 ```
+
+11. 最简单的podfile
+
+```
+platform :ios, '9.0'
+target 'dd' do 
+    pod 'Reachability'
+end
+
+```
