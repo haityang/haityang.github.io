@@ -448,7 +448,7 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 git lg
 
 =============================================
-创建远程分枝/远端分枝 新建远端分枝，新建分枝
+创建远程分枝、远端分枝 新建远端分枝，新建分枝
 git checkout -b dev_5.6.0 dev //先创建本地分枝dev_5.6.0,dev为现有分枝
 git push -u origin dev_5.6.0	//再创建远程分枝origin/dev_5.6.0
 

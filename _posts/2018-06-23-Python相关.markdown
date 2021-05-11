@@ -237,3 +237,18 @@ export PATH=/Users/yanghaitao/Library/Python/3.8/bin/:$PATH
 $ jupyter notebook
 
 ```
+
+错误： ModuleNotFoundError: No module named 'pip._internal.cli.main'
+
+```
+$ sudo python3 -m pip install --upgrade pip
+$ sudo python -m pip install --upgrade pip
+```
+
+从excel导入多国语言
+
+```
+$ sudo pip install xlrd==1.2.0       
+$ python run.py excel.xlsx  
+
+```

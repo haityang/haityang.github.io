@@ -37,6 +37,7 @@ fvm use 1.17.5 --global //全局使用
 fvm remove 1.17.5 //移除版本
 fvm list //列出所有安装的版本
 fvm releases //列出当前所有发布的版本
+pub global activate fvm //更新fvm
 ---------
 想实现fvm包管理，需要做一些额外的事情
 1. fvm use 1.17.5 --global
