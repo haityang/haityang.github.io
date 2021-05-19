@@ -1,0 +1,167 @@
+1.决策树的不同算法
+1.1 ID3
+1.2 C4.5
+1.3 CART
+2.剪枝
+3.分析数据，生成模型
+4.测试数据，评价模型
+5.新的数据，预测模型
+6.用R语言生成模型，生成图表
+7.对于缺失值的处理。
+
+
+================================预测乳腺癌
+https://zhuanlan.zhihu.com/p/39255142
+
+#基于UCI威斯康星州乳腺癌数据集的经典决策树
+htl <- 'http://archive.ics.uci.edu/ml/machine-learning-databases/'
+
+parm <- 'breast-cancer-wisconsin/breast-cancer-wisconsin.data'
+
+url <- paste(htl,parm,sep = '')  #把网址和Parm拼接
+
+breast <- read.table(url,sep = ',',header = FALSE,na.strings = '?') #
+
+names(breast) <- c('ID','clumpThickness','sizeUniformity','shapeUniformity','maginalAdhesion',
+                   'singleEptheliacellsize','bareNuclei','blandChromatin','normalNucleoli','mitosis','class')
+
+# write.table(breast,file = 'F://Data（拷贝出来再使用）/yuyu.txt',sep = ' ') #可选择保存为txt文件
+
+df <- breast[,-1]  #删除ID变量
+
+df$class <- factor(df$class,levels = c(2,4),
+                   labels = c('benign','malignant'))  #benign良性的  malignant恶性的
+
+set.seed(666) #每次取值前输入同样的set.seed(某数)，才能保证两次取值相同
+
+train <- sample(nrow(df),0.7*nrow(df))  #取数据集的70%为训练集, 抽样函数，第一个参数为向量，nrow()返回行数 后面的是抽样参数前
+
+df.train <- df[train,]  #训练集
+
+df.validate <- df[-train,]   #验证集,#删除抽样行
+
+table(df.train$class)  #统计df.train中class的各数据频次,统计恶性，良性的频数
+
+table(df.validate$class)
+
+list1 <- which(rowSums(is.na(df.validate)) > 0) # 数据集中有缺失值的行。
+
+aNA <- df.validate[list1,]#提取有缺失值的行。
+
+
+
+library(rpart)
+set.seed(666)
+dtree <- rpart(class~.,data = df.train,method = 'class',
+               parms = list(split = 'information'))
+               
+dtree$cptable  #不同大小的树对应的预测误差
+#结果为
+          CP nsplit rel error    xerror       xstd
+1 0.80588235      0 1.0000000 1.0000000 0.06194645
+2 0.03235294      1 0.1941176 0.1941176 0.03263143
+3 0.01176471      3 0.1294118 0.1352941 0.02753934
+4 0.01000000      4 0.1176471 0.1470588 0.02865007
+
+plotcp(dtree)  #交叉验证误差与复杂度参数的关系图
+----------
+dtree.pruned <- prune(dtree,cp=0.012) #根据复杂度剪枝，控制树的大小
+library(rpart.plot)
+?prp
+prp(dtree.pruned,type = 2, extra = 104,
+    fallen.leaves = TRUE, main = 'Decision Tree') #画出最终的决策树
+-----------
+dtree.pred <- predict(dtree.pruned,df.validate,type = 'class')
+dtree.pref <- table(df.validate$class,dtree.pred,
+                    dnn = c('Actual','Predicted'))
+dtree.pref
+------------
+library(party) #加载必要包
+fit.ctree <- ctree(class~.,data = df.train)  #生成条件决策树
+plot(fit.ctree,main = 'Conditional Inference Tree') #画出决策树
+ctree.pred <- predict(fit.ctree,df.validate,type = 'response') #对验证集分类
+ctree.pref <- table(df.validate$class,ctree.pred,
+                    dnn = c('Actual','"Predict')) #观察准确率
+ctree.pref
+
+================================
+
+================================预测泰坦尼克号
+https://www.guru99.com/r-decision-trees.html
+
+set.seed(678)
+path <- 'https://raw.githubusercontent.com/guru99-edu/R-Programming/master/titanic_data.csv'
+titanic <-read.csv(path)
+
+head(titanic)
+tail(titanic)
+
+//混洗原始数据，通过采样,生成从1~maxrow的随机列表
+shuffle_index <- sample(1:nrow(titanic))
+head(shuffle_index)
+
+titanic <- titanic[shuffle_index, ]
+head(titanic)
+
+//将？号替换为NA
+idx <- titanic == "?"
+is.na(titanic) <- idx
+
+//清洗数据，去掉无关数据（home.dest, cabin, name, x和ticket）
+//替换仓位和是否幸存的value变量
+//把NA丢弃掉
+library(dplyr)
+
+clean_titanic <- titanic %>%
+select(-c(home.dest, cabin, name, x, ticket)) %>% 
+mutate(pclass = factor(pclass, levels = c(1, 2, 3), labels = c('Upper', 'Middle', 'Lower')),
+	survived = factor(survived, levels = c(0, 1), labels = c('No', 'Yes'))) %>%
+na.omit()
+glimpse(clean_titanic)
+
+//分离训练，测试集
+create_train_test(df, size = 0.8, train = TRUE)
+arguments:
+-df: Dataset used to train the model.
+-size: Size of the split. By default, 0.8. Numerical value
+-train: If set to `TRUE`, the function creates the train set, otherwise the test set. Default value sets to `TRUE`. Boolean value.You need to add a Boolean parameter because R does not allow to return two data frames simultaneously.
+
+create_train_test <- function(data, size = 0.8, train = TRUE) {
+    n_row = nrow(data)
+    total_row = size * n_row
+    train_sample <- 1: total_row
+    if (train == TRUE) {
+        return (data[train_sample, ])
+    } else {
+        return (data[-train_sample, ])
+    }
+}
+
+data_train <- create_train_test(clean_titanic, 0.8, train = TRUE)
+data_test <- create_train_test(clean_titanic, 0.8, train = FALSE)
+dim(data_train)
+
+统计一下训练集和测试集中，幸存者所占比例，看看两个集合是否相差不大，从而判断随机化是否有效。
+prop.table(table(data_train$survived))
+prop.table(table(data_test$survived))
+
+//安装决策树库
+install.packages("rpart.plot")	
+
+//生成模型
+rpart(formula, data=, method='')
+arguments:			
+- formula: The function to predict
+- data: Specifies the data frame- method: 			
+- "class" for a classification tree 			
+- "anova" for a regression tree	
+
+
+//开始生成分类树
+library(rpart)
+library(rpart.plot)
+fit <- rpart(survived~., data = data_train, method = 'class')
+rpart.plot(fit, extra = 106)
+
+
+
