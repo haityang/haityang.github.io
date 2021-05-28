@@ -252,3 +252,10 @@ $ sudo pip install xlrd==1.2.0
 $ python run.py excel.xlsx  
 
 ```
+
+简单用pip3 install xlrd 成功了，还是找不到模块的话，需要这样安装。
+
+```
+$ python3 -m pip install xlrd
+
+```
