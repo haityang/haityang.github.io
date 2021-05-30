@@ -163,5 +163,94 @@ library(rpart.plot)
 fit <- rpart(survived~., data = data_train, method = 'class')
 rpart.plot(fit, extra = 106)
 
+==================================================
+https://www.datacamp.com/community/tutorials/decision-trees-R
+
+library(ISLR)
+data(package="ISLR")
+carseats<-Carseats
+
+require(tree)
+
+names(carseats)
+
+hist(carseats$Sales)
+High = ifelse(carseats$Sales<=8, "No", "Yes")
+carseats = data.frame(carseats, High)
+
+tree.carseats = tree(High~.-Sales, data=carseats)
+
+summary(tree.carseats)
+
+plot(tree.carseats)
+text(tree.carseats, pretty = 0)
+
+tree.carseats
+
+set.seed(101)
+train=sample(1:nrow(carseats), 250)
+
+tree.carseats = tree(High~.-Sales, carseats, subset=train)
+plot(tree.carseats)
+text(tree.carseats, pretty=0)
+
+tree.pred = predict(tree.carseats, carseats[-train,], type="class")
+
+with(carseats[-train,], table(tree.pred, High))
+
+cv.carseats = cv.tree(tree.carseats, FUN = prune.misclass)
+cv.carseats
+
+plot(cv.carseats)
+
+prune.carseats = prune.misclass(tree.carseats, best = 12)
+plot(prune.carseats)
+text(prune.carseats, pretty=0)
+
+tree.pred = predict(prune.carseats, carseats[-train,], type="class")
+with(carseats[-train,], table(tree.pred, High))
+
+----------------------
+library(MASS)
+data(package="MASS")
+boston<-Boston
+dim(boston)
+names(boston)
+
+require(randomForest)
+
+set.seed(101)
+train = sample(1:nrow(boston), 300)
+
+rf.boston = randomForest(medv~., data = boston, subset = train)
+rf.boston
+
+oob.err = double(13)
+test.err = double(13)
+for(mtry in 1:13){
+  fit = randomForest(medv~., data = boston, subset=train, mtry=mtry, ntree = 350)
+  oob.err[mtry] = fit$mse[350]
+  pred = predict(fit, boston[-train,])
+  test.err[mtry] = with(boston[-train,], mean( (medv-pred)^2 ))
+}
+
+matplot(1:mtry, cbind(test.err, oob.err), pch = 23, col = c("red", "blue"), type = "b", ylab="Mean Squared Error")
+legend("topright", legend = c("OOB", "Test"), pch = 23, col = c("red", "blue"))
+
+require(gbm)
+
+boost.boston = gbm(medv~., data = boston[train,], distribution = "gaussian", n.trees = 10000, shrinkage = 0.01, interaction.depth = 4)
+summary(boost.boston)
+
+plot(boost.boston,i="lstat")
+plot(boost.boston,i="rm")
+
+n.trees = seq(from = 100, to = 10000, by = 100)
+predmat = predict(boost.boston, newdata = boston[-train,], n.trees = n.trees)
+dim(predmat)
+
+boost.err = with(boston[-train,], apply( (predmat - medv)^2, 2, mean) )
+plot(n.trees, boost.err, pch = 23, ylab = "Mean Squared Error", xlab = "# Trees", main = "Boosting Test Error")
+abline(h = min(test.err), col = "red")
 
 
