@@ -178,7 +178,11 @@ hist(carseats$Sales)
 High = ifelse(carseats$Sales<=8, "No", "Yes")
 carseats = data.frame(carseats, High)
 
+carseats$High = as.factor(carseats$High) //convert character to factor
+
 tree.carseats = tree(High~.-Sales, data=carseats)
+
+
 
 summary(tree.carseats)
 
@@ -198,19 +202,37 @@ tree.pred = predict(tree.carseats, carseats[-train,], type="class")
 
 with(carseats[-train,], table(tree.pred, High))
 
+
+---------------------------cross-validation to prune the tree
+
 cv.carseats = cv.tree(tree.carseats, FUN = prune.misclass)
 cv.carseats
 
 plot(cv.carseats)
 
-prune.carseats = prune.misclass(tree.carseats, best = 12)
+prune.carseats = prune.misclass(tree.carseats, best = 12)//12个叶结点
 plot(prune.carseats)
 text(prune.carseats, pretty=0)
 
 tree.pred = predict(prune.carseats, carseats[-train,], type="class")
 with(carseats[-train,], table(tree.pred, High))
 
-----------------------
+------------------------Random Forests （Boston housing data ）
+
+CRIM: 城镇人均犯罪率
+ZN: 住宅用地所占比例
+INDUS: 城镇中非住宅用地所占比例
+CHAS: 虚拟变量，用于回归分析
+RM: 每栋住宅的房间数
+AGE: 1940年以前建成的自住单位比例
+DIS: 距离5个波士顿就业中心的加权距离
+RAD: 距高速公路便利指数
+TAX: 每一万美元的不动产税率
+PRTATIO: 城镇中的教师学生比例
+B: 城镇中黑人比例
+LSTAT: 地区中有多少房东属于低收入人群
+MEDV: 自住房屋房价中位数
+
 library(MASS)
 data(package="MASS")
 boston<-Boston
@@ -237,6 +259,8 @@ for(mtry in 1:13){
 matplot(1:mtry, cbind(test.err, oob.err), pch = 23, col = c("red", "blue"), type = "b", ylab="Mean Squared Error")
 legend("topright", legend = c("OOB", "Test"), pch = 23, col = c("red", "blue"))
 
+
+----------------------------------Boosting
 require(gbm)
 
 boost.boston = gbm(medv~., data = boston[train,], distribution = "gaussian", n.trees = 10000, shrinkage = 0.01, interaction.depth = 4)

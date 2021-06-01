@@ -1,5 +1,9 @@
+从1970年的时间换算：
+date -r 526276800 +%m/%d/%y						//秒到日期
+date  "+%s"  									//当前日期到秒
+date -j -f "%Y%m%d %H%M" "20130122 1455" +%s	//特定日期到秒
 
--------
+------------------------------------------
 1. class-dump 
 提取框架中的头文件：  
 class-dump -H -o /Users/iSwear/Desktop/headFold /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/System/Library/PrivateFrameworks/Calendar
@@ -1099,12 +1103,7 @@ phpinfo();
 	
 		
 ==========================================
-从1970年的时间换算：
-date -r 526276800 +%m/%d/%y						//秒到日期
-date  "+%s"  									//当前日期到秒
-date -j -f "%Y%m%d %H%M" "20130122 1455" +%s	//特定日期到秒
 
-==============================================
 clang的编译， 用于分析block
 clang tb.m -o t   //从源文件生成可执行文件
 clang -rewrite-objc tb.m	//生成.m对应的cpp文件
