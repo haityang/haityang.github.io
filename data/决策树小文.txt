@@ -260,7 +260,7 @@ matplot(1:mtry, cbind(test.err, oob.err), pch = 23, col = c("red", "blue"), type
 legend("topright", legend = c("OOB", "Test"), pch = 23, col = c("red", "blue"))
 
 
-----------------------------------Boosting
+----------------------------------Boosting 梯度提升树Gradient Boosted Modeling
 require(gbm)
 
 boost.boston = gbm(medv~., data = boston[train,], distribution = "gaussian", n.trees = 10000, shrinkage = 0.01, interaction.depth = 4)
