@@ -127,7 +127,16 @@ source('z.R', print.eval=T)
 
 ```
 
+安装R运行环境
 
+```
+安装 R-4.1.0.pkg
+安装 RStudio-1.4.1717.dmg
+
+vi ~/.zshrc
+export PATH="/Library/Frameworks/R.framework/Resources:$PATH"
+
+```
 
 
 

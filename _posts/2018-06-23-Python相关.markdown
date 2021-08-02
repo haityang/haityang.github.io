@@ -266,3 +266,8 @@ $ python3 -m pip install xlrd
 
 
 ```
+
+安装依赖库   
+```
+python3 -m pip install openpyxl
+```

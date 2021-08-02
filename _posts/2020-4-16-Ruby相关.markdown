@@ -98,3 +98,23 @@ bundle -v
 ```
 
 For ruby you should have Ruby 2.6.1, for bundler you should have at least version 2.0.1
+
+
+
+#### 查看Homebrew安装包所在路径：
+
+```
+//By default
+/usr/local/Cellar/
+
+//places symlinks
+/usr/local/opt/
+
+//查看具体路径
+brew --prefix nginx
+
+//查看全部相关信息
+brew info nginx
+
+
+```

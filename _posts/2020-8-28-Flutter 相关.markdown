@@ -66,6 +66,8 @@ debugPrintBeginFrameBanner和debugPrintEndFrameBanner //标识帧的开始和结
 dart SDK
 
 ```
-
+1. vs创建flutter demo
+2.  vs 创建 package plugin
+3.  在finder中创建文件夹，引入framework,不要在vs中创建文件夹，否则脚本copy不上去依赖native库。
 
 ```
