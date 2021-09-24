@@ -116,5 +116,11 @@ brew --prefix nginx
 //查看全部相关信息
 brew info nginx
 
+//查看当前安装的包
+brew list --full-name
+
+//查看当前的Tap列表
+brew tap
+
 
 ```

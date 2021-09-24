@@ -8,3 +8,13 @@ demo: https://docs.opencv.org/master/d7/d88/tutorial_hello.html
 3. 编译： python opencv/platforms/ios/build_framework.py ios --contrib opencv_contrib --iphoneos_archs arm64
 
 ```
+
+
+vscode 中可以跳转到opencv头文件说明
+
+```
+1.查看opencv所在路径
+$ brew info OpenCV
+
+2.在vscode 中打开 View-->Command Palette-->C/C++ Edit configuration(UI)
+将头文件目录/usr/local/Cellar/opencv/4.5.3_2/include/opencv4/opencv2/ 添加到include path中

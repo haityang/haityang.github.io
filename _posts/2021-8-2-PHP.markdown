@@ -2,7 +2,7 @@
 
 
 ```
-//https://chrisbergeron.com/2021/03/17/MacOS-11-Big-Sur-Nginx-PHP-and-Mysql/
+https://chrisbergeron.com/2021/03/17/MacOS-11-Big-Sur-Nginx-PHP-and-Mysql/
 
 xcode-select --install
 
@@ -25,8 +25,13 @@ brew services start mysql
 brew services list
 
 //secure using the password password and then restart.
-mysql_secure_installation
+mysql_secure_installation  //密码到少8位，要有大小写，要有特殊字符
+mysql> SET GLOBAL validate_password.policy=LOW;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; //把'password'用自己的密码替换掉
 brew services restart mysql
+
+SQLSTATE[42000]: Syntax error or access violation: 1231 Variable 'sql_mode' can't be set to the value of 'NO_AUTO_CREATE_USER'如何解决
+找到config\database.php中的mysql配置  'strict' => true,把它改为false
 
 
 //Postgres SQL DB
@@ -37,15 +42,42 @@ psql postgres
 
 //PHP
 brew tap shivammathur/php
-brew install shivammathur/php/php@7.4
-brew link --overwrite --force php@7.4
-sudo brew services start php@7.4
+brew install shivammathur/php/php@7.1
+brew link --overwrite --force php@7.1
+sudo brew services start php@7.1
 sudo lsof -Pn | grep php-fpm
 
+vi /usr/local/etc/php/7.1/php-fpm.d/www.conf
+将user改为自己的名字(whoami)
+user = <your_username>
+group = staff
+listen = 127.0.0.1:9074
+
+brew services restart php@7.1
 
 //Nginx
 brew install nginx
 sudo nginx
+
+vi /usr/local/etc/nginx/nginx.conf
+改成：
+listen 80;
+server_name  localhost test.x;
+index index.html index.htm index.php;
+
+location ~ \.php$ {
+  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  include fastcgi_params;
+  fastcgi_pass 127.0.0.1:9074;
+  fastcgi_split_path_info ^(.+\.php)(/.+)$;
+}
+
+cd /usr/local/var/www
+vi index.php
+<?php
+phpinfo();
+?>
+sudo nginx -s reload
 
 
 //test nginx
@@ -56,5 +88,158 @@ brew install redis
 brew services start redis
 redis-server
 
+
+
+
+
+
+```
+
+#### 运行nginx+php-fpm+mysql
+
+```
+brew services start mysql
+brew services start postgresql
+sudo brew services start php@7.1
+sudo nginx
+sudo nginx -s reload
+```
+
+
+### 打算使用docker,所以删掉包
+
+```
+brew uninstall redis
+brew uninstall nginx
+brew uninstall shivammathur/php/php@8.1
+brew uninstall postgresql
+brew uninstall mysql 
+
+
+```
+
+
+#### 使用docker方式配置php
+
+```
+https://blog.csdn.net/shykevin/article/details/106248499
+
+//拉取镜像
+docker pull gaciaga/nginx-vts:latest
+docker pull crunchgeek/php-fpm:7.3-r7
+
+//运行镜像
+docker run -d -it --restart=always --name nginx-vts -p 80:80 gaciaga/nginx-vts:latest
+docker run -d -it --restart=always --name php-fpm -p 9000:9000 crunchgeek/php-fpm:7.3-r7
+
+//修改nginx配置文件
+docker cp nginx-vts:/etc/nginx/conf.d/default.conf .
+    location ~ \.php$ {
+        fastcgi_pass   192.168.31.34:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  /var/www/html/$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+    location ~ ^/(fpm_status|health)$ {
+        fastcgi_pass 192.168.31.34:9000;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+//覆盖容器配置文件，并重载nginx
+docker cp default.conf nginx-vts:/etc/nginx/conf.d/default.conf
+docker exec -it nginx-vts nginx -s reload
+
+//访问页面
+http://192.168.31.34/status
+
+//修改php-fpm配置文件
+docker cp php-fpm:/usr/local/etc/php-fpm.d/www.conf .
+sed -i '238c pm.status_path = /fpm_status' www.conf
+docker cp www.conf php-fpm:/usr/local/etc/php-fpm.d/www.conf
+
+//查看php-fpm进程
+# docker exec -it  php-fpm ps -aux
+
+//php-fpm 重启
+docker exec -it  php-fpm kill -USR2 1
+
+//访问php-fpm状态页面
+http://192.168.31.34/fpm_status
+
+//测试php文件
+vi test.php
+<?php
+   phpinfo();
+?>
+docker cp test.php php-fpm:/var/www/html/test.php
+
+//访问页面
+http://192.168.31.34/test.php
+
+//MySQL
+mkdir -p /data/mysql/data
+docker run -d --name mysql5.7 --restart=always -e MYSQL_ROOT_PASSWORD=abcd@1234  -p 3306:3306 -v /data/mysql/data:/var/lib/mysql mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+//phpMyAdmin
+wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.zip
+unzip phpMyAdmin-5.0.2-all-languages.zip
+
+//修改配置
+cd /opt/phpMyAdmin-5.0.2-all-languages
+cp config.sample.inc.php config.inc.php
+vi config.inc.php
+
+将
+$cfg['Servers'][$i]['host'] = 'localhost';
+改为
+$cfg['Servers'][$i]['host'] = '192.168.31.34';
+
+拷贝phpMyAdmin到容器中
+这里需要在nginx容器里面开放一个81端口，用来访问phpmyadmin，需要删除nginx容器，重新运行。
+docker rm -f nginx-vts
+docker run -d -it --restart=always --name nginx-vts -p 80:80 -p 81:81 gaciaga/nginx-vts:latest
+
+复制代码到nginx容器中
+docker cp phpmyadmin.conf nginx-vts:/etc/nginx/conf.d/
+docker exec -it nginx-vts mkdir -p  /var/www/html
+
+复制代码到php容器中
+docker cp phpMyAdmin-5.0.2-all-languages nginx-vts:/var/www/html/
+
+编辑nginx配置
+vi phpmyadmin.conf
+server {
+    listen       81;
+    server_name  localhost;
+    root   /var/www/html/phpMyAdmin-5.0.2-all-languages;
+    index  index.php index.html index.htm;
+
+    location ~ \.php$ {
+        fastcgi_pass   192.168.31.34:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  /var/www/html/phpMyAdmin-5.0.2-all-languages/$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
+
+复制配置文件到nginx容器，并重新加载
+docker cp default.conf nginx-vts:/etc/nginx/conf.d/
+docker cp phpmyadmin.conf nginx-vts:/etc/nginx/conf.d/
+docker exec -it nginx-vts nginx -s reload
+
+访问phpMyAdmin
+http://192.168.31.34:81
+
+```
+
+
+### 使用composer的方式布署
+
+```
+https://github.com/yusureabc/TranslationManagement
+cd Trans
+composer install
+php artisan serve
 
 ```

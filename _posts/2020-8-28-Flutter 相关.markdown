@@ -71,3 +71,49 @@ dart SDK
 3.  在finder中创建文件夹，引入framework,不要在vs中创建文件夹，否则脚本copy不上去依赖native库。
 
 ```
+
+
+创建flutter demo
+
+```
+flutter create demo
+cd demo
+flutter run
+
+```
+
+flutter demo 显示中文
+
+```
+1. 编辑pubspec.yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations: # Add this line
+    sdk: flutter         # Add this line
+    
+2. 执行 flutter pub get
+3. 在dart代码中加入：
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+return MaterialApp(
+  title: 'Flutter Demo',
+  theme: ThemeData(
+    primarySwatch: Colors.blue,
+  ),
+    localizationsDelegates: [ //add this line 
+    GlobalMaterialLocalizations.delegate, //add this line 
+    GlobalWidgetsLocalizations.delegate, //add this line 
+  ], //add this line 
+  supportedLocales: [const Locale('zh', 'CH')],//add this line 
+  home: MyHomePage(title: 'Flutter Demo Home Page'),
+);
+
+
+```
+
+
+```
+flutter pub cache repair
+
+```

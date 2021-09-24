@@ -1,0 +1,6 @@
+### 升级旧版本的卡菲模型到新版本
+
+```
+upgrade_net_proto_text [老prototxt] [新prototxt]
+upgrade_net_proto_binary [老caffemodel] [新caffemodel]
+```

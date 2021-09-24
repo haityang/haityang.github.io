@@ -1,3 +1,33 @@
+### Docker使用
+
+```
+ docker search      # 从Docker Hub查找镜像
+ docker images      # 查看本地(拉取下来的)镜像列表
+ docker pull        # 从镜像仓库中拉取或者更新指定镜像
+ docker run         # 运行容器一个命令
+ docker container stop container_name #停止容器
+ docker ps          # 查看运行的容器，加参数 -a 查看所有的容器
+ docker rm          # 删除一个容器
+ docker rmi         # 删除一个镜像
+ docker inspect     # 获取容器/镜像的元数据
+ docker build       # 使用 Dockerfile 创建镜像
+  docker exec -it container_id /bin/sh  #进入正在运行的容器
+  docker cp src_file contain_name:/to_file #从本地拷贝文件到容器
+  
+
+常见的Dockerfile指令：
+ FROM               # 格式为FROM image或FROM image:tag，并且Dockerfile中第一条指令必须是FROM指令，且在同一个Dockerfile中创建多个镜像时，可以使用多个FROM指令
+ RUN                # 格式为RUN command或 RUN ["EXECUTABLE","PARAM1","PARAM2".....]，前者在shell终端中运行命令，/bin/sh -c command，例如：/bin/sh -c "echo hello"；后者使用exec执行，指定其他运行终端使用RUN["/bin/bash","-c","echo hello"]
+ CMD                # 用于指定容器启动时执行的命令
+ MAINTAINER         # 指定维护者信息
+ ENV                # 用于指定环境变量，这些环境变量，后续可以被RUN指令使用
+ EXPOSE             # 暴露端口，为容器外部链接使用
+
+```
+
+
+
+### 安装Docker在ubuntu9
 #####Step 1 — Installing Docker
 The Docker installation package available in the official Debian repository may not be the latest version. To ensure we get the latest version, we’ll install Docker from the official Docker repository. To do that, we’ll add a new package source, add the GPG key from Docker to ensure the downloads are valid, and then install the package.
 
@@ -494,3 +524,4 @@ In this tutorial you installed Docker, worked with images and containers, and pu
 
 
 https://toutyrater.github.io/prep/install.html
+
