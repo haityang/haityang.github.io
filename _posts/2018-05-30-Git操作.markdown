@@ -140,7 +140,8 @@ git remote show origin 				//显示远端git库地址信息
 git remote -v						//显示clone url
 ---------------						//暂存栈是用来暂存本地修改，然后能切换分枝的,是不用调用git commit,因为有些情况不想提交
 更改远端仓库地址
-git remote set-url origin ssh://htyang@wirelesscode.xxx.com:2941/Wireless/IOS_1
+git remote set-url origin ssh://htyang@xxx.com:2941/Wireless/IOS_1
+git remote set-url git@github.com:haityang/haityang.github.io.git
 
 -----------------
 
