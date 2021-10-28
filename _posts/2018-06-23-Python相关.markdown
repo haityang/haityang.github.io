@@ -185,6 +185,8 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 
 #### python 装不同的版本
 If you are using mac, you can install pyenv from Brew, install the desired versions, list the installed versions, and activate each version locally or globally.
+我也推荐 pyenv，很好的管理多版本和多环境。它在管理多环境的时候，缺省会使用 python -m venv
+
 
 ```
 # 查看当前版本
@@ -263,6 +265,9 @@ $ python run.py excel.xlsx
 ```
 
 简单用pip3 install xlrd 成功了，还是找不到模块的话，需要这样安装。
+如果你只有一个python环境，其实没区别的
+python -m pip 是用了当前 python 的内置模块，不受系统环境影响，有的时候环境乱了，pip命令找不到
+有时候pip指向的python不是你当前用的，python执行告诉你缺lib，你pip装了，结果还是报告缺lib，你仔细一看，pip给你装到其他pyhon的库里去了，这时候就要用python -m pip确保把库装到自己用的python里去
 
 ```
 $ python3 -m pip install xlrd
@@ -292,4 +297,33 @@ $ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init --pa
 python version
 3.5.10： tensorflow-v1 
 3.8.11: tensorflow-v2
+```
+
+执行前先确认好：
+
+```
+which python
+which pip
+
+```
+
+
+今天学到一个Python的小技巧
+
+```
+python setup.py install 可以用 pip install . 替代
+python setup.py develop 可以用 pip install -e . 替代
+```
+
+
+多环境优先使用内置的 venv, 不要用 conda
+
+```
+1.下载miniconda: https://docs.conda.io/en/latest/miniconda.html
+2.点击安装pkg
+3.conda env create -f environment.yml
+4.conda activate gluon
+5.conda deactivate
+6.jupyter notebook
+
 ```

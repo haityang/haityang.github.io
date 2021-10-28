@@ -30,7 +30,7 @@ $ flutter downgrade 1.17.5 //降级到最近的一个版
 $ flutter upgrade //相当于刷新到最新版
 ---------
 //包管理 
-pub global activate fvm //激活fvm
+pub global activate fvm //激活fvm (安装fvm)
 fvm install 1.17.5 //安装1.17.5版本
 fvm use 1.17.5 //使用版本
 fvm global 1.17.5 //全局使用
@@ -59,6 +59,9 @@ debugDumpRenderTree() //渲染树
 debugDumpLayerTree() //Layer树
 debugDumpSemanticsTree() //语义树
 debugPrintBeginFrameBanner和debugPrintEndFrameBanner //标识帧的开始和结束
+
+StackTrace stacktrace = StackTrace.current;
+_logger.info("my stack, $stacktrace");
 
 ```
 
@@ -115,5 +118,78 @@ return MaterialApp(
 
 ```
 flutter pub cache repair
+
+```
+
+vscode 相关
+
+```
+1. 查看最近打开的文件： cmd + p  //command palette:View: Show All Editors By Most Recently Used
+
+
+```
+
+Customizing static analysis  允许隐含类型
+https://dart.dev/guides/language/analysis-options  
+Place the analysis options file, analysis_options.yaml, at the root of the package, in the same directory as the pubspec file.  
+
+```
+#https://dart.dev/guides/language/analysis-options
+analyzer:
+  strong-mode:
+    implicit-casts: true
+    implicit-dynamic: true
+
+```
+
+Flutter plugin 的设置
+
+诸如出现不能识别  
+Objective-C++ importing C++ class fails, cassert not found  
+Go to build settings for your project  
+find the "Compile Sources As" setting  
+set it to "Objective-C++"  
+re-build  
+把#include "c++.h" 文件放在.mm里。放在header的话会报错。
+
+设置好以下文件后，在example中执行：  
+flutter create .    or flutter pub get  s
+cd ios  
+pod install 
+
+```
+#
+# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
+# Run `pod lib lint qhvcplayer.podspec' to validate before publishing.
+#
+Pod::Spec.new do |s|
+  s.name             = 'player'
+  s.version          = '0.0.1'
+  s.summary          = 'A new flutter plugin project.'
+  s.description      = <<-DESC
+A new flutter plugin project.
+                       DESC
+  s.homepage         = 'http://example.com'
+  s.license          = { :file => '../LICENSE' }
+  s.author           = { 'Your Company' => 'email@example.com' }
+  s.source           = { :path => '.' }
+  s.ios.deployment_target = '9.0'
+  s.source_files = 'Classes/**/*'
+  s.public_header_files = 'Classes/**/*.h'
+  s.dependency 'Flutter'
+  s.libraries = 'c++','sqlite3.0','z','resolv','xml2'
+  s.xcconfig = {
+         'CLANG_CXX_LANGUAGE_STANDARD' => 'c++11',
+         'CLANG_CXX_LIBRARY' => 'libc++'
+    }
+  s.framework = 'AudioToolbox','CoreTelephony','VideoToolbox','CoreVideo','Accelerate','CoreML','Vision','Metal'
+  s.vendored_frameworks = 'Framework/*.framework'
+  s.frameworks = "MyFramework",'Accelerate','CoreML'  #link libs
+  #resource files 和resource_bundle二选下，都会打到framework里，它不产生bundle
+  #s.resources = 'Assets/*'  
+  s.resource_bundles = {
+    'AIModels' => ['Assets/**/*{models}']
+  }
+  end
 
 ```
