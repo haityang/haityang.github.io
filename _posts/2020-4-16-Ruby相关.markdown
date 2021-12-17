@@ -120,7 +120,24 @@ brew info nginx
 brew list --full-name
 
 //查看当前的Tap列表
-brew tap
+brew tap                     # list tapped repositories
+brew tap <tapname>           # add tap
+brew untap <tapname>         # remove a tap
 
 
 ```
+
+homebrew安装删除操作  
+
+```
+//remove
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+
+//install
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+
+```
+
+

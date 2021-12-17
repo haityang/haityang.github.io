@@ -50,6 +50,29 @@ pub global activate fvm //更新fvm
 
 ```
 
+换机器，导致fvm不能升级
+
+```
+//更新 command line tool
+softwareupdate --all --install --force
+sudo rm -rf /Library/Developer/CommandLineTools
+sudo xcode-select --install
+  
+//重新安装dart
+brew uninstall dart
+brew install dart
+
+//重新安装fvm
+pub global activate fvm
+
+//重新安装flutter
+fvm remove 2.2.3
+fvm install 2.2.3
+fvm global 2.2.3
+flutter precache --ios
+
+```
+
 
 调试
 
@@ -144,6 +167,7 @@ analyzer:
 
 Flutter plugin 的设置
 
+```
 诸如出现不能识别  
 Objective-C++ importing C++ class fails, cassert not found  
 Go to build settings for your project  
@@ -156,6 +180,10 @@ re-build
 flutter create .    or flutter pub get  s
 cd ios  
 pod install 
+
+```
+
+完整的plugin 说明：
 
 ```
 #

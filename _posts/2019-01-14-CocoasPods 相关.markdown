@@ -92,12 +92,25 @@ end
 
 ```
 
-11. 最简单的podfile
+11.最简单的podfile
 
 ```
 platform :ios, '9.0'
 target 'dd' do 
     pod 'Reachability'
 end
+
+```
+
+12.换电脑更新 cocoapod
+
+```
+//重新安装pod
+sudo gem uninstall cocoapods
+sudo gem install cocoapods
+pod cache clean --all
+//重新生成当前项目
+pod deintegrate
+pod install
 
 ```

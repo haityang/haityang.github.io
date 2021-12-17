@@ -18,3 +18,13 @@ $ brew info OpenCV
 
 2.在vscode 中打开 View-->Command Palette-->C/C++ Edit configuration(UI)
 将头文件目录/usr/local/Cellar/opencv/4.5.3_2/include/opencv4/opencv2/ 添加到include path中
+
+```
+
+可以使python中有xfeature功能
+
+```
+pip install opencv-python
+pip install opencv-contrib-python
+
+```

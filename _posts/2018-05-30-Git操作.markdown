@@ -675,3 +675,10 @@ git clean -f -X
 git submodule foreach git pull --rebase
 
 ```
+
+查看当前commit属于哪个分枝  
+
+```
+git branch --contains cc250e6e5
+
+```

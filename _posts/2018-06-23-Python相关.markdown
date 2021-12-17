@@ -7,6 +7,8 @@ https://docs.python.org/3/
 ##### Pip (Pypi仓库)
 ```
 sudo apt install python-pip
+//更新pip
+python -m pip install --upgrade pip
 ```
 
 ##### Pip 国内镜像
@@ -419,6 +421,10 @@ pip修改镜像源(修改~/.pip/pip.conf配置文件)
 [global]
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 
+更新conda:
+conda update -n base conda
+设置镜像优先权:
+conda config --set channel_priority flexible
 ```
 
 
@@ -443,5 +449,12 @@ jupyter serverextension enable --sys-prefix jupyterlab_latex
 jupyter labextension install @jupyterlab/latex
 
 
+```
+
+安装opencv
 
 ```
+conda install opencv-python
+
+```
+
