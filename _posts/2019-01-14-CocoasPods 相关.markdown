@@ -114,3 +114,16 @@ pod deintegrate
 pod install
 
 ```
+
+Podfile 中的一些关键字
+
+
+在 Xcode 9 之前，不支持 Swift 静态库编译，因此 Swift pod 不得不使用动态库编译，即使用 use_frameworks!。但是，引用了大量动态库会导致应用程序启动时间变长。
+
+如果一个 Swift pod 依赖了一个 OC pod，那么我们要为对应的 OC pod 开启 modular headers（use_modular_headers! 就会开启 modular headers）。开启 modular headers 的本质就是将 pod 转换为 Modular（也就是支持模块），而 Modular 是可以直接在 Swift 中 import 的，不需要再经过 bridging-header 进行桥接，从而简化了 Swift 引用 OC 的方式。
+
+```
+use_frameworks!
+use_modular_headers!
+
+```

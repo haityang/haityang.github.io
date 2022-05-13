@@ -29,6 +29,10 @@ $ flutter channel stable //切换到stable channel
 $ flutter downgrade 1.17.5 //降级到最近的一个版
 $ flutter upgrade //相当于刷新到最新版
 ---------
+pub-cache
+flutter pub cache clean
+flutter pub cahce repair
+---------
 //包管理 
 pub global activate fvm //激活fvm (安装fvm)
 fvm install 1.17.5 //安装1.17.5版本
@@ -66,9 +70,9 @@ brew install dart
 pub global activate fvm
 
 //重新安装flutter
-fvm remove 2.2.3
-fvm install 2.2.3
-fvm global 2.2.3
+fvm remove 2.2.2
+fvm install 2.2.2
+fvm global 2.2.2
 flutter precache --ios
 
 ```
@@ -85,6 +89,7 @@ debugPrintBeginFrameBanner和debugPrintEndFrameBanner //标识帧的开始和结
 
 StackTrace stacktrace = StackTrace.current;
 _logger.info("my stack, $stacktrace");
+print("my stack, $stacktrace");
 
 ```
 
@@ -138,6 +143,7 @@ return MaterialApp(
 
 ```
 
+.pub cache出错则运行下列命令
 
 ```
 flutter pub cache repair
@@ -218,5 +224,15 @@ A new flutter plugin project.
     'AIModels' => ['Assets/**/*{models}']
   }
   end
+
+```
+
+
+### 运行一个dart文件
+
+```
+ $ dart create myapp
+ $ cd myapp
+ $ dart run
 
 ```

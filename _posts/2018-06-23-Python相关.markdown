@@ -11,6 +11,73 @@ sudo apt install python-pip
 python -m pip install --upgrade pip
 ```
 
+#### python 装不同的版本
+If you are using mac, you can install pyenv from Brew, install the desired versions, list the installed versions, and activate each version locally or globally.
+我也推荐 pyenv，很好的管理多版本和多环境。它在管理多环境的时候，缺省会使用 python -m venv
+
+
+```
+# 查看当前版本
+pyenv version
+
+# 查看所有版本
+pyenv versions
+
+# 查看所有可安装的版本
+pyenv install --list
+
+# 安装指定版本
+pyenv install 3.6.5
+# 安装新版本后rehash一下
+pyenv rehash
+
+# 删除指定版本
+pyenv uninstall 3.5.2
+
+# 指定全局版本
+pyenv global 3.6.5
+
+# 指定多个全局版本, 3版本优先
+pyenv global 3.6.5 2.7.14
+
+# 查看当前版本
+python -V
+
+
+```
+
+##### pyenv virtualenv使用
+
+```
+1.安装：
+brew install pyenv-virtualenv
+
+# virtual environments from pyenv
+pyenv install 3.8.11
+pyenv virtualenvs
+pyenv virtualenv 3.8.11 new-env
+pyenv activate new-env
+pyenv deactivate 
+pyenv virtualenv-delete new-env
+# You can also use `pyenv local`
+pip install -r /path/to/requirements.txt
+pip --trusted-host pypi.python.org install PyExecJS
+
+# Run the content in the shell
+# init conda, the following command write scripts into your shell init file automatically
+conda init
+
+# disable init of env "base"
+conda config --set auto_activate_base false
+
+# virtual environments from conda
+conda env create new-env python=3.6
+conda env list
+conda activate new-env
+conda deactivate
+
+```
+
 ##### Pip 国内镜像
 
 阿里云 http://mirrors.aliyun.com/pypi/simple/
@@ -185,40 +252,7 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 
 ```
 
-#### python 装不同的版本
-If you are using mac, you can install pyenv from Brew, install the desired versions, list the installed versions, and activate each version locally or globally.
-我也推荐 pyenv，很好的管理多版本和多环境。它在管理多环境的时候，缺省会使用 python -m venv
 
-
-```
-# 查看当前版本
-pyenv version
-
-# 查看所有版本
-pyenv versions
-
-# 查看所有可安装的版本
-pyenv install --list
-
-# 安装指定版本
-pyenv install 3.6.5
-# 安装新版本后rehash一下
-pyenv rehash
-
-# 删除指定版本
-pyenv uninstall 3.5.2
-
-# 指定全局版本
-pyenv global 3.6.5
-
-# 指定多个全局版本, 3版本优先
-pyenv global 3.6.5 2.7.14
-
-# 查看当前版本
-python -V
-
-
-```
 
 在pyenv环境下安装miniconda  
 
